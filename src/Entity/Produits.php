@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProduitsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -24,13 +26,25 @@ class Produits
     private ?float $prix = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $couleur = null;
-
-    #[ORM\Column]
-    private ?int $taille = null;
-
-    #[ORM\Column(length: 255)]
     private ?string $image = null;
+
+    /**
+     * @var Collection<int, taille>
+     */
+    #[ORM\ManyToMany(targetEntity: Taille::class, inversedBy: 'produits')]
+    private Collection $taille;
+
+    /**
+     * @var Collection<int, couleur>
+     */
+    #[ORM\ManyToMany(targetEntity: Couleur::class, inversedBy: 'produits')]
+    private Collection $couleur;
+
+    public function __construct()
+    {
+        $this->taille = new ArrayCollection();
+        $this->couleur = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -73,30 +87,6 @@ class Produits
         return $this;
     }
 
-    public function getCouleur(): ?string
-    {
-        return $this->couleur;
-    }
-
-    public function setCouleur(string $couleur): static
-    {
-        $this->couleur = $couleur;
-
-        return $this;
-    }
-
-    public function getTaille(): ?int
-    {
-        return $this->taille;
-    }
-
-    public function setTaille(int $taille): static
-    {
-        $this->taille = $taille;
-
-        return $this;
-    }
-
     public function getImage(): ?string
     {
         return $this->image;
@@ -105,6 +95,54 @@ class Produits
     public function setImage(string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, taille>
+     */
+    public function getTaille(): Collection
+    {
+        return $this->taille;
+    }
+
+    public function addTaille(taille $taille): static
+    {
+        if (!$this->taille->contains($taille)) {
+            $this->taille->add($taille);
+        }
+
+        return $this;
+    }
+
+    public function removeTaille(taille $taille): static
+    {
+        $this->taille->removeElement($taille);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, couleur>
+     */
+    public function getCouleur(): Collection
+    {
+        return $this->couleur;
+    }
+
+    public function addCouleur(couleur $couleur): static
+    {
+        if (!$this->couleur->contains($couleur)) {
+            $this->couleur->add($couleur);
+        }
+
+        return $this;
+    }
+
+    public function removeCouleur(couleur $couleur): static
+    {
+        $this->couleur->removeElement($couleur);
 
         return $this;
     }

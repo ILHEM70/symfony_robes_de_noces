@@ -3,7 +3,6 @@
 {% block title %}Hello NavbarController!{% endblock %}
 
 {% block body %}
-<div>
   <nav class="navbar">
         <div class="navbar-container">
             <!-- Logo / Nom -->
@@ -11,7 +10,7 @@
 
             <!-- Liens -->
             <ul class="navbar-links">
-                <li><a href="">Accueil</a></li>
+                <li><a href="{{path('app_home')}}">Accueil</a></li>
                 <li><a href="">À propos</a></li>
                 <li><a href="">Services</a></li>
                 <li><a href="">Contact</a></li>

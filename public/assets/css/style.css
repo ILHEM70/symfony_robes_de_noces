@@ -1,0 +1,159 @@
+*{
+   box-sizing: border-box; 
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   background-image: url(../images/fond.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+   
+ 
+}
+h1{
+   color: #211e1e;
+   text-align: center;
+   font-size: 72px;
+   font-family: Georgia, 'Times New Roman', Times, serif;
+   padding-top: 270px;
+}
+h3{
+   color: #211e1e;
+    text-align: center;
+
+}
+/* Style général pour la barre de navigation */
+.navbar {
+    background-color:#211e1e; /* Couleur de fond */
+    color: #fcfbfb; /* Couleur du texte */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Conteneur de la navbar */
+.navbar-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo ou marque */
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fbf8f8;
+    text-decoration: none;
+}
+
+/* Liste des liens */
+.navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+/* Liens */
+.navbar-links li {
+    display: inline-block;
+}
+
+.navbar-links a {
+    color: #fbf8f8;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Effet au survol */
+.navbar-links a:hover {
+    background-color: #555; /* Couleur au survol */
+    color: #fff; /* Couleur du texte */
+    border-radius: 5px;
+}
+/* Conteneur du formulaire */
+.formulaire {
+    background: linear-gradient(135deg, #fff5f5, #fef0f7); /* Dégradé pastel */
+    border: 1px solid #f3d1e4; /* Bordure pastel rose */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Douce ombre */
+    padding: 20px;
+    max-width: 400px;
+    width: 90%;
+}
+
+
+
+
+/* Champs de formulaire */
+.formulaire input[type="text"],
+.formulaire input[type="email"],
+.formulaire input[type="password"],
+.formulaire select,
+.formulaire textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #e6c9d5;
+    border-radius: 5px;
+    background: #fff;
+    color: #4a4a4a;
+    font-size: 1rem;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Bouton de soumission */
+.formulaire button {
+    background-color: #d8a4c4; /* Un rose pastel plus intense */
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.formulaire button:hover {
+    background-color: #b9829d; /* Teinte plus foncée au survol */
+}
+
+/* Placeholder */
+.formulaire input::placeholder,
+.formulaire textarea::placeholder {
+    color: #b2a1b1;
+    font-style: italic;
+}
+
+/* Champ de focus */
+.formulaire input:focus,
+.formulaire textarea:focus,
+.formulaire select:focus {
+    outline: none;
+    border-color: #d8a4c4; /* Couleur pastel au focus */
+    box-shadow: 0 0 6px rgba(216, 164, 196, 0.5);
+}
+
+/* Messages d'erreur */
+.formulaire .error {
+    color: #e63946;
+    font-size: 0.875rem;
+    margin-top: -8px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+
+
+
+
