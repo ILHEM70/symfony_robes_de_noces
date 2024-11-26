@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello NavbarController!{% endblock %}
+
+{% block body %}
+<div>
+  <nav class="navbar">
+        <div class="navbar-container">
+            <!-- Logo / Nom -->
+            <a href="" class="navbar-brand">Logo</a>
+
+            <!-- Liens -->
+            <ul class="navbar-links">
+                <li><a href="">Accueil</a></li>
+                <li><a href="">À propos</a></li>
+                <li><a href="">Services</a></li>
+                <li><a href="">Contact</a></li>
+                {% if app.user %}
+                    <li><a href="">Profil</a></li>
+                    <li><a href="">Déconnexion</a></li>
+                {% else %}
+                    <li><a href="">Connexion</a></li>
+                    <li><a href="">Inscription</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</div>
+{% endblock %}
