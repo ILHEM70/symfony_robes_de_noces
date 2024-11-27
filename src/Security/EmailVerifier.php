@@ -1,32 +1,52 @@
 <?php
 
-namespace App\Controller;
+namespace App\Security;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
+use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
+use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
-class EmailVerifier extends AbstractController
+class EmailVerifier
 {
-    #[Route(path: '/login', name: 'app_login')]
-    public function login(AuthenticationUtils $authenticationUtils): Response
-    {
-        // get the login error if there is one
-        $error = $authenticationUtils->getLastAuthenticationError();
-
-        // last username entered by the user
-        $lastUsername = $authenticationUtils->getLastUsername();
-
-        return $this->render('security/login.html.twig', [
-            'last_username' => $lastUsername,
-            'error' => $error,
-        ]);
+    public function __construct(
+        private VerifyEmailHelperInterface $verifyEmailHelper,
+        private MailerInterface $mailer,
+        private EntityManagerInterface $entityManager
+    ) {
     }
 
-    #[Route(path: '/logout', name: 'app_logout')]
-    public function logout(): void
+    public function sendEmailConfirmation(string $verifyEmailRouteName, User $user, TemplatedEmail $email): void
     {
-        throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+        $signatureComponents = $this->verifyEmailHelper->generateSignature(
+            $verifyEmailRouteName,
+            (string) $user->getId(),
+            (string) $user->getEmail()
+        );
+
+        $context = $email->getContext();
+        $context['signedUrl'] = $signatureComponents->getSignedUrl();
+        $context['expiresAtMessageKey'] = $signatureComponents->getExpirationMessageKey();
+        $context['expiresAtMessageData'] = $signatureComponents->getExpirationMessageData();
+
+        $email->context($context);
+
+        $this->mailer->send($email);
+    }
+
+    /**
+     * @throws VerifyEmailExceptionInterface
+     */
+    public function handleEmailConfirmation(Request $request, User $user): void
+    {
+        $this->verifyEmailHelper->validateEmailConfirmationFromRequest($request, (string) $user->getId(), (string) $user->getEmail());
+
+        $user->setVerified(true);
+
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
     }
 }

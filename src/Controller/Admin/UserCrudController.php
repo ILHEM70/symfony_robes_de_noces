@@ -48,7 +48,6 @@ class UserCrudController extends AbstractCrudController
             TextField::new('lastname')->setRequired(true),
             TextField::new('firstName')->setRequired(true),
             EmailField::new('email')->setRequired(true),
-            
             TextField::new('password')->setFormTypeOption('attr', ['type' => 'password'])->setRequired(true),
             CountryField::new('country')->setRequired(true)
         ];

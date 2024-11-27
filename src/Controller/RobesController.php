@@ -6,13 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class FooterController extends AbstractController
+class RobesController extends AbstractController
 {
-    #[Route('/footer', name: 'app_footer')]
+    #[Route('/robes', name: 'app_robes')]
     public function index(): Response
     {
-        return $this->render('footer/index.html.twig', [
-            'controller_name' => 'Footer',
+        return $this->render('robes/index.html.twig', [
+            'controller_name' => 'RobesController',
+            
         ]);
     }
 }
