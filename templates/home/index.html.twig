@@ -1,15 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Page d'accueil{% endblock %}
 
 {% block body %}
-{{ include('navbar/index.html.twig') }}
-
-<div class="example-wrapper">
-    <h1><span>{{ controller_name }}</span></h1>
-</div>
-<div>
-    <h3>ROBES DE MARIAGES ET D'EVENNEMENTS</h3>
-</div>
-{{ include('footer/index.html.twig')}}
+<section class="hero">
+    <div class="example-wrapper">
+        <h1>{{ controller_name }}</h1>
+    </div>
+    <div>
+        <h3>ROBES DE MARIAGES ET D'EVENNEMENTS</h3>
+    </div>
+    <div class="section">
+        <p class="p">Bonjour et bienvenue sur notre site <br>
+           ou vous retrouvrez une très jolie selection de robes de mariage<br>
+           conçu rien que pour vous satisfaire.<br>
+          
+        </p>
+    </div>
+</section>
 {% endblock %}

@@ -4,15 +4,12 @@
 {% endblock %}
 
 {% block body %}
-	{{ include('navbar/index.html.twig') }}
 	{% for flash_error in app.flashes('verify_email_error') %}
 		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
 	{% endfor %}
 	<div class="contenaire">
 
-		<div>
-			<h1>Register</h1>
-		</div>
+		<h1>Register</h1>
 
 		<div class="errors">{{ form_errors(registrationForm) }}</div>
 

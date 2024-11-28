@@ -1,15 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RobesController!{% endblock %}
+{% block title %}Hello RobesController!
+{% endblock %}
 
 {% block body %}
-{{ include('navbar/index.html.twig') }}
-<h1>Robes De Mariage</h1>
-<div class = "robes_liste">
-{% for robe in robes%}
-
-
-{% endfor%}
-
-
+	
+	{% for robe in robes %}
+		<div class="produit">
+			<img src="{{asset('assets/images/' ~ robe.image)}}" alt="{{ robe.nomDuProduit }}">
+			<h2>{{ robe.nomDuProduit }}</h2>
+			<p>{{ robe.description }}</p>
+			<p>Prix : {{ robe.prix }}€</p>
+		</div>
+	{% endfor %}
 {% endblock %}
