@@ -15,7 +15,8 @@ class RobesController extends AbstractController
         $produits = $produitsRepository->findAll();
         return $this->render('robes/index.html.twig', [
             'controller_name' => 'RobesController',
-            'robes' => $produits
+            'robes' => $produits,
+            'bodyClass' => 'robes_image'
         ]);
     }
 }

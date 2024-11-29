@@ -7,15 +7,15 @@
 
 .wrapper {
   width: calc(100vw - (100vw - 100%));
+  height: 900px;
   background-image: url(../images/wedding-2589802_640.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
-  min-height: 700px;
 }
 .hero {
   width: 100%;
-  height: 100hv;
+  min-height: 800px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,7 +26,7 @@
 }
 
 h1 {
-  color: #211e1e;
+  color: #201e1e;
   text-align: center;
   font-size: 72px;
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -230,6 +230,8 @@ button.btn:hover {
   margin-bottom: 40px;
   margin-right: 20px;
   transition: 0.3s;
+
+ 
 }
 .produit img.clicked {
   -ms-transform: scale(1.2) scaleX(-1); /* IE 9 */
@@ -243,20 +245,35 @@ button.btn:hover {
   transform: scale(1.2);
 }
 
-.produit p {
+.p {
   width: 200px;
+  padding: 15px;
+  background: rgba(223, 199, 199, 0.2);
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 1);
 }
 
-.example-wrapper {
+
+.contact {
   background-color: #9d9b9b;
   background: rgba(0, 0, 0, 0.3);
-  padding: 30px 30px;
+  padding: 20px 30px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 1);
   max-width: 700px;
   width: 100%;
   text-align: center;
   margin: auto;
+}
+
+.contact-image{}
+
+.connexion-image{}
+
+.inscription-image{}
+
+.robes-image{
+  
 }
 
 .form-group {
@@ -335,7 +352,7 @@ textarea::placeholder {
   text-decoration: none;
   color: #d0cbc9;
   font-size: 14px;
-  transition: color 0.5s ease; 
+  transition: color 0.5s ease;
 }
 
 .footer ul li:hover {
