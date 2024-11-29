@@ -8,9 +8,10 @@
 	{% for robe in robes %}
 		<div class="produit">
 			<img src="{{asset('assets/images/' ~ robe.image)}}" alt="{{ robe.nomDuProduit }}">
-			<h2>{{ robe.nomDuProduit }}</h2>
-			<p>{{ robe.description }}</p>
-			<p>Prix : {{ robe.prix }}€</p>
+			<div class="decription"><h2>{{ robe.nomDuProduit }}</h2>
+			     <p>{{ robe.description }}</p>
+			     <p>Prix : {{ robe.prix }}€</p>
+			</div>
 		</div>
 	{% endfor %}
 {% endblock %}
