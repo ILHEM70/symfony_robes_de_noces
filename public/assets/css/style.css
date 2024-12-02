@@ -8,9 +8,9 @@
 .wrapper {
   width: calc(100vw - (100vw - 100%));
   height: 900px;
-  background-image: url(../images/wedding-2589802_640.jpg);
+  /* background-image: url(../images/wedding-2589802_640.jpg);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
   display: flex;
 }
 .hero {
@@ -93,20 +93,18 @@ h4 {
   border-radius: 5px;
 }
 .login {
-  background-color: #9d9b9b;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 20px 30px;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 30px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 1);
+  box-shadow: 0 4px 6px rgb(80, 78, 78);
   max-width: 700px;
-  width: 100%;
   text-align: center;
   margin: auto;
 }
 
 .contenaire {
   margin: auto;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 1);
   padding: 30px;
@@ -230,8 +228,6 @@ button.btn:hover {
   margin-bottom: 40px;
   margin-right: 20px;
   transition: 0.3s;
-
- 
 }
 .produit img.clicked {
   -ms-transform: scale(1.2) scaleX(-1); /* IE 9 */
@@ -253,10 +249,9 @@ button.btn:hover {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 1);
 }
 
-
 .contact {
   background-color: #9d9b9b;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.1);
   padding: 20px 30px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 1);
@@ -266,14 +261,26 @@ button.btn:hover {
   margin: auto;
 }
 
-.contact-image{}
+.contact-image {
+  background-image: url(../images/pexels-photo-6610070.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-.connexion-image{}
+.connexion-image {
+  background-image: url(../images/DALL·E\ 2024-12-02\ 10.12.10\ -\ A\ sophisticated\ and\ elegant\ design\ for\ a\ bridal\ website\ background\,\ resembling\ the\ first\ image\ with\ a\ soft\ pastel\ color\ scheme\ in\ white\ and\ blush\ pink.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-.inscription-image{}
+.inscription-image {
+  background-image: url(../images/DALL·E\ 2024-12-02\ 10.05.35\ -\ A\ sophisticated\ and\ elegant\ background\ design\ for\ a\ bridal\ website\,\ featuring\ a\ soft\ pastel\ color\ scheme\ with\ white\ and\ blush\ pink\ tones.\ The\ backgrou.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-.robes-image{
-  
+.robes-image {
+  background-color: #b19e9e;
 }
 
 .form-group {
@@ -326,6 +333,8 @@ textarea::placeholder {
   color: #aaa;
   font-style: italic;
 }
+
+
 
 .footer {
   display: flex;
