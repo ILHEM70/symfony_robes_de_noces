@@ -2,9 +2,9 @@
   <nav class="navbar">
         <div class="navbar-container">
             
-            <a href="" class="navbar-brand">Logo</a>
+            <a href="{{path('app_home')}}" class="navbar-brand"><img src="{{ asset('assets/images/robes_de_noces.png')}}" alt="" style="height : 80px; width :80px"></a>
 
-         
+
             <ul class="navbar-links">
                 <li><a href="{{path('app_home')}}">Accueil</a></li>
                 <li><a href="{{path('app_about_us')}}">À propos</a></li>
@@ -12,7 +12,7 @@
                 <li><a href="{{path('app_contact')}}">Contact</a></li>
                 {% if app.user %}
                     <li><a href="">Profil</a></li>
-                    <li><a href="">Déconnexion</a></li>
+                    <li><a href="{{path('app_logout')}}">Déconnexion</a></li>
                 {% else %}
                     <li><a href="{{path('app_login')}}">Connexion</a></li>
                     <li><a href="{{path('app_register')}}">Inscription</a></li>

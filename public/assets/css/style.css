@@ -30,6 +30,7 @@ h1 {
   text-align: center;
   font-size: 72px;
   font-family: Georgia, "Times New Roman", Times, serif;
+  /* cursor: none; */
 }
 
 h3 {
@@ -217,7 +218,7 @@ button.btn:hover {
 .produit {
   margin-left: 50px;
   padding-bottom: 30px;
-  display: flex;
+  
 }
 
 .produit img {
@@ -280,7 +281,9 @@ button.btn:hover {
 }
 
 .robes-image {
-  background-color: #b19e9e;
+  /* background-image: url(../images/white-background-7425603_1920.jpg); */
+  /* background-repeat: no-repeat;
+  background-size: cover; */
 }
 
 .form-group {
