@@ -8,9 +8,6 @@
 .wrapper {
   width: calc(100vw - (100vw - 100%));
   height: 900px;
-  /* background-image: url(../images/wedding-2589802_640.jpg);
-  background-repeat: no-repeat;
-  background-size: cover; */
   display: flex;
 }
 .hero {
@@ -30,7 +27,6 @@ h1 {
   text-align: center;
   font-size: 72px;
   font-family: Georgia, "Times New Roman", Times, serif;
-  /* cursor: none; */
 }
 
 h3 {
@@ -58,7 +54,7 @@ h4 {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  height: 50px;
+  height: 70px;
 }
 
 .navbar-brand {
@@ -217,12 +213,12 @@ button.btn:hover {
 }
 .produit {
   margin-left: 50px;
+  margin-top: 150px;
   padding-bottom: 30px;
-  
 }
 
 .produit img {
-  width: 200px;
+  width: 250px;
   height: 400px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 1);
   transition: transform 0.1s;
@@ -262,6 +258,68 @@ button.btn:hover {
   margin: auto;
 }
 
+.section_aboutus {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.aboutUs {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+#aboutUs {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 0;
+}
+.video {
+  width: 600px;
+  height: 600px;
+  border-radius: 10px;
+
+  margin: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 1);
+  background-image: url(../images/fond\ blanc.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.video:hover {
+  -ms-transform: scale(1.2); /* IE 9 */
+  -webkit-transform: scale(1.2); /* Safari 3-8 */
+  transform: scale(1.2);
+}
+.video video {
+  width: 600px;
+  height: 600px;
+}
+.paragraph {
+  width: 600px;
+  height: 600px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 1);
+  text-align: center;
+  padding: 30px;
+  margin: auto;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 19px;
+  color: #171616;
+  background-image: url(../images/pexels-photo-6610070.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-weight: bolder;
+}
+.paragraph:hover {
+  -ms-transform: scale(1.2); /* IE 9 */
+  -webkit-transform: scale(1.2); /* Safari 3-8 */
+  transform: scale(1.2);
+}
+
 .contact-image {
   background-image: url(../images/pexels-photo-6610070.webp);
   background-repeat: no-repeat;
@@ -280,10 +338,10 @@ button.btn:hover {
   background-size: cover;
 }
 
-.robes-image {
-  /* background-image: url(../images/white-background-7425603_1920.jpg); */
-  /* background-repeat: no-repeat;
-  background-size: cover; */
+.robe-image {
+  background-image: url(../images/fond.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .form-group {
@@ -336,8 +394,6 @@ textarea::placeholder {
   color: #aaa;
   font-style: italic;
 }
-
-
 
 .footer {
   display: flex;

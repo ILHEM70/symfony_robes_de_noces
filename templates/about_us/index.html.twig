@@ -4,14 +4,33 @@
 {% endblock %}
 
 {% block body %}
+	<section class="section_aboutus">
+		<h1>À propos de nous :</h1>
+		<div class="aboutUs">
 
-	<div class="aboutUs">
-		<div class="video">
-		<video src=url(../images/7301430-uhd_4096_2160_25fps (1).mp4) alt="Mariée jettent des fleurs.">
-		</div>
-		<div>
-			<p></p>
-		</div>
-	</div>
 
+			<div class="video">
+				<video autoplay muted playsinline loop>
+
+					<source src="{{asset('assets/videos/mariage.mp4')}}" type="video/webm"/>
+				</video>
+			</div>
+			<div class="paragraph">
+				<p>
+					<span>
+						Bienvenue dans l’univers magique de<span style="color:red" ;>
+							Robes De Noce</span>, où chaque robe raconte une histoire d’amour unique. Passionnés par l’art de la couture et inspirés par la beauté intemporelle du mariage, nous avons fondé notre atelier avec une mission simple : offrir aux futures mariées des créations qui reflètent leur personnalité et subliment leur jour le plus précieux.<br><br>
+
+						Chez<span style="color:red" ;>
+							Robes De Noce</span>, chaque robe est bien plus qu’un vêtement : c’est une pièce d’art conçue avec amour et minutie. Nous travaillons avec des tissus d’exception, des dentelles raffinées et des détails personnalisés pour créer des modèles à la fois élégants et modernes. Que vous rêviez d’une robe bohème, d’une silhouette classique ou d’un design audacieux, notre équipe est là pour donner vie à vos envies.<br><br>
+
+
+						Notre philosophie repose sur l’écoute, le savoir-faire artisanal et une attention particulière aux moindres détails. Nous croyons que chaque femme mérite de se sentir unique et radieuse, et c’est pourquoi nous proposons des robes sur mesure, adaptées à vos goûts, votre style et votre morphologie.<br><br>
+
+
+						Rejoignez-nous dans cette belle aventure et laissez-nous vous accompagner dans la création de la robe parfaite pour votre grand jour. Chez Robes De Noce, nous ne créons pas simplement des robes ; nous réalisons vos rêves.</p>
+				</p>
+			</div>
+		</div>
+	</section>
 {% endblock %}
