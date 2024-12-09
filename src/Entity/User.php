@@ -40,7 +40,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $firstname = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $contry = null;
+    private ?string $country = null;
 
     #[ORM\Column]
     private bool $isVerified = false;
@@ -146,12 +146,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getCountry(): ?string
     {
-        return $this->contry;
+        return $this->country;
     }
 
     public function setCountry(?string $contry): static
     {
-        $this->contry = $contry;
+        $this->country = $contry;
 
         return $this;
     }
