@@ -7,8 +7,8 @@
 
 .wrapper {
   width: calc(100vw - (100vw - 100%));
-  height: 900px;
   display: flex;
+  flex-wrap: wrap;
 }
 .hero {
   width: 100%;
