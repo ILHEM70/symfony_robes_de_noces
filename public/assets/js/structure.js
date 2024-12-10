@@ -23,3 +23,17 @@
 //     });
 //   });
 // });
+function addToCart(id) {
+  let button = document.querySelector("#bouton_panier");
+  let url = button.getAttribute("data-url");
+  console.log(url);
+  fetch(url, {
+    method: "post",
+    body: id,
+  })
+    .then((result) => {
+      return result.json();
+    })
+    .then((result) => {})
+    .catch((error) => console.log(error));
+}

@@ -17,14 +17,16 @@ class ProfilType extends AbstractType
         $builder
             ->add('email', EmailType::class)
             ->add('password', PasswordType::class, [
+                'required' => false, // Champ non requis
+                'mapped' => false,  // Ce champ ne sera pas directement lié à l'entité
                 'attr' => [
-                    'value' => '*********************'
-                ]
+                    'placeholder' => 'Laisser vide si inchangé',
+                ], 
             ])
             ->add('lastname')
             ->add('firstname')
             ->add('country')
-            ->add('Valider', SubmitType::class);;
+            ->add('Valider', SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
