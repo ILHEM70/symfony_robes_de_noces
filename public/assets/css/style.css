@@ -2,7 +2,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /* border: 1px solid red; */
 }
 
 .wrapper {
@@ -17,9 +16,41 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-image: url(../images/fond.jpg);
+  overflow: hidden;
+  position: relative;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
+  animation: slideShow 60s infinite;
+}
+
+@keyframes slideShow {
+  0% {
+    background-image: url(../images/240_F_524893446_iW5iAgLPXNHOnAh4yc3bCZ48rwlPwf3m.jpg);
+  }
+  25% {
+    background-image: url(../images/fond.jpg);
+  }
+
+  50% {
+    background-image: url(../images/Designer\ \(7\).jpg);
+  }
+  75% {
+    background-image: url(../images/wedding-2589802_640.jpg);
+  }
+  100% {
+    background-image: url(../images/DALL·E\ 2024-12-02\ 10.05.35\ -\ A\ sophisticated\ and\ elegant\ background\ design\ for\ a\ bridal\ website\,\ featuring\ a\ soft\ pastel\ color\ scheme\ with\ white\ and\ blush\ pink\ tones.\ The\ backgrou.webp);
+  }
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 h1 {
@@ -38,15 +69,15 @@ h4 {
   text-align: center;
 }
 
-/* Style général pour la barre de navigation */
+
 .navbar {
   background-color: #211e1e;
   color: #fcfbfb;
-  padding: 10px 20px;
+  padding: 15px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 .navbar-container {
@@ -54,11 +85,11 @@ h4 {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  height: 70px;
+  height: 80px;
 }
 
 .navbar-brand {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: bold;
   color: #fbf8f8;
   text-decoration: none;
@@ -67,7 +98,7 @@ h4 {
 .navbar-links {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 25px;
   margin: 0;
   padding: 0;
 }
@@ -79,16 +110,19 @@ h4 {
 .navbar-links a {
   color: #fbf8f8;
   text-decoration: none;
-  font-size: 1rem;
-  padding: 5px 10px;
+  font-size: 1.1rem;
+  padding: 7px 12px;
   transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 4px; 
+  border: 1px solid transparent; 
 }
 
 .navbar-links a:hover {
   background-color: #555;
   color: #fff;
-  border-radius: 5px;
+  border: 1px solid #555; 
 }
+
 .login {
   background: rgba(0, 0, 0, 0.1);
   padding: 30px;
@@ -240,10 +274,7 @@ button.btn:hover {
 
 .p {
   width: 200px;
-  /* padding: 15px;
-  background: rgba(223, 199, 199, 0.2);
-  border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 1); */
+
   color: #7a5e50;
 }
 .p h2 {
@@ -363,22 +394,21 @@ button.btn:hover {
   color: rgb(247, 242, 242);
   padding: 10px;
 }
-.detailsProduit .prix{
+.detailsProduit .prix {
   color: orangered;
 }
 #add-to-cart {
-    background-color: #323030;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  background-color: #323030;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 #add-to-cart:hover {
-    background-color: #d0d3d0;
-    color: #463c3c;
+  background-color: #d0d3d0;
+  color: #463c3c;
 }
-
 
 .form-group {
   margin-bottom: 15px;
@@ -420,6 +450,7 @@ textarea {
   text-align: center;
   transition: background-color 0.3s;
   text-decoration: none;
+  margin: 10px;
 }
 
 .btn:hover {
@@ -440,6 +471,7 @@ textarea::placeholder {
   color: #ecf0f1;
   padding: 20px 0;
   flex-wrap: wrap;
+  border-top: 1px solid #333; 
 }
 
 .footer ul {
@@ -447,6 +479,7 @@ textarea::placeholder {
   padding: 0;
   margin: 0;
   text-align: center;
+  width: 100%; 
 }
 
 .footer ul li {
@@ -457,11 +490,20 @@ textarea::placeholder {
   text-decoration: none;
   color: #d0cbc9;
   font-size: 14px;
-  transition: color 0.5s ease;
+  transition: color 0.3s ease; 
 }
 
 .footer ul li:hover {
   background-color: #555;
   color: #fff;
   border-radius: 5px;
+}
+
+
+#success_add {
+  display: none;
+  padding: 20px 40px;
+  background-color: rgb(143, 231, 143);
+  color: white;
+  font-size: 20px;
 }

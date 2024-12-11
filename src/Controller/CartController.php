@@ -1,41 +1,40 @@
 <?php
 
-
-
 namespace App\Controller;
 
 use App\Entity\Produits;
-use App\Entity\Robe; // Entité représentant vos robes
+use App\Repository\ProduitsRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class CartController extends AbstractController
 {
-
     #[Route("/cart", name: "app_cart")]
-    public function add(SessionInterface $session, ManagerRegistry $doctrine, Request $request): Response
+    public function add(SessionInterface $session, ProduitsRepository $produitsRepository, Request $request): JsonResponse
     {
-        $requete = $request->request->get('id');
-        dump($requete);
-        die();
-
-        
-        $entityManager = $doctrine->getManager();
-        $robe = $entityManager->getRepository(Produits::class)->find();
-
-        if (!$robe) {
-            throw $this->createNotFoundException('La robe n\'existe pas.');
+        // Récupérer l'ID du produit depuis la requête
+        $id = json_decode($request->getContent());
+        if (!$id) {
+            return new JsonResponse(['error' => 'ID de produit manquant.'], Response::HTTP_BAD_REQUEST);
         }
 
-        // Récupérer le panier depuis la session
+        // Charger le produit depuis la base de données
+        $robe = $produitsRepository->find($id);
+
+        if (!$robe) {
+            return new JsonResponse(['error' => 'Produit introuvable.'], Response::HTTP_NOT_FOUND);
+        }
+
+        // Récupérer ou initialiser le panier depuis la session
         $panier = $session->get('panier', []);
 
-        // Vérifier si la robe est déjà dans le panier
+        // Vérifier si le produit est déjà dans le panier
         $found = false;
         foreach ($panier as &$item) {
             if ($item['id'] === $id) {
@@ -45,7 +44,7 @@ class CartController extends AbstractController
             }
         }
 
-        // Si la robe n'est pas encore dans le panier
+        // Ajouter le produit au panier si absent
         if (!$found) {
             $panier[] = [
                 'id' => $robe->getId(),
@@ -55,30 +54,39 @@ class CartController extends AbstractController
             ];
         }
 
-        // Sauvegarder le panier dans la session
+        // Mettre à jour la session avec le panier
         $session->set('panier', $panier);
 
-        // Rediriger vers la page du panier ou afficher un message
-        return new JsonResponse();
+        // Retourner une réponse JSON avec l'état du panier
+        return new JsonResponse(['message' => 'Produit ajouté au panier.', 'panier' => $panier], Response::HTTP_OK);
     }
 
     #[Route("/panier", name: "app_panier")]
     public function show(SessionInterface $session): Response
     {
-       ;
         // Récupérer le panier depuis la session
         $panier = $session->get('panier', []);
 
         // Calculer le total
         $total = array_reduce($panier, function ($sum, $item) {
-            return $sum + $item['price'] * $item['quantity'];
+            $price = $item['price'] ?? 0;
+            $quantity = $item['quantity'] ?? 0;
+            return $sum + $price * $quantity;
         }, 0);
 
-        // Afficher le panier
-        return $this->render('cart.html.twig', [
+        // Rendre la vue du panier
+        return $this->render('cart/index.html.twig', [
             'panier' => $panier,
             'total' => $total,
-
+            'bodyClass' => null
         ]);
     }
+    
+    #[Route("/panier", name: "cart_remove")]
+public function removeFromCart(Request $request, Session  $session){
+        $data = json_decode($request->getContent(), true);
+        $session->remove('nb') !== 0 ? $session->set('nb', $data): 0;
+        return new JsonResponse(['nobreArticles' => $data]);
 }
+}
+

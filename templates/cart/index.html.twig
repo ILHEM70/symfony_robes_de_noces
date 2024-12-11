@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CartController!{% endblock %}
-
 {% block title %}Votre Panier
 {% endblock %}
 
@@ -10,7 +8,8 @@
 	{% if panier is empty %}
 		<p>Votre panier est vide.</p>
 	{% else %}
-		<ul>
+		<ul data-url="{{path('cart_remove')}}" id="data">
+
 			{% for item in panier %}
 				<li>
 					{{ item.name }}
@@ -21,13 +20,13 @@
 					€ =
 					{{ item.quantity * item.price }}
 					€
-					<a href="{{ path('cart_remove', {id: item.id}) }}" class="btn btn-danger btn-sm">Supprimer</a>
+					<a href="#" class="btn btn-danger btn-sm" onclick="removeFromCart(event, {{item.id}})" class="removeElement">Supprimer</a>
 				</li>
 			{% endfor %}
 		</ul>
 		<p>Total :
 			{{ total }}
 			€</p>
-		<a href="{{ path('checkout') }}" class="btn btn-primary">Passer à la caisse</a>
+		<a href="" class="btn btn-primary">Passer à la caisse</a>
 	{% endif %}
 {% endblock %}
