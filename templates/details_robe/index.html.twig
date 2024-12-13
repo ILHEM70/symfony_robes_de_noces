@@ -15,11 +15,31 @@
 			<p>{{ robe.description }}</p>
 			<p class="prix">Prix :
 				{{ robe.prix }}€</p>
+			<select name="optionsTailles" id="optionsTailles">
+				<option value="null">Choisissez votre taille</option>
+				<option value="34">34</option>
+				<option value="36">36</option>
+				<option value="38">38</option>
+				<option value="40">40</option>
+				<option value="42">42</option>
+				<option value="44">44</option>
+				<option value="46">46</option>
+				<option value="48">48</option>
+				<option value="50">50</option>
+				<option value="52">52</option>
+				<option value="54">54</option>
+			</select>
+			<div class="couleurs">
+				<div class="blanc">blanc</div>
+				<div class="rouge">rouge</div>
+				<div class="rose">rose</div>
+				<div class="ivoire">ivoire</div>
+			</div>
+
 			<button class="btn btn-success" id="bouton_panier" onclick="addToCart({{robe.id}})" data-url="{{ path('app_cart') }}">Ajouter au panier</button>
+
 			<p id="success_add"></p>
 		</div>
-
-
 	</div>
 
 {% endblock %}

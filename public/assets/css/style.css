@@ -33,7 +33,7 @@
   }
 
   50% {
-    background-image: url(../images/Designer\ \(7\).jpg);
+    background-image: url(../images/DALL·E\ 2024-12-02\ 10.12.10\ -\ A\ sophisticated\ and\ elegant\ design\ for\ a\ bridal\ website\ background\,\ resembling\ the\ first\ image\ with\ a\ soft\ pastel\ color\ scheme\ in\ white\ and\ blush\ pink.webp);
   }
   75% {
     background-image: url(../images/wedding-2589802_640.jpg);
@@ -68,7 +68,6 @@ h4 {
   color: #211e1e;
   text-align: center;
 }
-
 
 .navbar {
   background-color: #211e1e;
@@ -113,14 +112,14 @@ h4 {
   font-size: 1.1rem;
   padding: 7px 12px;
   transition: background-color 0.3s ease, color 0.3s ease;
-  border-radius: 4px; 
-  border: 1px solid transparent; 
+  border-radius: 4px;
+  border: 1px solid transparent;
 }
 
 .navbar-links a:hover {
   background-color: #555;
   color: #fff;
-  border: 1px solid #555; 
+  border: 1px solid #555;
 }
 
 .login {
@@ -244,6 +243,7 @@ button.btn:hover {
 .description {
   display: flex;
   flex-direction: column;
+  background-color: #ebe2e2;
 }
 .produit {
   margin-left: 50px;
@@ -279,6 +279,62 @@ button.btn:hover {
 }
 .p h2 {
   color: #5b4747;
+}
+
+#optionsTailles {
+  width: 205px;
+  padding: 10px;
+  margin-left: 10px;
+  border: 4px solid #494343;
+  border-radius: 7px;
+  background-color: #f9f9f9;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+}
+#optionsTailles:hover {
+  border-color: #363637;
+  background-color: #474444;
+  color: #ecf0f1;
+  border: 5px solid #f5f0f0;
+}
+#optionsTailles option:checked {
+  background-color: #424445;
+  color: #fff;
+}
+
+
+.blanc {
+  width: 30px;
+  height: 30px;
+ 
+  border-radius: 50%;
+  border: 2px solid #171616;
+  background-color: white;
+}
+.rouge {
+  width: 30px;
+  height: 30px;
+ 
+  border-radius: 50%;
+  border: 2px solid #171616;
+  background-color: rgb(168, 3, 3);
+}
+.rose {
+  width: 30px;
+  height: 30px;
+ 
+  border-radius: 50%;
+  border: 2px solid #171616;
+  background-color: pink;
+}
+.ivoire {
+  width: 30px;
+  height: 30px;
+ 
+  border-radius: 50%;
+  border: 2px solid #171616;
+  background-color: ivory;
 }
 
 .contact {
@@ -368,15 +424,7 @@ button.btn:hover {
 }
 
 .inscription-image {
-  background-image: url(../images/DALL·E\ 2024-12-02\ 10.05.35\ -\ A\ sophisticated\ and\ elegant\ background\ design\ for\ a\ bridal\ website\,\ featuring\ a\ soft\ pastel\ color\ scheme\ with\ white\ and\ blush\ pink\ tones.\ The\ backgrou.webp);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.robe-image {
-  background-image: url(../images/fond.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #525050;
 }
 
 .detailsProduit {
@@ -463,6 +511,61 @@ textarea::placeholder {
   font-style: italic;
 }
 
+.profil {
+  width: 500px;
+  margin: 50px auto;
+  border-radius: 8px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  background-color: #302e2e;
+}
+
+.profil label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #f9f7f7;
+}
+
+.profil input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.5s ease;
+}
+
+.profil input:focus {
+  border-color: #60594d;
+  box-shadow: 0 0 7px rgba(176, 147, 109, 0.5);
+  outline: none;
+}
+
+.profil button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background-color: #3d3e3f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.profil button:hover {
+  background-color: #e3eaf1;
+  transform: translateY(-2px);
+  color: #211e1e;
+}
+
 .footer {
   display: flex;
   justify-content: space-evenly;
@@ -471,7 +574,7 @@ textarea::placeholder {
   color: #ecf0f1;
   padding: 20px 0;
   flex-wrap: wrap;
-  border-top: 1px solid #333; 
+  border-top: 1px solid #333;
 }
 
 .footer ul {
@@ -479,7 +582,7 @@ textarea::placeholder {
   padding: 0;
   margin: 0;
   text-align: center;
-  width: 100%; 
+  width: 100%;
 }
 
 .footer ul li {
@@ -490,7 +593,7 @@ textarea::placeholder {
   text-decoration: none;
   color: #d0cbc9;
   font-size: 14px;
-  transition: color 0.3s ease; 
+  transition: color 0.3s ease;
 }
 
 .footer ul li:hover {
@@ -498,7 +601,6 @@ textarea::placeholder {
   color: #fff;
   border-radius: 5px;
 }
-
 
 #success_add {
   display: none;

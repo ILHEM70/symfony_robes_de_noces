@@ -12,15 +12,13 @@
 
 			{% for item in panier %}
 				<li>
-					{{ item.name }}
+					{{ item.produit.nomDuProduit }}
 					-
 					{{ item.quantity }}
 					x
-					{{ item.price }}
-					€ =
-					{{ item.quantity * item.price }}
-					€
-					<a href="#" class="btn btn-danger btn-sm" onclick="removeFromCart(event, {{item.id}})" class="removeElement">Supprimer</a>
+					{{ item.produit.prix }}
+					€ 
+					<a href="" class="btn btn-danger btn-sm" onclick="removeFromCart(event,{{item.produit.id}})" class="removeElement">Supprimer</a>
 				</li>
 			{% endfor %}
 		</ul>

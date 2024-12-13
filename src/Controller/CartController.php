@@ -19,7 +19,7 @@ class CartController extends AbstractController
     public function add(SessionInterface $session, ProduitsRepository $produitsRepository, Request $request): JsonResponse
     {
         // Récupérer l'ID du produit depuis la requête
-        $id = json_decode($request->getContent());
+        $id = json_decode($request->getContent(), true);
         if (!$id) {
             return new JsonResponse(['error' => 'ID de produit manquant.'], Response::HTTP_BAD_REQUEST);
         }
@@ -37,7 +37,7 @@ class CartController extends AbstractController
         // Vérifier si le produit est déjà dans le panier
         $found = false;
         foreach ($panier as &$item) {
-            if ($item['id'] === $id) {
+            if ($item['produit']->getId() === $id) {
                 $item['quantity'] += 1;
                 $found = true;
                 break;
@@ -47,18 +47,18 @@ class CartController extends AbstractController
         // Ajouter le produit au panier si absent
         if (!$found) {
             $panier[] = [
-                'id' => $robe->getId(),
-                'name' => $robe->getNomDuProduit(),
-                'price' => $robe->getPrix(),
+                'produit' => $robe,
                 'quantity' => 1,
             ];
         }
+        $count = count($panier);
 
+        $session->set('nb', $count);
         // Mettre à jour la session avec le panier
         $session->set('panier', $panier);
 
         // Retourner une réponse JSON avec l'état du panier
-        return new JsonResponse(['message' => 'Produit ajouté au panier.', 'panier' => $panier], Response::HTTP_OK);
+        return new JsonResponse(['message' => 'Produit ajouté au panier.', 'nb' => $count], Response::HTTP_OK);
     }
 
     #[Route("/panier", name: "app_panier")]
@@ -66,10 +66,9 @@ class CartController extends AbstractController
     {
         // Récupérer le panier depuis la session
         $panier = $session->get('panier', []);
-
         // Calculer le total
         $total = array_reduce($panier, function ($sum, $item) {
-            $price = $item['price'] ?? 0;
+            $price = $item['produit']->getPrix() ?? 0;
             $quantity = $item['quantity'] ?? 0;
             return $sum + $price * $quantity;
         }, 0);
@@ -81,12 +80,21 @@ class CartController extends AbstractController
             'bodyClass' => null
         ]);
     }
-    
-    #[Route("/panier", name: "cart_remove")]
-public function removeFromCart(Request $request, Session  $session){
-        $data = json_decode($request->getContent(), true);
-        $session->remove('nb') !== 0 ? $session->set('nb', $data): 0;
-        return new JsonResponse(['nobreArticles' => $data]);
-}
-}
 
+    #[Route("/panier/supp", name: "cart_remove")]
+    public function removeFromCart(Request $request, Session  $session)
+    {
+        $data = json_decode($request->getContent(), true);
+
+        $panier = $session->get('panier', []);
+        dd($panier);
+        foreach ($panier as $key => &$p) {
+            if ($panier['produit']->getId() === $data['id']) {
+                unset($panier[$key]);
+                break;
+            }
+        }
+
+        return new JsonResponse(['nobreArticles' => $data]);
+    }
+}
