@@ -111,6 +111,15 @@ h4 {
   display: inline-block;
 }
 
+.navbar-links #logo_panier {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-links #a_panier {
+  padding-right: 0;
+}
+
 .navbar-links a {
   color: #fbf8f8;
   text-decoration: none;

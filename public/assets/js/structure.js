@@ -13,8 +13,11 @@ function addToCart(id) {
       return result.json();
     })
     .then((result) => {
-      console.log(result.nb);
       let paragraphe = document.querySelector("#success_add");
+      // On récupère le paragraphe (où est affiché le nombre d'articles)
+      let nb = document.querySelector("#session_nb");
+      // On remplace le nombre actuel par le nouveau nombre envoyé par le serveur 
+      nb.textContent = result.nb;
       paragraphe.style.display = "block";
       paragraphe.textContent = result.message;
     })
