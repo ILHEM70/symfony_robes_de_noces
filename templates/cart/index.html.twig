@@ -11,19 +11,19 @@
 		<ul data-url="{{path('cart_remove')}}" id="data">
 
 			{% for item in panier %}
-				<li>
+				<li data-id-supp={{item.produit.id}} data-prix={{item.produit.prix}}>
 					{{ item.produit.nomDuProduit }}
 					-
 					{{ item.quantity }}
 					x
 					{{ item.produit.prix }}
-					€ 
+					€
 					<a href="" class="btn btn-danger btn-sm" onclick="removeFromCart(event,{{item.produit.id}})" class="removeElement">Supprimer</a>
 				</li>
 			{% endfor %}
 		</ul>
 		<p>Total :
-			{{ total }}
+			<span id="total_panier">{{ total }}</span>
 			€</p>
 		<a href="" class="btn btn-primary">Passer à la caisse</a>
 	{% endif %}

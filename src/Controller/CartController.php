@@ -82,19 +82,24 @@ class CartController extends AbstractController
     }
 
     #[Route("/panier/supp", name: "cart_remove")]
-    public function removeFromCart(Request $request, Session  $session)
+
+    public function removeItem(Request $request, SessionInterface $session)
     {
         $data = json_decode($request->getContent(), true);
-
         $panier = $session->get('panier', []);
-        dd($panier);
+
         foreach ($panier as $key => &$p) {
-            if ($panier['produit']->getId() === $data['id']) {
+            if (isset($p['produit']) && $p['produit']->getId() === $data['id']) {
                 unset($panier[$key]);
                 break;
             }
         }
 
-        return new JsonResponse(['nobreArticles' => $data]);
+        $count = count($panier);
+
+        $session->set('panier', $panier);
+        $session->set('nb', $count);
+
+        return new JsonResponse(['message' => 'Votre article a bien été supprimé', Response::HTTP_OK]);
     }
 }

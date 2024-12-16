@@ -23,7 +23,6 @@ function addToCart(id) {
 
 function removeFromCart(event, id) {
   event.preventDefault(); // Empêche le rechargement de la page
-
   let data = document.querySelector("#data"); // Si besoin, référence au bouton actuel
   let url = data.getAttribute("data-url");
 
@@ -53,10 +52,29 @@ function removeFromCart(event, id) {
         paragraphe.textContent = result.message;
       }
 
-      // Retire l'article du DOM si son conteneur est identifiable
-      let itemRow = document.querySelector(`#item-${id}`);
-      if (itemRow) {
-        itemRow.remove();
+      // On récupère la balise span du total du panier
+      let span = document.querySelector("#total_panier");
+
+      let total = parseFloat(span.textContent);
+
+      // On récupère aussi le prix de la robe qu'on veut supprimer
+      let prixRobe = parseFloat(
+        event.target.parentElement.getAttribute("data-prix")
+      );
+
+      // On calcule le total - le prix de la robe supprimée
+      let totalFinal = total - prixRobe;
+
+      // On remplace le total par le nouveau total (tofixed = limite à 2 chiffres après la décimale)
+      span.textContent = totalFinal.toFixed(2);
+
+      // On récupère l'element parent de celui sur lequel on click (le bouton supprimer)
+      let li = event.target.parentElement;
+      // On supprime cet élément
+      li.remove();
+
+      if (totalFinal <= 0) {
+        window.location.reload();
       }
 
       // Met à jour le compteur d'articles si présent
@@ -67,5 +85,3 @@ function removeFromCart(event, id) {
     })
     .catch((error) => console.error("Erreur lors de la suppression :", error));
 }
-
-

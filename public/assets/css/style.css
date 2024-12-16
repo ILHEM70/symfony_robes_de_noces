@@ -39,7 +39,7 @@
     background-image: url(../images/wedding-2589802_640.jpg);
   }
   100% {
-    background-image: url(../images/DALL·E\ 2024-12-02\ 10.05.35\ -\ A\ sophisticated\ and\ elegant\ background\ design\ for\ a\ bridal\ website\,\ featuring\ a\ soft\ pastel\ color\ scheme\ with\ white\ and\ blush\ pink\ tones.\ The\ backgrou.webp);
+    background-image: url(../images/robes_de_noces.png);
   }
 }
 
@@ -84,14 +84,18 @@ h4 {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
+  height: 100px;
 }
 
-.navbar-brand {
-  font-size: 1.75rem;
-  font-weight: bold;
-  color: #fbf8f8;
-  text-decoration: none;
+.navbar-brand img {
+  max-width: 150px;
+  height: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar-brand img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .navbar-links {
@@ -100,6 +104,7 @@ h4 {
   gap: 25px;
   margin: 0;
   padding: 0;
+  align-items: center;
 }
 
 .navbar-links li {
@@ -117,6 +122,11 @@ h4 {
 }
 
 .navbar-links a:hover {
+  background-color: #555;
+  color: #fff;
+  border: 1px solid #555;
+}
+.navbar-links img:hover {
   background-color: #555;
   color: #fff;
   border: 1px solid #555;
@@ -303,11 +313,10 @@ button.btn:hover {
   color: #fff;
 }
 
-
 .blanc {
   width: 30px;
   height: 30px;
- 
+
   border-radius: 50%;
   border: 2px solid #171616;
   background-color: white;
@@ -315,7 +324,7 @@ button.btn:hover {
 .rouge {
   width: 30px;
   height: 30px;
- 
+
   border-radius: 50%;
   border: 2px solid #171616;
   background-color: rgb(168, 3, 3);
@@ -323,7 +332,7 @@ button.btn:hover {
 .rose {
   width: 30px;
   height: 30px;
- 
+
   border-radius: 50%;
   border: 2px solid #171616;
   background-color: pink;
@@ -331,7 +340,7 @@ button.btn:hover {
 .ivoire {
   width: 30px;
   height: 30px;
- 
+
   border-radius: 50%;
   border: 2px solid #171616;
   background-color: ivory;
@@ -600,12 +609,4 @@ textarea::placeholder {
   background-color: #555;
   color: #fff;
   border-radius: 5px;
-}
-
-#success_add {
-  display: none;
-  padding: 20px 40px;
-  background-color: rgb(143, 231, 143);
-  color: white;
-  font-size: 20px;
 }
