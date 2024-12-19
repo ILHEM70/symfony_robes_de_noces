@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ErrorController!
+{% endblock %}
+
+{% block body %}
+
+	<div class="video_error">
+		<div id="error_page">
+
+			<video autoplay muted playsinline loop>
+
+				<source src="{{asset('assets/videos/page-erreur.mp4')}}" type="video/webm"/>
+			</video>
+
+
+			<h1>C'est simplement introuvable.</h1>
+
+			<p>
+				La page semble introuvable.<br>
+				Peut-être est-il temps de retourner à
+				<a href="{{ path('app_home') }}">l'Accueil</a>
+				?
+			</p>
+
+		</div>
+	</div>
+
+{% endblock %}

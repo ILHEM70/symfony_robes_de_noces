@@ -1,45 +1,49 @@
 {% block body %}
 	<nav class="navbar">
 		<div class="navbar-container">
-
-			<a href="{{path('app_home')}}" class="navbar-brand"><img src="{{ asset('assets/images/robes_de_noces.png')}}" alt="Logo"></a>
-
+			<a href="{{ path('app_home') }}" class="navbar-brand">
+				<img src="{{ asset('assets/images/robes_de_noces.png') }}" alt="Logo">
+			</a>
 
 			<ul class="navbar-links">
 				<li>
-					<a href="{{path('app_home')}}">Accueil</a>
+					<a href="{{ path('app_home') }}">Accueil</a>
 				</li>
 				<li>
-					<a href="{{path('app_about_us')}}">À propos</a>
+					<a href="{{ path('app_about_us') }}">À propos</a>
 				</li>
 				<li>
-					<a href="{{path('app_robes')}}">Robes</a>
+					<a href="{{ path('app_robes') }}">Robes</a>
 				</li>
 				<li>
-					<a href="{{path('app_contact')}}">Contact</a>
+					<a href="{{ path('app_contact') }}">Contact</a>
 				</li>
 				{% if app.user %}
 					<li>
-						<a href="{{path('app_profil')}}">Profil</a>
+						<a href="{{ path('app_profil') }}">Profil</a>
 					</li>
 					<li id="logo_panier">
-						<a href="{{path('app_panier')}}" id="a_panier"><img src="{{ asset('assets/images/buy_17155544.png')}}" alt=""></a>
-						<p id="session_nb">{{app.session.get('nb')}}</p>
+						<a href="{{ path('app_panier') }}" id="a_panier">
+							<img src="{{ asset('assets/images/buy_17155544.png') }}" alt="">
+						</a>
+						<p id="session_nb">{{ app.session.get('nb') == 0 ? '' : app.session.get('nb') }}</p>
+
 					</li>
 					<li>
-						<a href="{{path('app_logout')}}">Déconnexion</a>
+						<a href="{{ path('app_logout') }}">Déconnexion</a>
 					</li>
-
-
 				{% else %}
 					<li>
-						<a href="{{path('app_login')}}">Connexion</a>
+						<a href="{{ path('app_login') }}">Connexion</a>
 					</li>
 					<li>
-						<a href="{{path('app_register')}}">Inscription</a>
+						<a href="{{ path('app_register') }}">Inscription</a>
 					</li>
 				{% endif %}
 			</ul>
 		</div>
 	</nav>
-</div>{% endblock %}
+	<main>
+		<!-- Contenu principal -->
+	</main>
+{% endblock %}

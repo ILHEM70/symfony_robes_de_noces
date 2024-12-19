@@ -18,6 +18,9 @@ class CartController extends AbstractController
     #[Route("/cart", name: "app_cart")]
     public function add(SessionInterface $session, ProduitsRepository $produitsRepository, Request $request): JsonResponse
     {
+        if (!$this->getUser()) {
+            return new JsonResponse(['error' => 'Merci de vous connecter pour ajouter un produit au panier !']);
+        }
         // Récupérer l'ID du produit depuis la requête
         $id = json_decode($request->getContent(), true);
         if (!$id) {
@@ -100,6 +103,6 @@ class CartController extends AbstractController
         $session->set('panier', $panier);
         $session->set('nb', $count);
 
-        return new JsonResponse(['message' => 'Votre article a bien été supprimé', Response::HTTP_OK]);
+        return new JsonResponse(['message' => 'Votre article a bien été supprimé', 'nb' => $count, Response::HTTP_OK]);
     }
 }

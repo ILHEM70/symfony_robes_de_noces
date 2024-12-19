@@ -30,11 +30,22 @@
 				<option value="54">54</option>
 			</select>
 			<div class="couleurs">
-				<div class="blanc">blanc</div>
-				<div class="rouge">rouge</div>
-				<div class="rose">rose</div>
-				<div class="ivoire">ivoire</div>
+				<div class="blanc">
+					<p>blanc</p>
+				</div>
+				<div class="rouge">
+					<p>rouge</p>
+				</div>
+				<div class="rose">
+					<p>rose</p>
+				</div>
+				<div class="ivoire">
+					<p>ivoire</p>
+				</div>
 			</div>
+			{# <form action="">
+			
+			</form> #}
 
 			<button class="btn btn-success" id="bouton_panier" onclick="addToCart({{robe.id}})" data-url="{{ path('app_cart') }}">Ajouter au panier</button>
 

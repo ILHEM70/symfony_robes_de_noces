@@ -17,7 +17,6 @@
   justify-content: center;
   flex-direction: column;
   overflow: hidden;
-  position: relative;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -300,60 +299,119 @@ button.btn:hover {
   color: #5b4747;
 }
 
+.detailsProduit {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.detailsProduit img {
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    margin-right: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.detailsProduit .p {
+    max-width: 400px;
+}
+
+.detailsProduit h2 {
+    font-size: 24px;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.detailsProduit p {
+    font-size: 16px;
+    color: #666666;
+    margin-bottom: 10px;
+}
+
+.detailsProduit .prix {
+    font-weight: bold;
+    color: #d9534f;
+}
+
 #optionsTailles {
-  width: 205px;
-  padding: 10px;
-  margin-left: 10px;
-  border: 4px solid #494343;
-  border-radius: 7px;
-  background-color: #f9f9f9;
-  font-size: 16px;
-  color: #333;
-  cursor: pointer;
-}
-#optionsTailles:hover {
-  border-color: #363637;
-  background-color: #474444;
-  color: #ecf0f1;
-  border: 5px solid #f5f0f0;
-}
-#optionsTailles option:checked {
-  background-color: #424445;
-  color: #fff;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
 }
 
-.blanc {
-  width: 30px;
-  height: 30px;
-
-  border-radius: 50%;
-  border: 2px solid #171616;
-  background-color: white;
+.couleurs {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
 }
-.rouge {
-  width: 30px;
-  height: 30px;
 
-  border-radius: 50%;
-  border: 2px solid #171616;
-  background-color: rgb(168, 3, 3);
+.couleurs div {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: white;
+    text-transform: uppercase;
+   
 }
-.rose {
-  width: 30px;
-  height: 30px;
+.couleurs a{
+  text-decoration: none;
+}
 
-  border-radius: 50%;
-  border: 2px solid #171616;
-  background-color: pink;
+.couleurs .blanc {
+    background-color: #ffffff;
+    color: #000;
 }
-.ivoire {
-  width: 30px;
-  height: 30px;
 
-  border-radius: 50%;
-  border: 2px solid #171616;
-  background-color: ivory;
+.couleurs .rouge {
+    background-color: #d9534f;
 }
+
+.couleurs .rose {
+    background-color: #ffc0cb;
+    color: #000;
+}
+
+.couleurs .ivoire {
+    background-color: #fffff0;
+    color: #000;
+}
+
+button.btn-success {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.btn-success:hover {
+    background-color: #4cae4c;
+}
+
+#success_add {
+    color: #28a745;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
 
 .contact {
   background-color: #9d9b9b;
@@ -530,12 +588,17 @@ textarea::placeholder {
 }
 
 .profil {
-  width: 500px;
-  margin: 50px auto;
+  width: 600px;
+  margin: 100px auto;
   border-radius: 8px;
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.5);
   padding: 20px;
   background-color: #302e2e;
+}
+.profil:hover {
+  -ms-transform: scale(1.1); /* IE 9 */
+  -webkit-transform: scale(1.1); /* Safari 3-8 */
+  transform: scale(1.1);
 }
 
 .profil label {
@@ -582,6 +645,54 @@ textarea::placeholder {
   background-color: #e3eaf1;
   transform: translateY(-2px);
   color: #211e1e;
+}
+
+.video_error {
+  position: relative;
+  width: 100%;
+  min-height: 700px;
+  overflow: hidden;
+  padding: 220px;
+}
+
+.video_error video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 800px;
+  object-fit: cover;
+  z-index: -1;
+}
+
+#error_page {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+#error_page h1 {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+#error_page p {
+  font-size: 32px;
+  color: #121212;
+}
+
+#error_page a {
+  color: #a50707;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+#error_page a:hover {
+  color: #ec0cd5;
 }
 
 .footer {

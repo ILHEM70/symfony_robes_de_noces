@@ -1,6 +1,29 @@
+document.addEventListener("DOMContentLoaded", function () {
+  let divs = document.querySelectorAll(".couleurs>div");
+
+  divs.forEach((div) => {
+    div.addEventListener("click", function () {
+      div.classList.toggle("active");
+    });
+  });
+});
+
 function addToCart(id) {
   let button = document.querySelector("#bouton_panier");
   let url = button.getAttribute("data-url");
+  let divs = document.querySelectorAll(".couleurs>div");
+  // let selectedColor = null;
+
+  // divs.forEach((div) => {
+  //   if (div.classList.contains("active")) {
+  //     selectedColor = div.firstChild.textContent.trim();
+  //   }
+  // });
+
+  // if (!selectedColor) {
+  //   alert("Merci de choisir une couleur pour votre robe !");
+  //   return; // Arrête l'exécution de la fonction si aucune couleur n'est sélectionnée
+  // }
 
   fetch(url, {
     method: "post",
@@ -14,12 +37,20 @@ function addToCart(id) {
     })
     .then((result) => {
       let paragraphe = document.querySelector("#success_add");
+      paragraphe.style.display = "block";
       // On récupère le paragraphe (où est affiché le nombre d'articles)
       let nb = document.querySelector("#session_nb");
-      // On remplace le nombre actuel par le nouveau nombre envoyé par le serveur 
-      nb.textContent = result.nb;
-      paragraphe.style.display = "block";
-      paragraphe.textContent = result.message;
+
+      if (result.error) {
+        paragraphe.textContent = result.error;
+      } else {
+        // On remplace le nombre actuel par le nouveau nombre envoyé par le serveur
+        nb.textContent = result.nb;
+        paragraphe.textContent = result.message;
+        setTimeout(() => {
+          paragraphe.style.display = "none";
+        }, 3000);
+      }
     })
     .catch((error) => console.log(error));
 }
@@ -48,6 +79,13 @@ function removeFromCart(event, id) {
       return response.json();
     })
     .then((result) => {
+      let nb = document.querySelector("#session_nb");
+
+      nb.textContent = result.nb;
+
+      if (nb.textContent == 0) {
+        nb.textContent = "";
+      }
       // Affiche le message de confirmation
       let paragraphe = document.querySelector("#success_remove");
       if (paragraphe) {
