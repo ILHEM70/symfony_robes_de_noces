@@ -4,27 +4,40 @@
 {% endblock %}
 
 {% block body %}
-	<h2>Votre Panier</h2>
-	{% if panier is empty %}
-		<p>Votre panier est vide.</p>
-	{% else %}
-		<ul data-url="{{path('cart_remove')}}" id="data">
+	<div>
+		<div class="cart-container">
 
-			{% for item in panier %}
-				<li data-id-supp={{item.produit.id}} data-prix={{item.produit.prix}}>
-					{{ item.produit.nomDuProduit }}
-					-
-					{{ item.quantity }}
-					x
-					{{ item.produit.prix }}
-					€
-					<a href="" class="btn btn-danger btn-sm" onclick="removeFromCart(event,{{item.produit.id}})" class="removeElement">Supprimer</a>
-				</li>
-			{% endfor %}
-		</ul>
-		<p>Total :
-			<span id="total_panier">{{ total }}</span>
-			€</p>
-		<a href="" class="btn btn-primary">Passer à la caisse</a>
-	{% endif %}
+			<h2 class="cart-title">Votre Panier</h2>
+			{% if panier is empty %}
+				<p class="cart-empty">Votre panier est vide.</p>
+			{% else %}
+				<ul class="cart-items" data-url="{{ path('cart_remove') }}" id="data">
+					{% for item in panier %}
+						<li class="cart-item" data-id-supp="{{ item.produit.id }}" data-prix="{{ item.produit.prix }}">
+							<div class="div-img-cart">
+								<img src="{{asset("assets/images/" ~ item.produit.image)}}" alt="">
+							</div>
+							<span class="item-name">{{ item.produit.nomDuProduit }}</span>
+							<span class="item-details">
+								<span class="item-quantity">{{ item.quantity }}
+									x</span>
+								<span class="item-price">{{ item.produit.prix }}
+									€</span>
+							</span>
+							<button class="btn btn-danger btn-sm remove-btn" onclick="removeFromCart(event, {{ item.produit.id }})">
+								Supprimer
+							</button>
+						</li>
+					{% endfor %}
+				</ul>
+				<div class="cart-summary">
+					<p class="cart-total">Total :
+						<span id="total_panier">{{ total }}</span>
+						€</p>
+					<a href="#" class="btn btn-primary checkout-btn">Passer à la caisse</a>
+				</div>
+			{% endif %}
+		</div>
+
+	</div>
 {% endblock %}
