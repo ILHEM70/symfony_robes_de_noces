@@ -5,6 +5,13 @@
 
 {% block body %}
 
+	<div id="custom-dialog" class="hidden">
+		<div class="dialog-content">
+			<p id="dialog-message">Message ici</p>
+			<button id="dialog-ok">OK</button>
+		</div>
+	</div>
+
 
 	<div class="detailsProduit">
 
@@ -17,35 +24,19 @@
 				{{ robe.prix }}€</p>
 			<select name="optionsTailles" id="optionsTailles">
 				<option value="null">Choisissez votre taille</option>
-				<option value="34">34</option>
-				<option value="36">36</option>
-				<option value="38">38</option>
-				<option value="40">40</option>
-				<option value="42">42</option>
-				<option value="44">44</option>
-				<option value="46">46</option>
-				<option value="48">48</option>
-				<option value="50">50</option>
-				<option value="52">52</option>
-				<option value="54">54</option>
+				{% for item in tailles %}
+					<option value="{{ item }}">
+						{{item}}
+					</option>
+				{% endfor %}
 			</select>
 			<div class="couleurs">
-				<div class="blanc">
-					<p>blanc</p>
-				</div>
-				<div class="rouge">
-					<p>rouge</p>
-				</div>
-				<div class="rose">
-					<p>rose</p>
-				</div>
-				<div class="ivoire">
-					<p>ivoire</p>
-				</div>
+				{% for couleur in couleurs %}
+					<div id="{{couleur | lower}}" class="{{couleur | lower}} ">
+						<p>{{couleur}}</p>
+					</div>
+				{% endfor %}
 			</div>
-			{# <form action="">
-			
-			</form> #}
 
 			<button class="btn btn-success" id="bouton_panier" onclick="addToCart({{robe.id}})" data-url="{{ path('app_cart') }}">Ajouter au panier</button>
 

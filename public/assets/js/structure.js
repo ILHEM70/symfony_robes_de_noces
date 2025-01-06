@@ -12,25 +12,33 @@ function addToCart(id) {
   let button = document.querySelector("#bouton_panier");
   let url = button.getAttribute("data-url");
   let divs = document.querySelectorAll(".couleurs>div");
-  // let selectedColor = null;
+  let selectedColor = null;
+  let taille = document.querySelector("#optionsTailles").value;
 
-  // divs.forEach((div) => {
-  //   if (div.classList.contains("active")) {
-  //     selectedColor = div.firstChild.textContent.trim();
-  //   }
-  // });
+  divs.forEach((div) => {
+    if (div.classList.contains("active")) {
+      selectedColor = div.id;
+      console.log(selectedColor);
+    }
+  });
 
-  // if (!selectedColor) {
-  //   alert("Merci de choisir une couleur pour votre robe !");
-  //   return; // Arrête l'exécution de la fonction si aucune couleur n'est sélectionnée
-  // }
+  if (!selectedColor && taille == "null") {
+    customAlert("Merci de choisir une Taille et une Couleur pour votre Robe !");
+    return;
+  } else if (!selectedColor) {
+    customAlert("Merci de choisir une couleur pour votre robe !");
+    return;
+  } else if (taille == "null") {
+    customAlert("Merci de choisir une taille pour votre robe !");
+    return;
+  }
 
   fetch(url, {
     method: "post",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ id: id }),
+    body: JSON.stringify({ id: id, couleur: selectedColor, taille: taille }),
   })
     .then((result) => {
       return result.json();
@@ -98,16 +106,8 @@ function removeFromCart(event, id) {
 
       let total = parseFloat(span.textContent);
 
-      // On récupère aussi le prix de la robe qu'on veut supprimer
-      let prixRobe = parseFloat(
-        event.target.parentElement.getAttribute("data-prix")
-      );
-
-      // On calcule le total - le prix de la robe supprimée
-      let totalFinal = total - prixRobe;
-
       // On remplace le total par le nouveau total (tofixed = limite à 2 chiffres après la décimale)
-      span.textContent = totalFinal.toFixed(2);
+      span.textContent = result.total.toFixed(2);
 
       // On récupère l'element parent de celui sur lequel on click (le bouton supprimer)
       let li = event.target.parentElement;
@@ -125,4 +125,24 @@ function removeFromCart(event, id) {
       }
     })
     .catch((error) => console.error("Erreur lors de la suppression :", error));
+}
+
+// Fonction pour afficher la modale
+
+function customAlert(message) {
+  // Sélectionne les éléments de la boîte de dialogue
+  const dialog = document.getElementById("custom-dialog");
+  const dialogMessage = document.getElementById("dialog-message");
+  const dialogOk = document.getElementById("dialog-ok");
+
+  // Met à jour le message
+  dialogMessage.textContent = message;
+
+  // Affiche la boîte de dialogue
+  dialog.classList.add("dialog");
+
+  // Ajoute un gestionnaire d'événements au bouton "OK"
+  dialogOk.onclick = function () {
+    dialog.classList.remove("dialog");
+  };
 }

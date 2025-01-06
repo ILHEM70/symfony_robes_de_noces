@@ -23,6 +23,8 @@
 									x</span>
 								<span class="item-price">{{ item.produit.prix }}
 									€</span>
+								<span class="item-color">{{ item.couleur ?? null }}</span>
+								<span class="item-size">{{ item.taille ?? null }}</span>
 							</span>
 							<button class="btn btn-danger btn-sm remove-btn" onclick="removeFromCart(event, {{ item.produit.id }})">
 								Supprimer
@@ -41,3 +43,4 @@
 
 	</div>
 {% endblock %}
+

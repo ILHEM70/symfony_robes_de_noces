@@ -22,7 +22,11 @@ class CartController extends AbstractController
             return new JsonResponse(['error' => 'Merci de vous connecter pour ajouter un produit au panier !']);
         }
         // Récupérer l'ID du produit depuis la requête
-        $id = json_decode($request->getContent(), true);
+        $data = json_decode($request->getContent(), true);
+        $id = $data['id'];
+        $couleur = $data['couleur'];
+        $taille = $data['taille'];
+
         if (!$id) {
             return new JsonResponse(['error' => 'ID de produit manquant.'], Response::HTTP_BAD_REQUEST);
         }
@@ -40,7 +44,7 @@ class CartController extends AbstractController
         // Vérifier si le produit est déjà dans le panier
         $found = false;
         foreach ($panier as &$item) {
-            if ($item['produit']->getId() === $id) {
+            if ($item['produit']->getId() === $id && $item['couleur'] === $couleur && $item['taille'] === $taille) {
                 $item['quantity'] += 1;
                 $found = true;
                 break;
@@ -52,6 +56,8 @@ class CartController extends AbstractController
             $panier[] = [
                 'produit' => $robe,
                 'quantity' => 1,
+                'couleur' => $couleur,
+                'taille' => $taille
             ];
         }
         $count = count($panier);
@@ -90,6 +96,7 @@ class CartController extends AbstractController
     {
         $data = json_decode($request->getContent(), true);
         $panier = $session->get('panier', []);
+        $newTotal = 0;
 
         foreach ($panier as $key => &$p) {
             if (isset($p['produit']) && $p['produit']->getId() === $data['id']) {
@@ -98,11 +105,15 @@ class CartController extends AbstractController
             }
         }
 
+        foreach ($panier as &$p) {
+            $newTotal += $p['produit']->getPrix() * $p['quantity'];
+        }
+
         $count = count($panier);
 
         $session->set('panier', $panier);
         $session->set('nb', $count);
 
-        return new JsonResponse(['message' => 'Votre article a bien été supprimé', 'nb' => $count, Response::HTTP_OK]);
+        return new JsonResponse(['message' => 'Votre article a bien été supprimé', 'nb' => $count, Response::HTTP_OK, 'total' => $newTotal]);
     }
 }

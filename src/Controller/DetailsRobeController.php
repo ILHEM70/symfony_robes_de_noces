@@ -13,11 +13,25 @@ class DetailsRobeController extends AbstractController
     public function index($id, ProduitsRepository $produitsRepository): Response
     {
         $robe = $produitsRepository->find($id);
+        $taillesTab = $robe->getTaille();
+        $couleursTab = $robe->getCouleur();
+        $tailles = [];
+        $couleurs = [];
+
+        foreach ($taillesTab as $taille) {
+            $tailles[] = $taille->getTaille();
+        }
+
+        foreach ($couleursTab as $couleur) {
+            $couleurs[] = $couleur->getCouleur();
+        }
+
         return $this->render('details_robe/index.html.twig', [
             'controller_name' => 'DetailsRobeController',
             'robe' => $robe,
-            'bodyClass' => null
-
+            'bodyClass' => null,
+            'tailles' => $tailles,
+            'couleurs' => $couleurs
         ]);
     }
 }

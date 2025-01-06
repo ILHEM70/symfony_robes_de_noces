@@ -141,11 +141,12 @@ h4 {
   border: 1px solid #555;
 }
 
-.wrapper>div {
+.wrapper > div {
   margin: 50px auto;
 }
 
-.cart-container {min-height: auto;
+.cart-container {
+  min-height: auto;
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
@@ -183,11 +184,11 @@ h4 {
   padding: 10px;
   border-bottom: 1px solid #ddd;
 }
-.div-img-cart{
-width: 80px;
+.div-img-cart {
+  width: 80px;
 }
 
-.div-img-cart img{
+.div-img-cart img {
   width: 100%;
 }
 
@@ -342,7 +343,6 @@ button.btn:hover {
   min-height: 300px;
   padding: 20px;
   text-align: center;
-
 }
 
 .section .p {
@@ -468,7 +468,7 @@ button.btn:hover {
   color: white;
   text-transform: uppercase;
 }
-.couleurs div p:hover{
+.couleurs div p:hover {
   -ms-transform: scale(1.1); /* IE 9 */
   -webkit-transform: scale(1.1); /* Safari 3-8 */
   transform: scale(1.1);
@@ -483,7 +483,7 @@ button.btn:hover {
   background-color: #d9534f;
 }
 
-.couleurs .rose  p{
+.couleurs .rose p {
   background-color: #ffc0cb;
   color: #000;
 }
@@ -644,6 +644,44 @@ button.btn-success:hover {
   display: block;
   margin-bottom: 5px;
   color: #555;
+}
+
+/* modal */
+.hidden {
+  display: none;
+}
+
+.dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#dialog-ok {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#dialog-ok:hover {
+  background: #0056b3;
 }
 
 input[type="text"],
