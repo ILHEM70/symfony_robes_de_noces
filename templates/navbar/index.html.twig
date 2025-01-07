@@ -26,9 +26,10 @@
 						<a href="{{ path('app_panier') }}" id="a_panier">
 							<img src="{{ asset('assets/images/buy_17155544.png') }}" alt="">
 						</a>
-						<p id="session_nb">{{ app.session.get('nb') == 0 ? '' : app.session.get('nb') }}</p>
+						<p id="session_nb">{{ app.session.get('nb') == 0 ? '' : app.session.get('nb') }}</p
 
 					</li>
+			
 					<li>
 						<a href="{{ path('app_logout') }}">Déconnexion</a>
 					</li>
@@ -40,6 +41,12 @@
 						<a href="{{ path('app_register') }}">Inscription</a>
 					</li>
 				{% endif %}
+			    {% if is_granted('ROLE_ADMIN') %}
+                   
+                    <li>
+					    <a href="{{ path('admin') }}">Admin</a>
+					</li>
+                {% endif %}
 			</ul>
 		</div>
 	</nav>
