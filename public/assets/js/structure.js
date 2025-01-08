@@ -146,4 +146,3 @@ function customAlert(message) {
     dialog.classList.remove("dialog");
   };
 }
-

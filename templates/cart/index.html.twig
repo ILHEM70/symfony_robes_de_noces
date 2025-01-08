@@ -36,11 +36,11 @@
 					<p class="cart-total">Total :
 						<span id="total_panier">{{ total }}</span>
 						€</p>
-					<a href="#" class="btn btn-primary checkout-btn">Passer à la caisse</a>
+					<a href="{{ path('app_payment') }}" class="btn btn-primary checkout-btn">Passer à la caisse</a>
+
 				</div>
 			{% endif %}
 		</div>
 
 	</div>
 {% endblock %}
-
