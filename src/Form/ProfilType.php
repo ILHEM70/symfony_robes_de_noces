@@ -25,7 +25,7 @@ class ProfilType extends AbstractType
             ])
             ->add('lastname')
             ->add('firstname')
-            ->add('country')
+            // ->add('country')
             ->add('Valider', SubmitType::class);
     }
 

@@ -30,7 +30,7 @@ class PaymentController extends AbstractController
     }
     #[Route("/payment/confirm", name: "payment_confirm", methods: "POST")]
 
-    public function confirmPayment(Request $request)
+    public function confirmPayment(Request $request, SessionInterface $sessionInterface)
     {
         // On récupère les données envoyées par le formulaire (par exemple, la méthode de paiement)
         $paymentMethod = $request->request->get('payment_method');
@@ -40,6 +40,8 @@ class PaymentController extends AbstractController
             // Logique de traitement du paiement, par exemple avec une API de paiement (Stripe, etc.)
             // Ici, nous simulons un succès de paiement.
             $this->addFlash('success', 'Votre paiement a été confirmé avec succès !');
+            $sessionInterface->remove('panier');
+            $sessionInterface->remove('nb');
         } else {
             // Si aucune méthode de paiement n'est choisie, nous affichons un message d'erreur
             $this->addFlash('error', 'Erreur lors de la confirmation du paiement. Veuillez réessayer.');
@@ -47,5 +49,13 @@ class PaymentController extends AbstractController
 
         // Rediriger l'utilisateur vers une autre page, comme une page de confirmation
         return $this->redirectToRoute('payment_thank_you');
+    }
+
+    #[Route("/payment/confirm", name: "payment_thank_you")]
+
+    public function thankYou(){
+        return $this->render('payment/confirmation.html.twig',[
+            'bodyClass'=>null
+        ]);
     }
 }
