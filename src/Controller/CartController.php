@@ -99,9 +99,14 @@ class CartController extends AbstractController
         $newTotal = 0;
 
         foreach ($panier as $key => &$p) {
+
             if (isset($p['produit']) && $p['produit']->getId() === $data['id']) {
-                unset($panier[$key]);
-                break;
+                if ($p['quantity'] > 1) {
+                    $p['quantity']--;
+                } else {
+                    unset($panier[$key]);
+                    break;
+                }
             }
         }
 

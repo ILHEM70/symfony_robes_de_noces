@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   divs.forEach((div) => {
     div.addEventListener("click", function () {
+      divs.forEach(element => {
+        element.classList.remove('active');
+      });
       div.classList.toggle("active");
     });
   });

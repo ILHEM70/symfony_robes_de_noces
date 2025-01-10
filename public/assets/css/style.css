@@ -9,6 +9,7 @@
   display: flex;
   flex-wrap: wrap;
   min-height: 100vh;
+ 
 }
 .hero {
   width: 100%;
@@ -544,7 +545,7 @@ button.btn-success:hover {
   font-size: 50px;
   margin-left: 20px;
   margin-right: 20px;
-  margin-top: 0;
+  /* margin-bottom: 20px; */
 }
 .video {
   width: 600px;
@@ -714,11 +715,12 @@ textarea::placeholder {
 
 .profil {
   width: 600px;
+  height: 550px;
   margin: 100px auto;
   border-radius: 8px;
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.5);
   padding: 20px;
-  background-color: #302e2e;
+  background-color: #989292;
 }
 .profil:hover {
   -ms-transform: scale(1.1); /* IE 9 */
