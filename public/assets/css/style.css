@@ -9,7 +9,6 @@
   display: flex;
   flex-wrap: wrap;
   min-height: 100vh;
- 
 }
 .hero {
   width: 100%;
@@ -526,7 +525,7 @@ button.btn-success:hover {
   text-align: center;
   margin: auto;
 }
-
+/*Page Apropos de nous*/
 .section_aboutus {
   display: flex;
   flex-direction: column;
@@ -545,7 +544,6 @@ button.btn-success:hover {
   font-size: 50px;
   margin-left: 20px;
   margin-right: 20px;
-  /* margin-bottom: 20px; */
 }
 .video {
   width: 600px;
@@ -570,21 +568,8 @@ button.btn-success:hover {
   margin: auto;
   font-family: Georgia, Times, "Times New Roman", serif;
   font-size: 17px;
-  color:#262424 ;
-   background: linear-gradient(0.50turn, #3f87a6, #ebf8e1, #f69d3c);
- 
-}
-
-.contact-image {
-  /* background-image: url(../images/pexels-photo-6610070.webp);
-  background-repeat: no-repeat;
-  background-size: cover; */
-}
-
-.connexion-image {
-  /* background-image: url(../images/DALL·E\ 2024-12-02\ 10.12.10\ -\ A\ sophisticated\ and\ elegant\ design\ for\ a\ bridal\ website\ background\,\ resembling\ the\ first\ image\ with\ a\ soft\ pastel\ color\ scheme\ in\ white\ and\ blush\ pink.webp);
-  background-repeat: no-repeat;
-  background-size: cover; */
+  color: #262424;
+  background: linear-gradient(0.5turn, #3f87a6, #ebf8e1, #f69d3c);
 }
 
 .inscription-image {
@@ -924,12 +909,11 @@ form button:hover {
   background-color: #3a3839;
   transform: scale(1.02);
 }
-.confirm{
+.confirm {
   background-image: url(../images/pexels-cottonbro-4684169.jpg);
-  background-repeat:no-repeat ;
+  background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  
 }
 .confirmation {
   text-align: center;
@@ -989,4 +973,53 @@ form button:hover {
   background-color: #555;
   color: #fff;
   border-radius: 5px;
+}
+
+/* Style global */
+.titre_faq h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* Mise en page des catégories FAQ */
+.sous_titre_faq h2 {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-top: 2rem;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.5rem;
+}
+
+/* Conteneur de la liste FAQ */
+.liste_faq {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Liste des questions et réponses */
+.liste_faq ul {
+  list-style: none;
+  padding: 0;
+}
+
+.liste_faq li {
+  padding: 1rem;
+  border: 1px solid #ecf0f1;
+  border-radius: 8px;
+  background-color: #f9fafb;
+}
+
+.liste_faq li strong {
+  font-size: 1.2rem;
+  color: #34495e;
+}
+
+.liste_faq li p {
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin-top: 0.5rem;
 }

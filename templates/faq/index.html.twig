@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FAQ
+{% endblock %}
+
+{% block body %}
+	<div calss="titre_faq">
+		<h1>Foire Aux Questions (FAQ)</h1>
+	</div>
+
+
+	{% for category, questions in faqs %}
+		<div class="sous_titre_faq">
+			<h2>{{ category }}</h2>
+		</div>
+		<div class="liste_faq">
+			<ul>
+				{% for question, reponse in questions %}
+					<li>
+						<strong>{{ question }}</strong>
+						<p>{{ reponse }}</p>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+
+	{% endfor %}
+{% endblock %}
