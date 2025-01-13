@@ -40,6 +40,7 @@ class PaymentController extends AbstractController
             // Logique de traitement du paiement, par exemple avec une API de paiement (Stripe, etc.)
             // Ici, nous simulons un succès de paiement.
             $this->addFlash('success', 'Votre paiement a été confirmé avec succès !');
+            
             $sessionInterface->remove('panier');
             $sessionInterface->remove('nb');
         } else {

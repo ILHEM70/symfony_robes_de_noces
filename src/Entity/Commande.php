@@ -1,0 +1,193 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\CommandeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity(repositoryClass: CommandeRepository::class)]
+class Commande
+{
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $date_commande = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $reference_commande = null;
+
+    #[ORM\Column]
+    private ?float $total = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $etat_commande = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $adresse = null;
+
+    #[ORM\Column]
+    private ?int $code_posta = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $ville = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $pays = null;
+
+    #[ORM\ManyToOne(inversedBy: 'commandes')]
+    private ?User $user = null;
+
+    /**
+     * @var Collection<int, Produits>
+     */
+    #[ORM\ManyToMany(targetEntity: Produits::class, inversedBy: 'commandes')]
+    private Collection $produits;
+
+    public function __construct()
+    {
+        $this->produits = new ArrayCollection();
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getDateCommande(): ?\DateTimeInterface
+    {
+        return $this->date_commande;
+    }
+
+    public function setDateCommande(\DateTimeInterface $date_commande): static
+    {
+        $this->date_commande = $date_commande;
+
+        return $this;
+    }
+
+    public function getReferenceCommande(): ?string
+    {
+        return $this->reference_commande;
+    }
+
+    public function setReferenceCommande(string $reference_commande): static
+    {
+        $this->reference_commande = $reference_commande;
+
+        return $this;
+    }
+
+    public function getTotal(): ?float
+    {
+        return $this->total;
+    }
+
+    public function setTotal(float $total): static
+    {
+        $this->total = $total;
+
+        return $this;
+    }
+
+    public function getEtatCommande(): ?string
+    {
+        return $this->etat_commande;
+    }
+
+    public function setEtatCommande(string $etat_commande): static
+    {
+        $this->etat_commande = $etat_commande;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(string $adresse): static
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getCodePosta(): ?int
+    {
+        return $this->code_posta;
+    }
+
+    public function setCodePosta(int $code_posta): static
+    {
+        $this->code_posta = $code_posta;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): static
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getPays(): ?string
+    {
+        return $this->pays;
+    }
+
+    public function setPays(string $pays): static
+    {
+        $this->pays = $pays;
+
+        return $this;
+    }
+
+    public function getUser(): ?user
+    {
+        return $this->user;
+    }
+
+    public function setUser(?user $user): static
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Produits>
+     */
+    public function getProduits(): Collection
+    {
+        return $this->produits;
+    }
+
+    public function addProduit(Produits $produit): static
+    {
+        if (!$this->produits->contains($produit)) {
+            $this->produits->add($produit);
+        }
+
+        return $this;
+    }
+
+    public function removeProduit(Produits $produit): static
+    {
+        $this->produits->removeElement($produit);
+
+        return $this;
+    }
+}

@@ -40,10 +40,17 @@ class Produits
     #[ORM\ManyToMany(targetEntity: Couleur::class, inversedBy: 'produits')]
     private Collection $couleur;
 
+    /**
+     * @var Collection<int, Commande>
+     */
+    #[ORM\ManyToMany(targetEntity: Commande::class, mappedBy: 'produits')]
+    private Collection $commandes;
+
     public function __construct()
     {
         $this->taille = new ArrayCollection();
         $this->couleur = new ArrayCollection();
+        $this->commandes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -143,6 +150,33 @@ class Produits
     public function removeCouleur(couleur $couleur): static
     {
         $this->couleur->removeElement($couleur);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Commande>
+     */
+    public function getCommandes(): Collection
+    {
+        return $this->commandes;
+    }
+
+    public function addCommande(Commande $commande): static
+    {
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes->add($commande);
+            $commande->addProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commande $commande): static
+    {
+        if ($this->commandes->removeElement($commande)) {
+            $commande->removeProduit($this);
+        }
 
         return $this;
     }

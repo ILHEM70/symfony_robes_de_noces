@@ -86,7 +86,7 @@ class CartController extends AbstractController
         return $this->render('cart/index.html.twig', [
             'panier' => $panier,
             'total' => $total,
-            'bodyClass' => null
+            'bodyClass' => null,
         ]);
     }
 
