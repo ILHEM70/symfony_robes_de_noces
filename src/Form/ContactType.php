@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Contact;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -41,7 +42,7 @@ class ContactType extends AbstractType
     {
         $resolver->setDefaults([
             // Pas d'entité, donc on désactive la liaison automatique
-            'data_class' => User::class,
+            'data_class' => Contact::class,
         ]);
     }
 }

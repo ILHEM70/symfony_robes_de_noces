@@ -32,7 +32,7 @@ class Commande
     private ?string $adresse = null;
 
     #[ORM\Column]
-    private ?int $code_posta = null;
+    private ?int $code_postal = null;
 
     #[ORM\Column(length: 255)]
     private ?string $ville = null;
@@ -46,7 +46,7 @@ class Commande
     /**
      * @var Collection<int, Produits>
      */
-    #[ORM\ManyToMany(targetEntity: Produits::class, inversedBy: 'commandes')]
+    #[ORM\ManyToMany(targetEntity: Produits::class, inversedBy: 'commandes', cascade:["persist"])]
     private Collection $produits;
 
     public function __construct()
@@ -119,14 +119,14 @@ class Commande
         return $this;
     }
 
-    public function getCodePosta(): ?int
+    public function getCodePostal(): ?int
     {
-        return $this->code_posta;
+        return $this->code_postal;
     }
 
-    public function setCodePosta(int $code_posta): static
+    public function setCodePostal(int $code_postal): static
     {
-        $this->code_posta = $code_posta;
+        $this->code_postal = $code_postal;
 
         return $this;
     }

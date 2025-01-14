@@ -66,7 +66,7 @@ function addToCart(id) {
     .catch((error) => console.log(error));
 }
 
-function removeFromCart(event, id) {
+function removeFromCart(event, id, couleur, taille) {
   event.preventDefault(); // Empêche le rechargement de la page
   let data = document.querySelector("#data"); // Si besoin, référence au bouton actuel
   let url = data.getAttribute("data-url");
@@ -81,7 +81,8 @@ function removeFromCart(event, id) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ id: id }), // Passe l'ID au backend
+    body: JSON.stringify({ id: id, couleur: couleur, taille: taille }), // Passe l'ID au backend
+  
   })
     .then((response) => {
       if (!response.ok) {
@@ -115,20 +116,21 @@ function removeFromCart(event, id) {
       // On récupère l'element parent de celui sur lequel on click (le bouton supprimer)
       let li = event.target.parentElement;
       // On supprime cet élément
-      li.remove();
+      let quantities = event.target.parentElement.querySelectorAll('.item-quantity');
+      quantities.forEach(element => {
+        // console.log(parseInt(element.textContent.substring(0,element.textContent.indexOf('x'))));
+        let quantity = parseInt(element.textContent.substring(0, element.textContent.indexOf('x')));
 
-      if (totalFinal <= 0) {
-        window.location.reload();
-      }
+        element.textContent = (quantity -= 1) + ' x';
 
-      // Met à jour le compteur d'articles si présent
-      let cartCount = document.querySelector("#cart_count");
-      if (cartCount && result.nb !== undefined) {
-        cartCount.textContent = result.nb;
+        if (quantity < 1) {
+          li.remove();
+        }
+
       }
-    })
+      )
     .catch((error) => console.error("Erreur lors de la suppression :", error));
-}
+    })}
 
 // Fonction pour afficher la modale
 

@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Commande;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +16,7 @@ class PaymentController extends AbstractController
     public function index(SessionInterface $sessionInterface): Response
     {
         $panier = $sessionInterface->get('panier', []);
-        // dd($panier);
+       
         $total = 0;
 
         foreach ($panier as $p) {
@@ -30,7 +32,7 @@ class PaymentController extends AbstractController
     }
     #[Route("/payment/confirm", name: "payment_confirm", methods: "POST")]
 
-    public function confirmPayment(Request $request, SessionInterface $sessionInterface)
+    public function confirmPayment(Request $request, SessionInterface $sessionInterface, EntityManagerInterface $entityManagerInterface)
     {
         // On récupère les données envoyées par le formulaire (par exemple, la méthode de paiement)
         $paymentMethod = $request->request->get('payment_method');
@@ -40,9 +42,26 @@ class PaymentController extends AbstractController
             // Logique de traitement du paiement, par exemple avec une API de paiement (Stripe, etc.)
             // Ici, nous simulons un succès de paiement.
             $this->addFlash('success', 'Votre paiement a été confirmé avec succès !');
+            $adress = $sessionInterface->get('adress', []);
+            $panier = $sessionInterface->get('panier',[]);
+
+            $total = 0;
             
+            //Instancier l'entiter commande
+            $commande = new Commande();
+            $date = \DateTime::createFromFormat('d-m-Y', date('d-m-Y'));
+            $commande->setVille($adress['ville'])->setAdresse($adress['adress'])->setCodePostal($adress['code_postal'])->setDateCommande($date )->setEtatCommande('En attente')->setReferenceCommande( 'CMD-' . date('Ymd-His') . '-' . strtoupper(uniqid()))->setUser($this->getUser())->setPays($adress['pays']);
+            foreach ($panier as $p) {
+                $total += $p['produit']->getPrix() * $p['quantity'];
+                $commande->addProduit($p['produit']);
+            }
+            $commande->setTotal($total);
+            $entityManagerInterface->persist($commande);
+            $entityManagerInterface->flush();
+
             $sessionInterface->remove('panier');
             $sessionInterface->remove('nb');
+            $sessionInterface->remove('adress');
         } else {
             // Si aucune méthode de paiement n'est choisie, nous affichons un message d'erreur
             $this->addFlash('error', 'Erreur lors de la confirmation du paiement. Veuillez réessayer.');

@@ -26,9 +26,9 @@
 								<span class="item-color">{{ item.couleur ?? null }}</span>
 								<span class="item-size">{{ item.taille ?? null }}</span>
 							</span>
-							<button class="btn btn-danger btn-sm remove-btn" onclick="removeFromCart(event, {{ item.produit.id }})">
-								Supprimer
-							</button>
+							<button class="btn btn-danger btn-sm remove-btn" onclick="removeFromCart(event, '{{ item.produit.id }}', '{{item.couleur}}', '{{item.taille}}')">
+                                Supprimer
+                            </button>
 						</li>
 					{% endfor %}
 				</ul>
@@ -36,7 +36,7 @@
 					<p class="cart-total">Total :
 						<span id="total_panier">{{ total }}</span>
 						€</p>
-					<a href="{{ path('app_payment') }}" class="btn btn-primary checkout-btn">Passer à la caisse</a>
+					<a href="{{ path('app_adress') }}" class="btn btn-primary checkout-btn">Passer à la caisse</a>
 
 				</div>
 			{% endif %}

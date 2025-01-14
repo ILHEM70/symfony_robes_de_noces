@@ -94,13 +94,14 @@ class CartController extends AbstractController
 
     public function removeItem(Request $request, SessionInterface $session)
     {
+       
         $data = json_decode($request->getContent(), true);
+       
         $panier = $session->get('panier', []);
         $newTotal = 0;
-
         foreach ($panier as $key => &$p) {
 
-            if (isset($p['produit']) && $p['produit']->getId() === $data['id']) {
+            if (isset($p['produit']) && $p['produit']->getId() == $data['id'] && $p['couleur'] == $data['couleur'] && $p['taille'] == $data['taille']) {
                 if ($p['quantity'] > 1) {
                     $p['quantity']--;
                 } else {
@@ -120,5 +121,7 @@ class CartController extends AbstractController
         $session->set('nb', $count);
 
         return new JsonResponse(['message' => 'Votre article a bien été supprimé', 'nb' => $count, Response::HTTP_OK, 'total' => $newTotal]);
-    }
-}
+
+    }}
+
+

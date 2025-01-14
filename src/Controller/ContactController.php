@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\ContactType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,20 +12,22 @@ use Symfony\Component\Routing\Annotation\Route;
 class ContactController extends AbstractController
 {
     #[Route('/contact', name: 'app_contact')]
-    public function index(Request $request): Response
+    public function index(Request $request, EntityManagerInterface $entityManagerInterface): Response
     {
         $form = $this->createForm(ContactType::class);
 
        
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData();
-
             
-    
+            $data = $form->getData();
+            $data->setUser($this->getUser());
+            $entityManagerInterface->persist($data);
+            $entityManagerInterface->flush();
 
             return $this->render('contact/success.html.twig', [
                 'data' => $data,
+                'bodyClass'=> null,
             ]);
         }
 
