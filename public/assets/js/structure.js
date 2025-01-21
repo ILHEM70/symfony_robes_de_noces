@@ -1,12 +1,37 @@
 document.addEventListener("DOMContentLoaded", function () {
   let divs = document.querySelectorAll(".couleurs>div");
+  let titre = document
+    .querySelector("#titre_robe")
+    .textContent.trim()
+    .toLowerCase()
+    .replace(/ /g, "_");
+  let image = document.querySelector("#image_robe");
 
   divs.forEach((div) => {
+    let nomCouleur = div.textContent.trim().toLowerCase();
+
+    // Fichier Json qui converti les noms de couleur fr => en
+    fetch("/assets/json/couleurs.json")
+      .then((response) => response.json())
+      .then((data) => {
+        div.querySelector("p").style.backgroundColor = data[nomCouleur];
+      })
+      .catch((error) => console.log(error));
+
     div.addEventListener("click", function () {
-      divs.forEach(element => {
-        element.classList.remove('active');
+      divs.forEach((div) => {
+        div.classList.remove("active");
       });
       div.classList.toggle("active");
+      let imageName = titre + "_" + nomCouleur;
+      let source = image.getAttribute("src");
+
+      let extension = source.split(".").pop().split("?")[0];
+
+      image.setAttribute(
+        "src",
+        "/assets/images/" + imageName + "." + extension
+      );
     });
   });
 });
@@ -82,7 +107,6 @@ function removeFromCart(event, id, couleur, taille) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ id: id, couleur: couleur, taille: taille }), // Passe l'ID au backend
-  
   })
     .then((response) => {
       if (!response.ok) {
@@ -116,21 +140,30 @@ function removeFromCart(event, id, couleur, taille) {
       // On récupère l'element parent de celui sur lequel on click (le bouton supprimer)
       let li = event.target.parentElement;
       // On supprime cet élément
-      let quantities = event.target.parentElement.querySelectorAll('.item-quantity');
-      quantities.forEach(element => {
-        // console.log(parseInt(element.textContent.substring(0,element.textContent.indexOf('x'))));
-        let quantity = parseInt(element.textContent.substring(0, element.textContent.indexOf('x')));
+      let quantities =
+        event.target.parentElement.querySelectorAll(".item-quantity");
+      quantities
+        .forEach((element) => {
+          // console.log(parseInt(element.textContent.substring(0,element.textContent.indexOf('x'))));
+          let quantity = parseInt(
+            element.textContent.substring(0, element.textContent.indexOf("x"))
+          );
 
-        element.textContent = (quantity -= 1) + ' x';
+          element.textContent = (quantity -= 1) + " x";
 
-        if (quantity < 1) {
-          li.remove();
-        }
-
-      }
-      )
-    .catch((error) => console.error("Erreur lors de la suppression :", error));
-    })}
+          if (result.total <= 0) {
+            document.querySelector("#cart-container").innerHTML =
+              '<h2 class="cart-title">Votre Panier</h2><p class="cart-empty">Votre panier est vide.</p>';
+          }
+          if (quantity < 1) {
+            li.remove();
+          }
+        })
+        .catch((error) =>
+          console.error("Erreur lors de la suppression :", error)
+        );
+    });
+}
 
 // Fonction pour afficher la modale
 

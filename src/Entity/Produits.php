@@ -25,9 +25,6 @@ class Produits
     #[ORM\Column]
     private ?float $prix = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $image = null;
-
     /**
      * @var Collection<int, taille>
      */
@@ -41,16 +38,16 @@ class Produits
     private Collection $couleur;
 
     /**
-     * @var Collection<int, Commande>
+     * @var Collection<int, Images>
      */
-    #[ORM\ManyToMany(targetEntity: Commande::class, mappedBy: 'produits')]
-    private Collection $commandes;
+    #[ORM\OneToMany(targetEntity: Images::class, mappedBy: 'produit', cascade: ['persist'])]
+    private Collection $images;
 
     public function __construct()
     {
         $this->taille = new ArrayCollection();
         $this->couleur = new ArrayCollection();
-        $this->commandes = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -90,18 +87,6 @@ class Produits
     public function setPrix(float $prix): static
     {
         $this->prix = $prix;
-
-        return $this;
-    }
-
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(string $image): static
-    {
-        $this->image = $image;
 
         return $this;
     }
@@ -155,27 +140,30 @@ class Produits
     }
 
     /**
-     * @return Collection<int, Commande>
+     * @return Collection<int, Images>
      */
-    public function getCommandes(): Collection
+    public function getImages(): Collection
     {
-        return $this->commandes;
+        return $this->images;
     }
 
-    public function addCommande(Commande $commande): static
+    public function addImage(Images $image): static
     {
-        if (!$this->commandes->contains($commande)) {
-            $this->commandes->add($commande);
-            $commande->addProduit($this);
+        if (!$this->images->contains($image)) {
+            $this->images->add($image);
+            $image->setProduit($this);
         }
 
         return $this;
     }
 
-    public function removeCommande(Commande $commande): static
+    public function removeImage(Images $image): static
     {
-        if ($this->commandes->removeElement($commande)) {
-            $commande->removeProduit($this);
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getProduit() === $this) {
+                $image->setProduit(null);
+            }
         }
 
         return $this;

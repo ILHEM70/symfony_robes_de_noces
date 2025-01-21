@@ -5,7 +5,7 @@
 
 {% block body %}
 	<div>
-		<div class="cart-container">
+		<div class="cart-container" id="cart-container">
 
 			<h2 class="cart-title">Votre Panier</h2>
 			{% if panier is empty %}
@@ -15,7 +15,9 @@
 					{% for item in panier %}
 						<li class="cart-item" data-id-supp="{{ item.produit.id }}" data-prix="{{ item.produit.prix }}">
 							<div class="div-img-cart">
-								<img src="{{asset("assets/images/" ~ item.produit.image)}}" alt="">
+								{% if item.produit.images|length > 0 %}
+									<img src="{{asset('assets/images/' ~ item.produit.images[0])}}" id="image_robe">
+								{% endif %}
 							</div>
 							<span class="item-name">{{ item.produit.nomDuProduit }}</span>
 							<span class="item-details">
@@ -26,11 +28,12 @@
 								<span class="item-color">{{ item.couleur ?? null }}</span>
 								<span class="item-size">{{ item.taille ?? null }}</span>
 							</span>
-							<button class="btn btn-danger btn-sm remove-btn" onclick="removeFromCart(event, '{{ item.produit.id }}', '{{item.couleur}}', '{{item.taille}}')">
-                                Supprimer
-                            </button>
+							<button class="btn btn-danger btn-sm remove-btn" onclick="removeFromCart(event, {{ item.produit.id }},'{{item.couleur}}','{{item.taille}}')">
+								Supprimer
+							</button>
 						</li>
 					{% endfor %}
+
 				</ul>
 				<div class="cart-summary">
 					<p class="cart-total">Total :

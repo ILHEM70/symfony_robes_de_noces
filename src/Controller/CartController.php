@@ -18,6 +18,7 @@ class CartController extends AbstractController
     #[Route("/cart", name: "app_cart")]
     public function add(SessionInterface $session, ProduitsRepository $produitsRepository, Request $request): JsonResponse
     {
+
         if (!$this->getUser()) {
             return new JsonResponse(['error' => 'Merci de vous connecter pour ajouter un produit au panier !']);
         }
@@ -94,13 +95,11 @@ class CartController extends AbstractController
 
     public function removeItem(Request $request, SessionInterface $session)
     {
-       
+
         $data = json_decode($request->getContent(), true);
-       
         $panier = $session->get('panier', []);
         $newTotal = 0;
         foreach ($panier as $key => &$p) {
-
             if (isset($p['produit']) && $p['produit']->getId() == $data['id'] && $p['couleur'] == $data['couleur'] && $p['taille'] == $data['taille']) {
                 if ($p['quantity'] > 1) {
                     $p['quantity']--;
@@ -121,7 +120,5 @@ class CartController extends AbstractController
         $session->set('nb', $count);
 
         return new JsonResponse(['message' => 'Votre article a bien été supprimé', 'nb' => $count, Response::HTTP_OK, 'total' => $newTotal]);
-
-    }}
-
-
+    }
+}

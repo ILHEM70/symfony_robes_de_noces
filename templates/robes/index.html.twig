@@ -1,24 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RobesController!
+{% block title %}Catalogue
 {% endblock %}
 
 {% block body %}
 
-	{% for robe in robes %}
-		<div class="produit">
-
-			<a href="{{path('app_details_robe', {id: robe.id})}}"><img src="{{asset('assets/images/' ~ robe.image)}}" alt="{{ robe.nomDuProduit }}"></a>
-			
-
-			<div class="p">
-				<h2>{{ robe.nomDuProduit }}</h2>
-				{# <p>{{ robe.description }}</p>#}
-				<p>Prix :
-					{{ robe.prix }}€</p> 
-				
-			</div>
-
+{% for robe in robes %}
+	<div class="produit">
+		<a href="{{path('app_details_robe', {id: robe.id})}}">
+			{% if robe.images|length > 0 %}
+				<img src="{{ asset('assets/images/' ~ robe.images|first.image) }}" alt="{{ robe.nomDuProduit }}">
+			{% else %}
+				<img src="{{asset('assets/images/indisponible.webp')}}">
+			{% endif %}
+		</a>
+		<div class="p">
+			<h2>{{ robe.nomDuProduit }}</h2>
+			{# <p>{{ robe.description }}</p>#}
+			<p>Prix :
+				{{ robe.prix }}€</p>
 		</div>
-	{% endfor %}
+	</div>
+{% endfor %}
+
 {% endblock %}

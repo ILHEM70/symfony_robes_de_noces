@@ -15,10 +15,12 @@
 
 	<div class="detailsProduit">
 
-		<img src="{{asset('assets/images/' ~ robe.image)}}" alt="{{ robe.nomDuProduit }}">
+		{% if images|length > 0 %}
+			<img src="{{asset('assets/images/' ~ images[0])}}" id="image_robe">
+		{% endif %}
 
 		<div class="p">
-			<h2>{{ robe.nomDuProduit }}</h2>
+			<h2 id="titre_robe">{{ robe.nomDuProduit }}</h2>
 			<p>{{ robe.description }}</p>
 			<p class="prix">Prix :
 				{{ robe.prix }}€</p>
@@ -45,3 +47,4 @@
 	</div>
 
 {% endblock %}
+

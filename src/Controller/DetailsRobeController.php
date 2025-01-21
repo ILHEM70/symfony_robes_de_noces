@@ -15,8 +15,10 @@ class DetailsRobeController extends AbstractController
         $robe = $produitsRepository->find($id);
         $taillesTab = $robe->getTaille();
         $couleursTab = $robe->getCouleur();
+        $imagesTab = $robe->getImages();
         $tailles = [];
         $couleurs = [];
+        $images = [];
 
         foreach ($taillesTab as $taille) {
             $tailles[] = $taille->getTaille();
@@ -25,13 +27,16 @@ class DetailsRobeController extends AbstractController
         foreach ($couleursTab as $couleur) {
             $couleurs[] = $couleur->getCouleur();
         }
-
+        foreach ($imagesTab as $image) {
+            $images[] = $image->getImage();
+        }
         return $this->render('details_robe/index.html.twig', [
             'controller_name' => 'DetailsRobeController',
             'robe' => $robe,
             'bodyClass' => null,
             'tailles' => $tailles,
-            'couleurs' => $couleurs
+            'couleurs' => $couleurs,
+            'images' => $images
         ]);
     }
 }

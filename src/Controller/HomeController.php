@@ -12,7 +12,7 @@ class HomeController extends AbstractController
     public function index(): Response
     {
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'Robes De Noce',
+            'controller_name' => 'Robe De Noce',
             'bodyClass' => null
         ]);
     }
