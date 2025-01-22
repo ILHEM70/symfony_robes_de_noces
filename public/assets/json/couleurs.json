@@ -23,7 +23,7 @@
     "chocolat": "chocolate",
     "turquoise": "turquoise",
     "prune": "plum",
-    "salmon": "salmon",
+    "saumon": "salmon",
     "ivoire": "ivory",
     "sable": "sandybrown",
     "aqua": "aqua",
@@ -37,5 +37,6 @@
     "sienna": "sienna",
     "tomato": "tomato",
     "slateblue": "slateblue",
-    "seagreen": "seagreen"
+    "seagreen": "seagreen",
+    "blanc_rouge": "white_red"
 }

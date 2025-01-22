@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
       let source = image.getAttribute("src");
 
       let extension = source.split(".").pop().split("?")[0];
-
       image.setAttribute(
         "src",
         "/assets/images/" + imageName + "." + extension

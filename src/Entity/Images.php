@@ -16,7 +16,7 @@ class Images
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
-    #[ORM\ManyToOne(inversedBy: 'images')]
+    #[ORM\ManyToOne(inversedBy: 'images', cascade: ['persist', 'remove'])]
     private ?produits $produit = null;
 
     public function getId(): ?int

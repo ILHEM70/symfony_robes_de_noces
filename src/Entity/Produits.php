@@ -40,7 +40,7 @@ class Produits
     /**
      * @var Collection<int, Images>
      */
-    #[ORM\OneToMany(targetEntity: Images::class, mappedBy: 'produit', cascade: ['persist'])]
+    #[ORM\OneToMany(targetEntity: Images::class, mappedBy: 'produit', cascade: ['persist','remove'])]
     private Collection $images;
 
     public function __construct()
