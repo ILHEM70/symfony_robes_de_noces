@@ -15,9 +15,20 @@
 					{% for item in panier %}
 						<li class="cart-item" data-id-supp="{{ item.produit.id }}" data-prix="{{ item.produit.prix }}">
 							<div class="div-img-cart">
-								{% if item.produit.images|length > 0 %}
-									<img src="{{asset('assets/images/' ~ item.produit.images[0])}}" id="image_robe">
+
+								{% if item.image is not empty %}
+									<a href="{{ path('app_details_robe', {'id': item.produit.id}) }}">
+
+										<img src="{{ asset('assets/images/' ~ item.image) }}" id="image_robe" alt="{{ item.produit.nomDuProduit }}">
+									</a>
+								{% else %}
+									<a href="{{ path('app_details_robe') }}">
+										<img src="{{ asset('assets/images/default.jpg', {'id': item.produit.id}) }}" id="image_robe" alt="Image par défaut">
+
+									</a>
 								{% endif %}
+
+
 							</div>
 							<span class="item-name">{{ item.produit.nomDuProduit }}</span>
 							<span class="item-details">
@@ -25,25 +36,22 @@
 									x</span>
 								<span class="item-price">{{ item.produit.prix }}
 									€</span>
-								<span class="item-color">{{ item.couleur ?? null }}</span>
-								<span class="item-size">{{ item.taille ?? null }}</span>
+								<span class="item-color">{{ item.couleur ?? 'Non spécifiée' }}</span>
+								<span class="item-size">{{ item.taille ?? 'Non spécifiée' }}</span>
 							</span>
-							<button class="btn btn-danger btn-sm remove-btn" onclick="removeFromCart(event, {{ item.produit.id }},'{{item.couleur}}','{{item.taille}}')">
+							<button class="btn btn-danger btn-sm remove-btn" onclick="removeFromCart(event, {{ item.produit.id }}, '{{ item.couleur }}', '{{ item.taille }}')">
 								Supprimer
 							</button>
 						</li>
 					{% endfor %}
-
 				</ul>
 				<div class="cart-summary">
 					<p class="cart-total">Total :
 						<span id="total_panier">{{ total }}</span>
 						€</p>
 					<a href="{{ path('app_adress') }}" class="btn btn-primary checkout-btn">Passer à la caisse</a>
-
 				</div>
 			{% endif %}
 		</div>
-
 	</div>
 {% endblock %}

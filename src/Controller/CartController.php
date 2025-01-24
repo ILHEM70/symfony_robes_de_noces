@@ -27,6 +27,7 @@ class CartController extends AbstractController
         $id = $data['id'];
         $couleur = $data['couleur'];
         $taille = $data['taille'];
+        $image = $data['image'];
 
         if (!$id) {
             return new JsonResponse(['error' => 'ID de produit manquant.'], Response::HTTP_BAD_REQUEST);
@@ -58,7 +59,8 @@ class CartController extends AbstractController
                 'produit' => $robe,
                 'quantity' => 1,
                 'couleur' => $couleur,
-                'taille' => $taille
+                'taille' => $taille,
+                'image' => $image
             ];
         }
         $count = count($panier);
@@ -76,6 +78,7 @@ class CartController extends AbstractController
     {
         // Récupérer le panier depuis la session
         $panier = $session->get('panier', []);
+        // dd($panier);
         // Calculer le total
         $total = array_reduce($panier, function ($sum, $item) {
             $price = $item['produit']->getPrix() ?? 0;

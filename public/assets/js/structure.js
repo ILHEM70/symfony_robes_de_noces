@@ -1,15 +1,15 @@
+let titre;
+let extension;
 document.addEventListener("DOMContentLoaded", function () {
   let divs = document.querySelectorAll(".couleurs>div");
-  let titre = document
+  titre = document
     .querySelector("#titre_robe")
     .textContent.trim()
     .toLowerCase()
     .replace(/ /g, "_");
   let image = document.querySelector("#image_robe");
-
   divs.forEach((div) => {
     let nomCouleur = div.textContent.trim().toLowerCase();
-
     // Fichier Json qui converti les noms de couleur fr => en
     fetch("/assets/json/couleurs.json")
       .then((response) => response.json())
@@ -26,15 +26,15 @@ document.addEventListener("DOMContentLoaded", function () {
       let imageName = titre + "_" + nomCouleur;
       let source = image.getAttribute("src");
 
-      let extension = source.split(".").pop().split("?")[0];
+      extension = source.split(".").pop().split("?")[0];
       image.setAttribute(
         "src",
         "/assets/images/" + imageName + "." + extension
       );
+
     });
   });
 });
-
 function addToCart(id) {
   let button = document.querySelector("#bouton_panier");
   let url = button.getAttribute("data-url");
@@ -45,9 +45,10 @@ function addToCart(id) {
   divs.forEach((div) => {
     if (div.classList.contains("active")) {
       selectedColor = div.id;
-      console.log(selectedColor);
     }
   });
+  console.log(titre + "_" + selectedColor);
+  let image = titre + "_" + selectedColor + "." + extension;
 
   if (!selectedColor && taille == "null") {
     customAlert("Merci de choisir une Taille et une Couleur pour votre Robe !");
@@ -65,7 +66,12 @@ function addToCart(id) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ id: id, couleur: selectedColor, taille: taille }),
+    body: JSON.stringify({
+      id: id,
+      couleur: selectedColor,
+      taille: taille,
+      image: image,
+    }),
   })
     .then((result) => {
       return result.json();
@@ -89,7 +95,6 @@ function addToCart(id) {
     })
     .catch((error) => console.log(error));
 }
-
 function removeFromCart(event, id, couleur, taille) {
   event.preventDefault(); // Empêche le rechargement de la page
   let data = document.querySelector("#data"); // Si besoin, référence au bouton actuel

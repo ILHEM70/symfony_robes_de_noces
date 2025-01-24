@@ -16,8 +16,13 @@
 	<div class="detailsProduit">
 
 		{% if images|length > 0 %}
-			<img src="{{asset('assets/images/' ~ images[0])}}" id="image_robe">
+			<div class="image-container">
+				<a href="{{ asset('assets/images/' ~ images[0]) }}" data-size="1024x1024">
+					<img src="{{ asset('assets/images/' ~ images[0]) }}" id="image_robe" alt="Image description">
+				</a>
+			</div>
 		{% endif %}
+
 
 		<div class="p">
 			<h2 id="titre_robe">{{ robe.nomDuProduit }}</h2>
@@ -47,4 +52,3 @@
 	</div>
 
 {% endblock %}
-

@@ -9,24 +9,58 @@
 		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
 		{% block stylesheets %}
 			<link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+			<link rel="stylesheet" href="{{ asset('photoswipe/photoswipe.css') }}">
 		{% endblock %}
 
 		{% block javascripts %}
+			<script type="module">
+				import PhotoSwipeLightbox from "{{ asset('photoswipe/photoswipe.lightbox.esm.min.js') }}";
+import PhotoSwipe from "{{ asset('photoswipe/photoswipe.esm.min.js') }}";
+// Importation du module PhotoSwipe
+
+// Initialiser PhotoSwipe avec la lightbox pour l'image unique
+const lightbox = new PhotoSwipeLightbox({
+gallery: '.image-container', // Sélecteur pour l'image
+children: 'a', // Sélecteur des éléments cliquables (ici, les liens)
+pswpModule: PhotoSwipe // Passer le module PhotoSwipe
+});
+
+// Initialiser la lightbox
+lightbox.init();
+			</script>
+
+
 			{% block importmap %}
 				{{ importmap('app') }}
 			{% endblock %}
 			<script src='{{asset('assets/js/structure.js')}}'></script>
+			<script type="module">
+				import PhotoSwipeLightbox from "{{ asset('photoswipe/photoswipe.lightbox.esm.min.js') }}";
+import PhotoSwipe from "{{ asset('photoswipe/photoswipe.esm.min.js') }}";
+// Importation du module PhotoSwipe
+
+// Initialiser la lightbox avec la galerie cible
+const lightbox = new PhotoSwipeLightbox({
+gallery: '.image-container', // Sélecteur pour l'image unique
+children: 'a', // Sélecteur des éléments cliquables (images)
+pswpModule: PhotoSwipe // Passer le module PhotoSwipe pour gérer l'image
+});
+
+// Initialiser la lightbox
+lightbox.init();
+			</script>
+
 		{% endblock %}
 	</head>
 	<body class="{{bodyClass}}">
-	
+
 		{{ include('navbar/index.html.twig') }}
-		
+
 
 		<div class="wrapper"> {% block body %}{% endblock %}
-		</div>
+			</div>
 
 			{{ include('footer/index.html.twig') }}
 
-	</body>
-</html>
+		</body>
+	</html>
