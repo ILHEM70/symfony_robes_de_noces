@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((data) => {
         div.querySelector("p").style.backgroundColor = data[nomCouleur];
       })
+      
       .catch((error) => console.log(error));
 
     div.addEventListener("click", function () {
