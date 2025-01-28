@@ -2,7 +2,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-
 }
 
 .wrapper {
@@ -23,12 +22,11 @@
   background-size: cover;
   background-position: center;
   animation: slideShow 60s infinite;
- 
 }
 
 @keyframes slideShow {
   0% {
-    background-image: url(../images/240_F_524893446_iW5iAgLPXNHOnAh4yc3bCZ48rwlPwf3m.jpg);
+    background-image: url(../images/voile_de_mariée.jpg);
   }
   25% {
     background-image: url(../images/fond.jpg);
@@ -38,10 +36,10 @@
     background-image: url(../images/DALL·E\ 2024-12-02\ 10.12.10\ -\ A\ sophisticated\ and\ elegant\ design\ for\ a\ bridal\ website\ background\,\ resembling\ the\ first\ image\ with\ a\ soft\ pastel\ color\ scheme\ in\ white\ and\ blush\ pink.webp);
   }
   75% {
-    background-image: url(../images/wedding-2589802_640.jpg);
+    background-image: url(../images/voile_de_mariage.jpg);
   }
   100% {
-    background-image: url(../images/DALL·E\ 2024-11-27\ 14.36.49\ -\ Four\ separate\ images\,\ each\ showing\ a\ different\ wedding\ dress\ style\ in\ one\ photo.\ The\ first\ image\ shows\ a\ classic\ ballgown\ with\ a\ voluminous\ skirt\ and\ .webp);
+    background-image: url(../images/la_joie_de_la_vie.jpg);
   }
 }
 
@@ -55,18 +53,18 @@
   z-index: -1;
 }
 
-h1 {
+.hero h1 {
   color: #211e1e;
   text-align: center;
   font-size: 72px;
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-h3 {
+.hero h3 {
   color: #211e1e;
   text-align: center;
 }
-h4 {
+.hero h4 {
   color: #211e1e;
   text-align: center;
 }
@@ -244,24 +242,125 @@ h4 {
 .checkout-btn:hover {
   background-color: #222223;
 }
+/* Connection */
 
 .login {
-  background: rgba(193, 189, 189, 0.5);
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgb(80, 78, 78);
-  max-width: 700px;
-  text-align: center;
-  margin: auto;
+  background-color: #ffffff; /* Fond blanc pour le 
+  formulaire */
+  padding: 30px 20px;
+  border-radius: 10px; /* Coins arrondis */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Ombre douce pour donner de la profondeur */
+  width: 700px;
+  height: 430px;
+  /* width: 100%; */
+  text-align: center; /* Centrer le contenu */
 }
 
-.contenaire {
+/* Titre principal */
+.login h1 {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  color: #2c3e50; /* Couleur gris-bleu foncé pour les titres */
+  font-weight: bold;
+}
+
+/* Style des labels */
+.login label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #555; /* Couleur gris moyen */
+  display: block; /* Affichage en bloc pour aligner les éléments */
+  text-align: left; /* Alignement à gauche pour une meilleure lisibilité */
+  margin-bottom: 8px;
+}
+
+/* Style des champs de saisie */
+.login input[type="email"],
+.login input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc; /* Bordure grise claire */
+  border-radius: 8px; /* Coins arrondis */
+  font-size: 1rem;
+  color: #333; /* Texte gris foncé */
+  background-color: #fafafa; /* Fond légèrement gris */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transition douce */
+}
+
+/* Effets au focus des champs de saisie */
+.login input[type="email"]:focus,
+.login input[type="password"]:focus {
+  border-color: #6b6d6d; /* Bordure bleue au focus */
+  box-shadow: 0 0 8px rgba(10, 14, 17, 0.3); /* Ombre légère bleue */
+  outline: none; /* Supprime la bordure par défaut */
+}
+
+/* Bouton de soumission */
+.login button {
+  background-color: #272828; /* Couleur bleue */
+  color: #ffffff; /* Texte blanc */
+  padding: 12px 20px;
+  border: none; /* Supprime les bordures */
+  border-radius: 8px; /* Coins arrondis */
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transition douce pour les effets */
+}
+
+/* Effets au survol du bouton */
+.login button:hover {
+  background-color: #2f2f30; /* Bleu légèrement plus foncé */
+  transform: translateY(-2px); /* Effet de surélévation */
+}
+
+/* Message d'alerte pour les erreurs */
+.alert {
+  font-size: 0.9rem;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.alert.alert-danger {
+  background-color: #e74c3c; /* Rouge pour signaler une erreur */
+  color: #fff; /* Texte blanc pour le contraste */
+  border: 1px solid #c0392b; /* Bordure rouge foncé */
+}
+
+/* Informations utilisateur */
+.mb-3 {
+  margin-bottom: 20px;
+}
+
+.mb-3 h3 {
+  font-size: 1.2rem;
+  color: #2c3e50; /* Gris-bleu foncé */
+}
+
+.mb-3 a {
+  color: #2a2b2b; /* Couleur bleue pour les liens */
+  text-decoration: none; /* Supprime le soulignement */
+  font-weight: bold;
+}
+
+.mb-3 a:hover {
+  text-decoration: underline; /* Soulignement au survol */
+  color: #6c6e70; /* Bleu plus foncé au survol */
+}
+
+/* Inscription */
+
+.contenaire_registration {
   margin: auto;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(248, 246, 246, 0.751);
   border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 1);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   padding: 30px;
-  max-width: 700px;
+  width: 700px;
+  height: 800px;
 }
 
 .errors {
@@ -273,13 +372,13 @@ h4 {
 .form {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
 }
 
 label {
   font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-size: 16px;
+  margin-bottom: 8px;
   color: #211e1e;
 }
 
@@ -287,13 +386,12 @@ input[type="text"],
 input[type="email"],
 input[type="password"] {
   width: 100%;
-  padding: 10px 12px;
+  padding: 12px 14px;
   border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 14px;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease-in-out;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 1);
+  border-radius: 6px;
+  font-size: 15px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 input[type="text"]:focus,
@@ -301,6 +399,7 @@ input[type="email"]:focus,
 input[type="password"]:focus {
   border-color: #555;
   outline: none;
+  box-shadow: 0px 4px 8px rgba(85, 85, 85, 0.2);
 }
 
 input[type="checkbox"] {
@@ -310,13 +409,13 @@ input[type="checkbox"] {
 
 button.btn {
   background-color: #555;
-  color: #fbf8f8;
+  color: #fff;
   border: none;
-  padding: 10px;
-  font-size: 20px;
+  padding: 12px 16px;
+  font-size: 18px;
   font-weight: bold;
   text-transform: uppercase;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   margin-top: 10px;
@@ -324,14 +423,14 @@ button.btn {
 
 button.btn:hover {
   background-color: #b19e9e;
-  transform: scale(1.02);
+  transform: scale(1.03);
 }
 
 .alert {
-  padding: 10px;
+  padding: 12px 16px;
   margin-bottom: 15px;
-  border-radius: 4px;
-  font-size: 20px;
+  border-radius: 6px;
+  font-size: 16px;
   font-weight: bold;
   text-align: center;
 }
@@ -341,18 +440,14 @@ button.btn:hover {
   color: #fff;
 }
 
-.section {
-  min-height: 300px;
-  padding: 20px;
-  text-align: center;
-}
+/* Accueil */
 
 .section .p {
   color: #242323;
-  font-size: 30px;
+  font-size: 25px;
   font-family: Georgia, "Times New Roman", Times, serif;
-  padding-top: 30px;
-  height: 200px;
+  padding: 30px;
+  min-height: 180px;
   width: 500px;
   margin-top: 75px;
   margin-bottom: 50px;
@@ -360,6 +455,8 @@ button.btn:hover {
   border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 3);
 }
+
+/* Robe(produit) */
 
 .description {
   display: flex;
@@ -402,6 +499,7 @@ button.btn:hover {
   color: #5b4747;
 }
 
+/* detail produit */
 .detailsProduit {
   display: flex;
   flex-wrap: wrap;
@@ -475,28 +573,21 @@ button.btn:hover {
   -webkit-transform: scale(1.1); /* Safari 3-8 */
   transform: scale(1.1);
 }
-
 .couleurs .blanc p {
-  background-color: #ffffff;
   color: #000;
 }
-
 .couleurs .rouge p {
-  background-color: #d9534f;
-}
-
-.couleurs .rose p {
-  background-color: #ffc0cb;
   color: #000;
 }
-
+.couleurs .rose p {
+  color: #000;
+}
 .couleurs .ivoire p {
-  background-color: #fffff0;
   color: #000;
 }
 
 button.btn-success {
-  background-color: #5cb85c;
+  background-color: #262726;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -507,77 +598,147 @@ button.btn-success {
 }
 
 button.btn-success:hover {
-  background-color: #4cae4c;
+  background-color: #9d9f9d;
 }
 
 #success_add {
-  color: #28a745;
-  font-size: 14px;
+  color: #f2f9f4;
+  font-size: 18px;
   margin-top: 10px;
 }
 
+/* Contactez-nous */
+
 .contact {
-  background-color: #c55353;
-  background: rgba(0, 0, 0, 0.1);
-  padding: 20px 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 1);
+  background-color: #f7f7f7; /* Fond doux et clair pour un aspect raffiné */
+  background: rgba(
+    255,
+    255,
+    255,
+    0.9
+  ); /* Légèrement transparent pour un effet subtil */
+  padding: 30px 40px;
+  border-radius: 12px; /* Bordures plus douces pour un effet élégant */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Ombre douce et subtile */
   max-width: 700px;
   width: 100%;
   text-align: center;
   margin: auto;
+  font-family: "Georgia", serif; /* Typographie élégante, idéale pour un site de mariage */
+  color: #333; /* Gris foncé pour un contraste doux et chic */
 }
-/*Page Apropos de nous*/
+
+.contact h2 {
+  font-size: 36px; /* Taille du titre plus grande pour la mise en avant */
+  color: #6d4c41; /* Une teinte chaude et élégante, proche du beige ou du rose poudré */
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.contact p {
+  font-size: 18px;
+  color: #555; /* Gris plus clair pour le texte */
+  line-height: 1.6;
+}
+
+.contact button {
+  background-color: #423016; /* Une couleur dorée élégante pour les boutons */
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px; /* Boutons arrondis pour un effet doux et chic */
+  font-size: 18px;
+  font-family: "Georgia", serif;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.contact button:hover {
+  background-color: #d4af7f; /* Légère variation de la couleur pour l'effet hover */
+}
+
+/*Page Qui somme-nous */
+/* Structure générale */
 .section_aboutus {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
+  background-color: #f4f4f4; /* Couleur de fond douce et neutre */
+  padding: 50px 0;
 }
 
 .aboutUs {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
+  gap: 30px;
+  margin-top: 30px;
 }
+
+/* Titre */
 #aboutUs {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 50px;
-  margin-left: 20px;
-  margin-right: 20px;
+  font-family: "Arial", sans-serif;
+  font-size: 45px;
+  margin: 0 20px;
+  color: #333; /* Gris foncé pour un contraste doux */
+  text-align: center;
 }
+
+/* Vidéo */
 .video {
-  width: 600px;
-  height: 600px;
-  border-radius: 10px;
-  margin: auto;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 5);
-  background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+  width: 500px;
+  height: 280px;
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  background-color: #000; /* Fond noir pour la vidéo */
+  overflow: hidden;
 }
 
 .video video {
-  width: 600px;
-  height: 600px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Maintient le ratio de la vidéo */
 }
+
+/* Paragraphe */
 .paragraph {
-  width: 600px;
-  height: 600px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 5);
+  width: 500px;
+  padding: 25px;
+  background-color: #ffffff; /* Fond blanc pour un contraste clair */
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
-  padding: 30px;
-  margin: auto;
-  font-family: Georgia, Times, "Times New Roman", serif;
-  font-size: 17px;
-  color: #262424;
-  background: linear-gradient(0.5turn, #3f87a6, #ebf8e1, #f69d3c);
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+  color: #555; /* Gris clair pour le texte */
+  line-height: 1.6;
+}
+
+/* Couleurs */
+.paragraph {
+  background-color: #fafafa; /* Fond légèrement gris pour un aspect doux */
+}
+
+.aboutUs .paragraph,
+.video {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.aboutUs .paragraph:hover,
+.video:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
 }
 
 .inscription-image {
   background-color: #f5eeee;
 }
 
+/* Detail produit */
 .detailsProduit {
   width: 100%;
   display: flex;
@@ -699,56 +860,66 @@ textarea::placeholder {
   color: #aaa;
   font-style: italic;
 }
-
+/* profil */
 .profil {
   width: 600px;
-  height: 550px;
+  height: auto;
   margin: 100px auto;
-  border-radius: 8px;
-  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  background-color: #989292;
-}
-.profil:hover {
-  -ms-transform: scale(1.1); /* IE 9 */
-  -webkit-transform: scale(1.1); /* Safari 3-8 */
-  transform: scale(1.1);
+  border-radius: 15px; /* Bordures plus douces pour l'élégance */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Ombre douce et subtile */
+  padding: 30px;
+  background-color: #fff; /* Fond blanc pour un look propre et lumineux */
+  border: 1px solid #ddd; /* Légère bordure pour délimiter le profil */
+  font-family: "Georgia", serif; /* Typographie élégante et sophistiquée */
 }
 
+.profil:hover {
+  transform: scale(
+    1.05
+  ); /* Légère animation au survol pour ajouter du dynamisme */
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15); /* Ombre plus marquée au survol */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Profil Labels */
 .profil label {
   display: block;
   font-weight: bold;
   margin-bottom: 10px;
-  font-size: 16px;
-  color: #f9f7f7;
+  font-size: 18px;
+  color: #6d4c41; /* Teinte chaude et élégante */
 }
 
+/*Profil Inputs */
 .profil input {
   width: 100%;
   padding: 12px;
   font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 1px solid #ddd;
+  border-radius: 10px; /* Bordures arrondies pour un effet plus doux */
   box-sizing: border-box;
+  margin-bottom: 20px;
+  background-color: #f9f9f9; /* Fond très clair pour les champs */
   transition: border-color 0.3s ease, box-shadow 0.5s ease;
 }
 
 .profil input:focus {
-  border-color: #60594d;
-  box-shadow: 0 0 7px rgba(176, 147, 109, 0.5);
+  border-color: #d4af7f; /* Doré pour le focus, rappelant un thème de mariage */
+  box-shadow: 0 0 10px rgba(212, 175, 127, 0.4); /* Ombre dorée pour l'effet focus */
   outline: none;
 }
 
+/*Profil Bouton */
 .profil button {
   display: block;
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   margin-top: 20px;
-  background-color: #3d3e3f;
-  color: #fff;
+  background-color: #2d2e2e; /* Doré pour un bouton élégant et raffiné */
+  color: white;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 30px; /* Bouton rond pour une touche élégante */
+  font-size: 18px;
   font-weight: bold;
   text-align: center;
   cursor: pointer;
@@ -756,10 +927,11 @@ textarea::placeholder {
 }
 
 .profil button:hover {
-  background-color: #e3eaf1;
-  transform: translateY(-2px);
-  color: #211e1e;
+  background-color: #b88b4a; /* Changement de couleur pour l'effet hover */
+  transform: translateY(-3px); /* Effet de levée pour un bouton interactif */
+  color: white; /* Garder le texte clair même au survol */
 }
+/* page error Admin */
 
 .video_error {
   position: relative;
@@ -812,65 +984,123 @@ textarea::placeholder {
 /* Page payment*/
 
 .paiment {
-  width: 400px;
-  min-height: 400px;
-  border-radius: 10px;
-  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+  width: 450px;
+  min-height: 450px;
+  border-radius: 15px; /* Bordures plus arrondies pour un aspect moderne et professionnel */
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15); /* Ombre subtile mais professionnelle */
   display: flex;
   flex-direction: column;
-  color: #252627;
-  margin: auto;
+  color: #333; /* Couleur sombre pour un texte facile à lire */
+  margin: 40px auto;
+  background-color: #fff; /* Fond blanc pour un look propre et élégant */
+  padding: 30px;
+  font-family: "Arial", sans-serif; /* Police moderne et professionnelle */
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
+
 .paiment:hover {
-  background-color: rgba(64, 67, 68, 0.2);
-  transform: scale(1.02);
+  background-color: #f9f9f9; /* Changement de fond au survol pour un effet subtil */
+  transform: scale(1.02); /* Animation douce au survol */
 }
+
 /* En-tête de la page */
 .title h2 {
   font-size: 2rem;
-  margin-top: 50px;
+  margin-top: 20px;
   text-align: center;
-  color: #212120;
+  color: #2d3436; /* Couleur plus sobre et professionnelle */
+  font-weight: bold;
 }
 
 /* Section de total */
 .total {
-  margin-top: 50px;
+  margin-top: 30px;
   text-align: center;
-  font-size: 1.2rem;
-  color: #242526;
+  font-size: 1.4rem;
+  color: #555; /* Gris foncé pour un contraste doux */
 }
 
 .total strong {
-  font-size: 1.5rem;
-  color: #f10808;
+  font-size: 1.8rem;
+  color: #e74c3c; /* Rouge vif pour attirer l'attention sur le total */
+  font-weight: bold;
 }
 
 /* Détails de la commande */
 .detail h3 {
   font-size: 1.5rem;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  color: #323231;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  color: #2c3e50; /* Teinte plus professionnelle et élégante */
+  font-weight: bold;
 }
 
 .detail ul {
   list-style-type: none;
+  padding: 0;
 }
 
 .detail li {
-  font-size: 1.1rem;
-  margin-bottom: 50px;
-  margin-left: 50px;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #7f8c8d; /* Gris clair pour un contraste doux mais lisible */
+  padding-left: 30px;
+  position: relative;
+}
+
+.detail li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #222323; /* Petite icône colorée pour rendre les éléments plus lisibles */
+  font-size: 1.4rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.detail li:last-child {
+  margin-bottom: 0;
+}
+
+/* Section de bouton de paiement */
+.payment-button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 30px;
+  background-color: #3498db; /* Bleu professionnel et moderne */
+  color: #fff;
+  border: none;
+  border-radius: 30px; /* Bouton arrondi pour une sensation moderne et fluide */
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.payment-button:hover {
+  background-color: #2980b9; /* Changement de couleur au survol */
+  transform: translateY(-2px); /* Effet de levée pour l'interaction */
 }
 
 /* Formulaire */
 form {
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
-  max-width: 500px;
+  background-color: #f7f7f7; /* Fond doux et clair pour un aspect raffiné */
+  background: rgba(
+    255,
+    255,
+    255,
+    0.9
+  ); /* Légèrement transparent pour un effet subtil */
+  padding: 30px 40px;
+  border-radius: 12px; /* Bordures plus douces pour un effet élégant */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Ombre douce et subtile */
+  max-width: 700px;
+  width: 100%;
+  text-align: center;
   margin: auto;
+  font-family: "Georgia", serif; /* Typographie élégante, idéale pour un site de mariage */
+  color: #333; /* Gris foncé pour un contraste doux et chic */
 }
 form:hover {
   background-color: rgba(64, 67, 68, 0.2);
@@ -911,10 +1141,9 @@ form button:hover {
   background-color: #3a3839;
   transform: scale(1.02);
 }
+/* Confirmation de payement  */
 .confirm {
-  background-image: url(../images/pexels-cottonbro-4684169.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #ddd;
   width: 100%;
 }
 .confirmation {
@@ -941,15 +1170,17 @@ form button:hover {
   margin-bottom: 0;
 }
 
+/* Footer */
+
 .footer {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-color: #211e1e;
-  color: #ecf0f1;
-  padding: 20px 0;
+  background-color: #211e1e; /* Fond sombre et élégant */
+  color: #ecf0f1; /* Texte clair pour un bon contraste */
+  padding: 40px 20px; /* Padding plus large pour un footer plus aéré */
   flex-wrap: wrap;
-  border-top: 1px solid #333;
+  border-top: 2px solid #3a3a3a; /* Bordure plus visible pour délimiter */
 }
 
 .footer ul {
@@ -961,141 +1192,197 @@ form button:hover {
 }
 
 .footer ul li {
-  margin: 5px 0;
+  margin: 10px 0;
 }
 
 .footer ul li a {
   text-decoration: none;
-  color: #d0cbc9;
-  font-size: 14px;
-  transition: color 0.3s ease;
+  color: #d0cbc9; /* Couleur claire mais subtile */
+  font-size: 16px; /* Taille du texte un peu plus grande pour la lisibilité */
+  transition: color 0.3s ease, transform 0.3s ease; /* Transition fluide */
+}
+
+.footer ul li a:hover {
+  color: #f1c40f; /* Jaune doré pour attirer l'attention */
+  transform: translateY(-2px); /* Effet de levée pour l'interaction */
 }
 
 .footer ul li:hover {
-  background-color: #555;
-  color: #fff;
+  background-color: #444444; /* Fond légèrement plus clair au survol */
+  color: #fff; /* Texte blanc au survol pour contraster avec le fond */
   border-radius: 5px;
+  padding: 8px 10px; /* Ajout de padding pour un effet de relief */
 }
 
-/* Style global */
+/* FAQ  */
+.faq-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers vertically */
+  align-items: center; /* Centers horizontally */
+  text-align: center; /* Centers text inside the elements */
+  margin: 0 auto;
+  width: 100%; /* Ensure it takes the full width available */
+}
+
+/* FAQ Category Container */
+.faq {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center each FAQ item */
+  justify-content: center;
+  width: 100%; /* Ensure it takes full width of its container */
+  margin-bottom: 3rem; /* Space between each FAQ category */
+}
+
+/* Title Styling (main FAQ title and subcategories) */
 .titre_faq h1 {
   text-align: center;
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #3f3f3f;
+  font-family: "Georgia", serif;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
 }
 
-/* Mise en page des catégories FAQ */
+/* Subcategory Titles (e.g. Commande et paiement, Livraison) */
 .sous_titre_faq h2 {
-  font-size: 1.8rem;
-  color: #2c3e50;
-  margin-top: 2rem;
-  border-bottom: 2px solid #3498db;
-  padding-bottom: 0.5rem;
+  font-size: 2rem;
+  color: #6c757d;
+  margin-top: 2.5rem;
+  border-bottom: 3px solid #f1c40f;
+  padding-bottom: 0.8rem;
+  text-align: center;
+  font-family: "Georgia", serif;
+  font-weight: normal;
 }
 
-/* Conteneur de la liste FAQ */
+/* FAQ List */
 .liste_faq {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  gap: 1.8rem;
+  max-width: 850px;
+  margin: 0 auto; /* Centers horizontally */
+  padding: 0 20px;
 }
 
-/* Liste des questions et réponses */
+/* List Items for Each Question and Answer */
 .liste_faq ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
+/* Each FAQ item */
 .liste_faq li {
-  padding: 1rem;
-  border: 1px solid #ecf0f1;
-  border-radius: 8px;
-  background-color: #f9fafb;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  width: 100%; /* Ensures the list item takes full width */
+  max-width: 850px; /* Prevents stretching beyond container width */
 }
 
+/* Hover effect for FAQ items */
+.liste_faq li:hover {
+  background-color: #f9f9f9;
+  transform: translateY(-4px);
+}
+
+/* FAQ Question Styling */
 .liste_faq li strong {
-  font-size: 1.2rem;
-  color: #34495e;
+  font-size: 1.4rem;
+  color: #333;
+  font-weight: bold;
 }
 
+/* FAQ Answer Styling */
 .liste_faq li p {
-  font-size: 1rem;
-  color: #7f8c8d;
-  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  color: #757575;
+  margin-top: 0.6rem;
+  line-height: 1.7;
+}
+
+/* Separator Between Categories */
+.separation_faq {
+  margin-top: 5rem;
+  border-top: 4px solid #f1c40f;
+  padding-top: 4rem;
 }
 
 /* cgv */
+
 .container_cgv {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Titres */
 .cgv {
-    font-size: 2.5rem;
-    color: #201E1E;
-    text-align: center;
-    margin-bottom: 20px;
+  font-size: 2.5rem;
+  color: #201e1e;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .cgv2 {
-    font-size: 1.8rem;
-    color: #3B3A3A;
-    margin-top: 20px;
-    margin-bottom: 10px;
+  font-size: 1.8rem;
+  color: #3b3a3a;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 /* Paragraphes */
 .cgvp {
-    margin-bottom: 15px;
-    text-align: justify;
+  margin-bottom: 15px;
+  text-align: justify;
 }
 
 /* Listes */
 ul {
-    margin: 10px 0;
-    padding-left: 20px;
+  margin: 10px 0;
+  padding-left: 20px;
 }
 
 ul li {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 /* Liens */
 a {
-    color: #201E1E;
-    text-decoration: none;
+  color: #201e1e;
+  text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* RESEAUX SOCIAUX */
 
 .social-links {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .social-links a {
-    text-decoration: none;
-    color: #333;
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
+  text-decoration: none;
+  color: #333;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
 }
 
 .social-links a:hover {
-    color: #201E1E;
+  color: #201e1e;
 }
-
-
-

@@ -9,20 +9,29 @@
 	</div>
 
 
+<div class="faq-container">
 	{% for category, questions in faqs %}
-		<div class="sous_titre_faq">
-			<h2>{{ category }}</h2>
+		<div class="faq">
+			<div class="sous_titre_faq">
+				<h2>{{ category }}</h2>
+			</div>
+			<div class="liste_faq">
+				<ul>
+					{% for question, reponse in questions %}
+						<li>
+							<strong>{{ question }}</strong>
+							<p>{{ reponse }}</p>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
 		</div>
-		<div class="liste_faq">
-			<ul>
-				{% for question, reponse in questions %}
-					<li>
-						<strong>{{ question }}</strong>
-						<p>{{ reponse }}</p>
-					</li>
-				{% endfor %}
-			</ul>
-		</div>
-
+		{% if not loop.last %}
+			<div class="separation_faq"></div>
+			<!-- Optional separator between categories -->
+		{% endif %}
 	{% endfor %}
+</div>
+
+
 {% endblock %}
