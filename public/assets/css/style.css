@@ -245,20 +245,27 @@
 /* Connection */
 
 .login {
-  background-color: #ffffff; /* Fond blanc pour le 
+  background-color: #f3f0f0; /* Fond blanc pour le 
   formulaire */
-  padding: 30px 20px;
+  padding: 45px 20px;
   border-radius: 10px; /* Coins arrondis */
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Ombre douce pour donner de la profondeur */
   width: 700px;
-  height: 430px;
+  height: 450px;
   /* width: 100%; */
   text-align: center; /* Centrer le contenu */
+}
+.login:hover {
+  transform: scale(
+    1.05
+  ); /* Légère animation au survol pour ajouter du dynamisme */
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15); /* Ombre plus marquée au survol */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Titre principal */
 .login h1 {
-  font-size: 1.6rem;
+  font-size: 2rem;
   margin-bottom: 20px;
   color: #2c3e50; /* Couleur gris-bleu foncé pour les titres */
   font-weight: bold;
@@ -282,18 +289,18 @@
   margin-bottom: 20px;
   border: 1px solid #ccc; /* Bordure grise claire */
   border-radius: 8px; /* Coins arrondis */
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #333; /* Texte gris foncé */
   background-color: #fafafa; /* Fond légèrement gris */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transition douce */
+  transition: border-color 0.3s ease, box-shadow 0.2s ease; /* Transition douce */
 }
 
 /* Effets au focus des champs de saisie */
 .login input[type="email"]:focus,
 .login input[type="password"]:focus {
-  border-color: #6b6d6d; /* Bordure bleue au focus */
-  box-shadow: 0 0 8px rgba(10, 14, 17, 0.3); /* Ombre légère bleue */
-  outline: none; /* Supprime la bordure par défaut */
+  border-color: #555555; 
+  box-shadow: 0 0 8px rgba(10, 14, 17, 0.3); 
+  outline: none; 
 }
 
 /* Bouton de soumission */
@@ -337,11 +344,11 @@
 
 .mb-3 h3 {
   font-size: 1.2rem;
-  color: #2c3e50; /* Gris-bleu foncé */
+  color: #2c3e50; 
 }
 
 .mb-3 a {
-  color: #2a2b2b; /* Couleur bleue pour les liens */
+  color: #2a2b2b; 
   text-decoration: none; /* Supprime le soulignement */
   font-weight: bold;
 }
@@ -361,6 +368,13 @@
   padding: 30px;
   width: 700px;
   height: 800px;
+}
+.contenaire_registration:hover {
+  transform: scale(
+    1.05
+  ); /* Légère animation au survol pour ajouter du dynamisme */
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15); /* Ombre plus marquée au survol */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .errors {

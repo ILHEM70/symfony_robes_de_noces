@@ -43,11 +43,18 @@ class Produits
     #[ORM\OneToMany(targetEntity: Images::class, mappedBy: 'produit', cascade: ['persist','remove'])]
     private Collection $images;
 
+    /**
+     * @var Collection<int, Avis>
+     */
+    #[ORM\OneToMany(targetEntity: Avis::class, mappedBy: 'avis')]
+    private Collection $avis;
+
     public function __construct()
     {
         $this->taille = new ArrayCollection();
         $this->couleur = new ArrayCollection();
         $this->images = new ArrayCollection();
+        $this->avis = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -163,6 +170,36 @@ class Produits
             // set the owning side to null (unless already changed)
             if ($image->getProduit() === $this) {
                 $image->setProduit(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Avis>
+     */
+    public function getAvis(): Collection
+    {
+        return $this->avis = new ArrayCollection();
+    }
+
+    public function addAvis(Avis $avis): static
+    {
+        if (!$this->avis->contains($avis)) {
+            $this->avis->add($avis);
+            $avis->setProduits($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAvi(Avis $avis): static
+    {
+        if ($this->avis->removeElement($avis)) {
+            // set the owning side to null (unless already changed)
+            if ($avis->getProduits() === $this) {
+                $avis->setProduits(null);
             }
         }
 

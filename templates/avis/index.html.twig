@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Avis des clients
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-4">
+		<h1 class="mb-4">Avis des clients</h1>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Commentaire</th>
+					<th>Note</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for avis in avis %}
+					<tr>
+						<td>{{ avis.nom }}</td>
+						<td>{{ avis.commentaire }}</td>
+						<td>
+							{{ avis.note }}/5
+							{% if avis.note >= 4 %}
+								⭐⭐⭐⭐⭐
+							{% endif %}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="3" class="text-center">Aucun avis pour le moment.</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
+
+
+
+
+
