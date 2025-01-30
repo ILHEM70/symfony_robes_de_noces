@@ -26,17 +26,17 @@
 
 @keyframes slideShow {
   0% {
-    background-image: url(../images/voile_de_mariée.jpg);
+    background-image: url(../images/robe_de_soie_en_perle_et_diamants_\ blanc.webp);
   }
   25% {
     background-image: url(../images/fond.jpg);
   }
 
   50% {
-    background-image: url(../images/DALL·E\ 2024-12-02\ 10.12.10\ -\ A\ sophisticated\ and\ elegant\ design\ for\ a\ bridal\ website\ background\,\ resembling\ the\ first\ image\ with\ a\ soft\ pastel\ color\ scheme\ in\ white\ and\ blush\ pink.webp);
+    background-image: url(../images/robe_de_mariée_plusieurs_coloris_bleu.webp);
   }
   75% {
-    background-image: url(../images/voile_de_mariage.jpg);
+    background-image: url(../images/robe_de_mariée_au_bord_de_l\'eau_rose.jpg);
   }
   100% {
     background-image: url(../images/la_joie_de_la_vie.jpg);
@@ -139,6 +139,15 @@
   background-color: #555;
   color: #fff;
   border: 1px solid #555;
+}
+@media (max-width: 900px) {
+  .navbar-links {
+    display: block;
+    flex-direction: column;
+  }
+  .hero h1{
+    font-size: 60px;
+  }
 }
 
 .wrapper > div {
@@ -298,9 +307,9 @@
 /* Effets au focus des champs de saisie */
 .login input[type="email"]:focus,
 .login input[type="password"]:focus {
-  border-color: #555555; 
-  box-shadow: 0 0 8px rgba(10, 14, 17, 0.3); 
-  outline: none; 
+  border-color: #555555;
+  box-shadow: 0 0 8px rgba(10, 14, 17, 0.3);
+  outline: none;
 }
 
 /* Bouton de soumission */
@@ -344,11 +353,11 @@
 
 .mb-3 h3 {
   font-size: 1.2rem;
-  color: #2c3e50; 
+  color: #2c3e50;
 }
 
 .mb-3 a {
-  color: #2a2b2b; 
+  color: #2a2b2b;
   text-decoration: none; /* Supprime le soulignement */
   font-weight: bold;
 }
