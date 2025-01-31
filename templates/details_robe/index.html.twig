@@ -20,7 +20,7 @@
 				<a href="{{ asset('assets/images/' ~ images[0]) }}" data-size="1024x1024">
 					<img src="{{ asset('assets/images/' ~ images[0]) }}" id="image_robe" alt="Image description">
 				</a>
-				
+
 			</div>
 
 		{% endif %}
@@ -48,9 +48,15 @@
 			</div>
 
 			<button class="btn btn-success" id="bouton_panier" onclick="addToCart({{robe.id}})" data-url="{{ path('app_cart') }}">Ajouter au panier</button>
-
 			<p id="success_add"></p>
+			{% if app.user%}
+				<!-- Ajouter un bouton pour permettre d'ajouter un avis -->
+				<a href="{{ path('ajouter_avis', {'idProduit': robe.id}) }}" class="btn btn-primary mt-3">Ajouter un avis</a>
+			{% endif %}
+
 		</div>
+
+
 	</div>
 
 {% endblock %}

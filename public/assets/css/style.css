@@ -1199,8 +1199,8 @@ form button:hover {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-color: #211e1e; /* Fond sombre et élégant */
-  color: #ecf0f1; /* Texte clair pour un bon contraste */
+  background-color: #211e1e; /* Fond sombre  */
+  color: #ecf0f1; /* Texte clair */
   padding: 40px 20px; /* Padding plus large pour un footer plus aéré */
   flex-wrap: wrap;
   border-top: 2px solid #3a3a3a; /* Bordure plus visible pour délimiter */
@@ -1408,4 +1408,65 @@ a:hover {
 
 .social-links a:hover {
   color: #201e1e;
+}
+
+/* avis */
+
+
+.container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+h1 {
+    color: #141515;
+    text-align: center;
+    font-weight: bold;
+}
+
+.table {
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.table thead {
+    background-color: #212122;
+    color: white;
+}
+
+.table thead th {
+    text-align: center;
+    font-weight: bold;
+    padding: 15px;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table tbody tr:hover {
+    background-color: #e9ecef;
+    transition: 0.3s;
+}
+
+.table td {
+    text-align: center;
+    padding: 12px;
+}
+
+.text-center {
+    font-weight: bold;
+    color: #6c757d;
+}
+
+/* Styles pour les étoiles */
+.stars {
+    color: #ffc107;
+    font-size: 18px;
 }

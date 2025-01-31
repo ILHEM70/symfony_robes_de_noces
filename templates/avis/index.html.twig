@@ -1,3 +1,4 @@
+{# templates/avis/index.html.twig #}
 {% extends 'base.html.twig' %}
 
 {% block title %}Avis des clients
@@ -6,6 +7,16 @@
 {% block body %}
 	<div class="container mt-4">
 		<h1 class="mb-4">Avis des clients</h1>
+
+		{# Afficher les messages flash si présents #}
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success">{{ message }}</div>
+		{% endfor %}
+
+		{# Lien vers la page d'ajout d'avis, placé en haut #}
+		{# <a href="{{ path('ajouter_avis') }}" class="btn btn-primary mb-3">Ajouter un avis</a> #}
+
+		{# Afficher la liste des avis #}
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -20,10 +31,14 @@
 						<td>{{ avis.nom }}</td>
 						<td>{{ avis.commentaire }}</td>
 						<td>
-							{{ avis.note }}/5
-							{% if avis.note >= 4 %}
-								⭐⭐⭐⭐⭐
-							{% endif %}
+							{% for i in 1..5 %}
+								{% if i <= avis.note %}
+									⭐
+								{% else %}
+									☆
+								{% endif %}
+							{% endfor %}
+							({{ avis.note }}/5)
 						</td>
 					</tr>
 				{% else %}
@@ -33,10 +48,9 @@
 				{% endfor %}
 			</tbody>
 		</table>
+
+		{# Lien vers la page d'ajout d'avis, placé en bas également #}
+		{# <a href="{{ path('ajouter_avis') }}" class="btn btn-primary mt-3">Ajouter un avis</a> #}
 	</div>
 {% endblock %}
-
-
-
-
 

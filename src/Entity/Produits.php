@@ -40,7 +40,7 @@ class Produits
     /**
      * @var Collection<int, Images>
      */
-    #[ORM\OneToMany(targetEntity: Images::class, mappedBy: 'produit', cascade: ['persist','remove'])]
+    #[ORM\OneToMany(targetEntity: Images::class, mappedBy: 'produit', cascade: ['persist', 'remove'])]
     private Collection $images;
 
     /**
@@ -66,6 +66,11 @@ class Produits
     {
         return $this->nom_du_produit;
     }
+    public function __toString(): string
+    {
+        return $this->nom_du_produit ?? 'Produit inconnu';
+    }
+
 
     public function setNomDuProduit(string $nom_du_produit): static
     {
