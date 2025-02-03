@@ -77,6 +77,8 @@
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+ 
+
 }
 
 .navbar-container {
@@ -140,13 +142,81 @@
   color: #fff;
   border: 1px solid #555;
 }
-@media (max-width: 900px) {
-  .navbar-links {
-    display: block;
-    flex-direction: column;
+
+/* Style pour le hamburger */
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: white;
+}
+
+#menu_div {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: -300px; /* Le menu est caché hors de l'écran */
+  width: 250px;
+  height: 100vh;
+  background-color: #211e1e;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
+  transition: right 0.3s ease-in-out;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+#menu_div ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#menu_div li {
+  padding: 15px;
+  text-align: center;
+}
+
+#menu_div a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+#menu_div a:hover {
+  background-color: #555;
+  display: block;
+  border-radius: 5px;
+}
+
+/* Quand le menu est ouvert */
+#menu_div.show {
+  display: block;
+  right: 0; /* Affichage du menu */
+}
+
+/* Media query pour écrans étroits */
+@media (max-width: 968px) {
+  .hamburger-menu {
+    display: block; /* Affichage du hamburger */
   }
-  .hero h1{
-    font-size: 60px;
+
+  .navbar-links {
+    display: none; /* Cache le menu desktop */
+  }
+}
+
+@media (max-width: 768px) {
+  .hamburger-menu {
+    display: block;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+}
+@media (max-width: 568px) {
+  #menu_div {
+    width: 100%; /* Le menu prend toute la largeur */
   }
 }
 
@@ -1412,61 +1482,60 @@ a:hover {
 
 /* avis */
 
-
 .container {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
 h1 {
-    color: #141515;
-    text-align: center;
-    font-weight: bold;
+  color: #141515;
+  text-align: center;
+  font-weight: bold;
 }
 
 .table {
-    background: #ffffff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    width: 100%;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
 .table thead {
-    background-color: #212122;
-    color: white;
+  background-color: #212122;
+  color: white;
 }
 
 .table thead th {
-    text-align: center;
-    font-weight: bold;
-    padding: 15px;
+  text-align: center;
+  font-weight: bold;
+  padding: 15px;
 }
 
 .table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
 .table tbody tr:hover {
-    background-color: #e9ecef;
-    transition: 0.3s;
+  background-color: #e9ecef;
+  transition: 0.3s;
 }
 
 .table td {
-    text-align: center;
-    padding: 12px;
+  text-align: center;
+  padding: 12px;
 }
 
 .text-center {
-    font-weight: bold;
-    color: #6c757d;
+  font-weight: bold;
+  color: #6c757d;
 }
 
 /* Styles pour les étoiles */
 .stars {
-    color: #ffc107;
-    font-size: 18px;
+  color: #ffc107;
+  font-size: 18px;
 }

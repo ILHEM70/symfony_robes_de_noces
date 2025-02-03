@@ -1,16 +1,21 @@
 {% block body %}
 	<nav class="navbar">
-		<div class="navbar-container">
-			<a href="{{ path('app_home') }}" class="navbar-brand">
+		<div
+			class="navbar-container">
+			<!-- Logo visible en tout temps -->
+			<a href="{{ path('app_home') }}" class="navbar-brand logo">
 				<img src="{{ asset('assets/images/robes_de_noces.png') }}" alt="Logo">
 			</a>
-
+			<!-- Liste de la navigation -->
 			<ul class="navbar-links">
-				{% if app.user%}
+				{% if app.user %}
 					<li>
-						Bienvenue<br>{{ app.user.firstname }}
+						<a href="{{ path('app_profil') }}" style="text-decoration: none; color: white;">
+							Bienvenue<br>{{ app.user.firstname }}
+						</a>
 					</li>
 				{% endif %}
+
 
 				<li>
 					<a href="{{ path('app_home') }}">Accueil</a>
@@ -24,34 +29,97 @@
 					<li>
 						<a href="{{ path('app_profil') }}">Profil</a>
 					</li>
-					<li></li>
 
 
-				</li>
-				<li id="logo_panier">
-					<a href="{{ path('app_panier') }}" id="a_panier">
-						<img src="{{ asset('assets/images/buy_17155544.png') }}" alt="">
-					</a>
-					<p id="session_nb">{{ app.session.get('nb') == 0 ? '' : app.session.get('nb') }}</p>
-				</li>
-			</p</li>
+					<li id="logo_panier">
+						<a href="{{ path('app_panier') }}" id="a_panier">
+							<img src="{{ asset('assets/images/buy_17155544.png') }}" alt="">
+						</a>
+						<p id="session_nb">{{ app.session.get('nb') == 0 ? '' : app.session.get('nb') }}</p>
+					</li>
 
-			<li>
-				<a href="{{ path('app_logout') }}">Déconnexion</a>
-			</li>
-		{% else %}
-			<li>
-				<a href="{{ path('app_login') }}">Connexion</a>
-			</li>
-			<li>
-				<a href="{{ path('app_register') }}">Inscription</a>
-			</li>
-		{% endif %}
-		{% if is_granted('ROLE_ADMIN') %}
 
-			<li>
-				<a href="{{ path('admin') }}">Admin</a>
-			</li>
-		{% endif %}
-	</ul>
-</div></nav>{% endblock %}
+					<li>
+						<a href="{{ path('app_logout') }}">Déconnexion</a>
+					</li>
+				{% else %}
+					<li>
+						<a href="{{ path('app_login') }}">Connexion</a>
+					</li>
+					<li>
+						<a href="{{ path('app_register') }}">Inscription</a>
+					</li>
+				{% endif %}
+
+				{% if is_granted('ROLE_ADMIN') %}
+					<li>
+						<a href="{{ path('admin') }}">Admin</a>
+					</li>
+				{% endif %}
+			</ul>
+
+			<!-- Icône hamburger visible uniquement sur les petits écrans -->
+			<div class="hamburger-menu" id="hamburgerMenu">
+				<div class="menu-flex">
+					<span class="bar">
+						<i class="fa-solid fa-bars"></i>
+					</span>
+					<div id="menu_div">
+						<ul>
+							{% if app.user %}
+								<li>
+									Bienvenue<br>{{ app.user.firstname }}
+
+								</li>
+							{% endif %}
+
+							<li>
+								<a href="{{ path('app_home') }}">Accueil</a>
+							</li>
+
+							<li>
+								<a href="{{ path('app_robes') }}">Robes</a>
+							</li>
+
+							{% if app.user %}
+								<li>
+									<a href="{{ path('app_profil') }}">Profil</a>
+								</li>
+
+
+								<li id="logo_panier">
+									<a href="{{ path('app_panier') }}" id="a_panier">
+										<img src="{{ asset('assets/images/buy_17155544.png') }}" alt="">
+									</a>
+									<p id="session_nb">{{ app.session.get('nb') == 0 ? '' : app.session.get('nb') }}</p>
+								</li>
+
+
+								<li>
+									<a href="{{ path('app_logout') }}">Déconnexion</a>
+								</li>
+							{% else %}
+								<li>
+									<a href="{{ path('app_login') }}">Connexion</a>
+								</li>
+								<li>
+									<a href="{{ path('app_register') }}">Inscription</a>
+								</li>
+							{% endif %}
+
+							{% if is_granted('ROLE_ADMIN') %}
+								<li>
+									<a href="{{ path('admin') }}">Admin</a>
+								</li>
+							{% endif %}
+
+
+						</ul>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</nav>
+{% endblock %}

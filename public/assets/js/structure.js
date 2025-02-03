@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((data) => {
         div.querySelector("p").style.backgroundColor = data[nomCouleur];
       })
-      
+
       .catch((error) => console.log(error));
 
     div.addEventListener("click", function () {
@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
         "src",
         "/assets/images/" + imageName + "." + extension
       );
-
     });
   });
 });
@@ -188,4 +187,24 @@ function customAlert(message) {
   dialogOk.onclick = function () {
     dialog.classList.remove("dialog");
   };
+
+  // Ici je mets en place le javascript qui dynamise mon bouton hamburger
 }
+document.addEventListener("DOMContentLoaded", function () {
+  const hamburgerMenu = document.getElementById("hamburgerMenu");
+  const menuDiv = document.getElementById("menu_div");
+
+  hamburgerMenu.addEventListener("click", function () {
+    menuDiv.classList.toggle("show");
+  });
+
+  // Pour fermer le menu quand on clique à l'extérieur
+  document.addEventListener("click", function (event) {
+    if (
+      !menuDiv.contains(event.target) &&
+      !hamburgerMenu.contains(event.target)
+    ) {
+      menuDiv.classList.remove("show");
+    }
+  });
+});

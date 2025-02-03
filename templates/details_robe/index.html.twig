@@ -51,7 +51,7 @@
 			<p id="success_add"></p>
 			{% if app.user%}
 				<!-- Ajouter un bouton pour permettre d'ajouter un avis -->
-				<a href="{{ path('ajouter_avis', {'idProduit': robe.id}) }}" class="btn btn-primary mt-3">Ajouter un avis</a>
+				<a href="{{ path('ajouter_avis', {'idProduit': robe.id, }) }}" class="btn btn-primary mt-3">Ajouter un avis</a>
 			{% endif %}
 
 		</div>
