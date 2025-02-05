@@ -38,11 +38,6 @@ class AvisType extends AbstractType
                     '5 étoiles' => 5,
                 ],
             ])
-            ->add('produits', EntityType::class, [
-                'class' => Produits::class,
-                'label' => 'Produit concerné',
-                'choice_label' => 'nom_du_produit', 
-            ])
 
             ->add('submit', SubmitType::class, [
                 'label' => 'Envoyer mon avis'

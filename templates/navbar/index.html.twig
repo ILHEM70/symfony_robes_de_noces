@@ -10,8 +10,9 @@
 			<ul class="navbar-links">
 				{% if app.user %}
 					<li>
-						<a href="{{ path('app_profil') }}" style="text-decoration: none; color: white;">
-							Bienvenue<br>{{ app.user.firstname }}
+						<a href="{{ path('app_profil') }}" style="text-decoration: none; color: white; display:block;">
+							Bienvenue
+							{{ app.user.firstname }}
 						</a>
 					</li>
 				{% endif %}

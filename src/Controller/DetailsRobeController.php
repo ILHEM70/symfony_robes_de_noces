@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Avis;
+use App\Entity\Commande;
 use App\Repository\ProduitsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,34 +33,19 @@ class DetailsRobeController extends AbstractController
         }
         foreach ($imagesTab as $image) {
             $images[] = $image->getImage();
-        }
+            $commandes = $entityManager->getRepository(Commande::class)->findAll();
+            $achat = false;
+            foreach ($commandes as $commande) {
+                if ($commande->getUser()->getId() == $this->getUser()->getId()) {
 
-        // Créer un nouvel avis
-        $avis = new Avis();
-        $form = $this->createFormBuilder($avis)
-            ->add('nom')
-            ->add('commentaire')
-            ->add('note')
-            ->add('produits') // Lier l'avis au produit
-            ->add('submit', \Symfony\Component\Form\Extension\Core\Type\SubmitType::class, [
-                'label' => 'Ajouter un avis'
-            ])
-            ->getForm();
-
-        // Traiter le formulaire de l'avis
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            // Assigner le produit au nouvel avis
-            $avis->setProduits($robe);
-            $avis->setUser($this->getUser()); // L'utilisateur connecté (si connecté)
-
-            // Sauvegarder l'avis en base de données
-            $entityManager->persist($avis);
-            $entityManager->flush();
-
-            // Message flash de succès
-            $this->addFlash('success', 'Votre avis a été ajouté avec succès!');
+                    foreach ($commande->getProduits() as $produit) {
+                        if ($produit->getId() == $id) {
+                            $achat = true;
+                        }
+                        break;
+                    }
+                }
+            }
         }
 
         return $this->render('details_robe/index.html.twig', [
@@ -69,7 +55,7 @@ class DetailsRobeController extends AbstractController
             'tailles' => $tailles,
             'couleurs' => $couleurs,
             'images' => $images,
-            'form' => $form->createView(), // Ajouter le formulaire
+            'achat' => $achat
         ]);
     }
 }

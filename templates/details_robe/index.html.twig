@@ -49,11 +49,17 @@
 
 			<button class="btn btn-success" id="bouton_panier" onclick="addToCart({{robe.id}})" data-url="{{ path('app_cart') }}">Ajouter au panier</button>
 			<p id="success_add"></p>
-			{% if app.user%}
-				<!-- Ajouter un bouton pour permettre d'ajouter un avis -->
-				<a href="{{ path('ajouter_avis', {'idProduit': robe.id, }) }}" class="btn btn-primary mt-3">Ajouter un avis</a>
-			{% endif %}
-
+			<div class="avis_div">
+				{% if app.user%}
+					<!-- Ajouter un bouton pour permettre d'ajouter un avis -->
+					{% if achat == true %}
+						<a href="{{ path('ajouter_avis', {'idProduit': robe.id }) }}" class="btn btn-primary mt-3">Ajouter un avis</a>
+					{% endif %}
+					<a href="{{ path('app_avis', {'idProduit': robe.id }) }}" class="btn btn-primary mt-3">Voir les avis</a>
+				{% else %}
+					<a href="{{ path('app_avis', {'idProduit': robe.id }) }}" class="btn btn-primary mt-3">Voir les avis</a>
+				{% endif %}
+			</div>
 		</div>
 
 

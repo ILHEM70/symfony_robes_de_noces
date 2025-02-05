@@ -193,11 +193,6 @@ function customAlert(message) {
 document.addEventListener("DOMContentLoaded", function () {
   const hamburgerMenu = document.getElementById("hamburgerMenu");
   const menuDiv = document.getElementById("menu_div");
-
-  hamburgerMenu.addEventListener("click", function () {
-    menuDiv.classList.toggle("show");
-  });
-
   // Pour fermer le menu quand on clique à l'extérieur
   document.addEventListener("click", function (event) {
     if (
@@ -205,6 +200,8 @@ document.addEventListener("DOMContentLoaded", function () {
       !hamburgerMenu.contains(event.target)
     ) {
       menuDiv.classList.remove("show");
+    } else {
+      menuDiv.classList.add("show");
     }
   });
 });
