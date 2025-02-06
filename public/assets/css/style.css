@@ -58,6 +58,30 @@
     background-image: url(../images/la_joie_de_la_vie.jpg);
   }
 }
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.hero h3,
+.hero h1,
+.section .p {
+  animation: fadeIn 1.5s ease-in-out;
+}
 
 .hero::before {
   content: "";
@@ -80,6 +104,22 @@
   color: #211e1e;
   text-align: center;
   font-size: 30;
+}
+.cta-button {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #292928;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  margin-top: 30px;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #fffdfc;
+  color: #292928;
 }
 
 /* Media Query Accueil */
@@ -114,6 +154,8 @@
     margin-top: 40px;
     margin-bottom: 10px;
     color: #fbf8f8;
+    background: rgba(75, 73, 73, 0.3);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
   }
   .hero h1 {
     font-size: 40px;
@@ -421,7 +463,6 @@
   .item-details,
   .item-price {
     font-size: 1rem;
-   
   }
 
   .remove-btn {
@@ -1522,44 +1563,78 @@ form button:hover {
 
 .footer {
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  background-color: #211e1e; /* Fond sombre  */
-  color: #ecf0f1; /* Texte clair */
-  padding: 40px 20px; /* Padding plus large pour un footer plus aéré */
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 50px 10%;
   flex-wrap: wrap;
-  border-top: 2px solid #3a3a3a; /* Bordure plus visible pour délimiter */
+  border-top: 3px solid #3a3a3a;
+  gap: 20px;
 }
 
 .footer ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  text-align: center;
-  width: 100%;
 }
 
 .footer ul li {
-  margin: 10px 0;
+  margin: 12px 0;
 }
 
 .footer ul li a {
   text-decoration: none;
-  color: #d0cbc9; /* Couleur claire mais subtile */
-  font-size: 16px; /* Taille du texte un peu plus grande pour la lisibilité */
-  transition: color 0.3s ease, transform 0.3s ease; /* Transition fluide */
+  color: #d0cbc9;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .footer ul li a:hover {
-  color: #f1c40f; /* Jaune doré pour attirer l'attention */
-  transform: translateY(-2px); /* Effet de levée pour l'interaction */
+  color: #f39c12;
+  transform: translateY(-3px);
 }
 
-.footer ul li:hover {
-  background-color: #444444; /* Fond légèrement plus clair au survol */
-  color: #fff; /* Texte blanc au survol pour contraster avec le fond */
-  border-radius: 5px;
-  padding: 8px 10px; /* Ajout de padding pour un effet de relief */
+/*  les icônes sociales */
+.footer ul li img {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  vertical-align: middle;
+  transition: transform 0.3s ease;
+}
+
+.footer ul li a:hover img {
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px 5%;
+  }
+  .footer ul {
+    width: 100%;
+  }
+  .footer ul li {
+    margin: 8px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 30px 5%;
+  }
+  .footer ul li a {
+    font-size: 16px;
+  }
+  .footer ul li img {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 /* FAQ  */
@@ -1793,4 +1868,103 @@ h1 {
 .stars {
   color: #ffc107;
   font-size: 18px;
+}
+
+/* récapitulatif de la commande */
+.recapitulatif {
+    margin: 30px 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+   
+}
+
+.recapitulatif h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Le tableau récapitulatif */
+.recapitulatif table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.recapitulatif th,
+.recapitulatif td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.recapitulatif th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+}
+
+.recapitulatif tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.recapitulatif tfoot tr {
+    font-weight: bold;
+    background-color: #f1f1f1;
+}
+
+/* Totaux */
+.recapitulatif tfoot td {
+    font-size: 18px;
+    text-align: right;
+}
+
+.recapitulatif td {
+    font-size: 16px;
+}
+
+.recapitulatif td strong {
+    color: #2d2d2d;
+}
+
+/* Formulaire de paiement */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   width: 500px;
+    margin: 30px auto;
+}
+
+form h1 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+form input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #212221;
+    color: rgb(212, 209, 209);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+form button:hover {
+    background-color: #eae6e6;
+    color:#212221 ;
 }

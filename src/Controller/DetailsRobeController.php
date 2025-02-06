@@ -36,13 +36,14 @@ class DetailsRobeController extends AbstractController
             $commandes = $entityManager->getRepository(Commande::class)->findAll();
             $achat = false;
             foreach ($commandes as $commande) {
-                if ($commande->getUser()->getId() == $this->getUser()->getId()) {
-
-                    foreach ($commande->getProduits() as $produit) {
-                        if ($produit->getId() == $id) {
-                            $achat = true;
+                if ($this->getUser()) {
+                    if ($commande->getUser()->getId() == $this->getUser()->getId()) {
+                        foreach ($commande->getProduits() as $produit) {
+                            if ($produit->getId() == $id) {
+                                $achat = true;
+                            }
+                            break;
                         }
-                        break;
                     }
                 }
             }
