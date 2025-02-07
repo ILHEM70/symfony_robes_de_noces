@@ -44,14 +44,23 @@ class Commande
     private ?User $user = null;
 
     /**
-     * @var Collection<int, Produits>
+     * @var Collection<int, CommandeProduit>
      */
-    #[ORM\ManyToMany(targetEntity: Produits::class, inversedBy: 'commandes', cascade:["persist"])]
-    private Collection $produits;
+    #[ORM\OneToMany(targetEntity: CommandeProduit::class, mappedBy: 'commande')]
+    private Collection $commandeProduits;
 
     public function __construct()
     {
+        $this->commandeProduits = new ArrayCollection();
         $this->produits = new ArrayCollection();
+    }
+    public function addProduit(Produits $produit): self
+    {
+        if (!$this->produits->contains($produit)) {
+            $this->produits[] = $produit;
+        }
+
+        return $this;
     }
 
     public function getId(): ?int
@@ -100,7 +109,7 @@ class Commande
         return $this->etat_commande;
     }
 
-    public function setEtatCommande(string $etat_commande): static
+    public function setEtatCommande(string $etat_commande = 'En attente'): static
     {
         $this->etat_commande = $etat_commande;
 
@@ -168,26 +177,38 @@ class Commande
     }
 
     /**
-     * @return Collection<int, Produits>
+     * @return Collection<int, CommandeProduit>
      */
-    public function getProduits(): Collection
+    public function getCommandeProduits(): Collection
     {
-        return $this->produits;
+        return $this->commandeProduits;
     }
 
-    public function addProduit(Produits $produit): static
+    public function addCommandeProduit(CommandeProduit $commandeProduit): static
     {
-        if (!$this->produits->contains($produit)) {
-            $this->produits->add($produit);
+        if (!$this->commandeProduits->contains($commandeProduit)) {
+            $this->commandeProduits->add($commandeProduit);
+            $commandeProduit->setCommande($this);
         }
 
         return $this;
     }
 
-    public function removeProduit(Produits $produit): static
+    public function removeCommandeProduit(CommandeProduit $commandeProduit): static
     {
-        $this->produits->removeElement($produit);
+        if ($this->commandeProduits->removeElement($commandeProduit)) {
+            // set the owning side to null (unless already changed)
+            if ($commandeProduit->getCommande() === $this) {
+                $commandeProduit->setCommande(null);
+            }
+        }
 
         return $this;
     }
+    private Collection $produits;
+
+  
+
+  
+  
 }

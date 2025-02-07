@@ -24,9 +24,16 @@ class Taille
     #[ORM\ManyToMany(targetEntity: Produits::class, mappedBy: 'taille')]
     private Collection $produits;
 
+    /**
+     * @var Collection<int, CommandeProduit>
+     */
+    #[ORM\OneToMany(targetEntity: CommandeProduit::class, mappedBy: 'taille')]
+    private Collection $commandeProduits;
+
     public function __construct()
     {
         $this->produits = new ArrayCollection();
+        $this->commandeProduits = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -76,5 +83,35 @@ class Taille
     public function __toString(): string
     {
         return (string) $this->taille; // Retourne la propriété que vous voulez afficher
+    }
+
+    /**
+     * @return Collection<int, CommandeProduit>
+     */
+    public function getCommandeProduits(): Collection
+    {
+        return $this->commandeProduits;
+    }
+
+    public function addCommandeProduit(CommandeProduit $commandeProduit): static
+    {
+        if (!$this->commandeProduits->contains($commandeProduit)) {
+            $this->commandeProduits->add($commandeProduit);
+            $commandeProduit->setTaille($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommandeProduit(CommandeProduit $commandeProduit): static
+    {
+        if ($this->commandeProduits->removeElement($commandeProduit)) {
+            // set the owning side to null (unless already changed)
+            if ($commandeProduit->getTaille() === $this) {
+                $commandeProduit->setTaille(null);
+            }
+        }
+
+        return $this;
     }
 }

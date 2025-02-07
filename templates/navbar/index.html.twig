@@ -10,8 +10,7 @@
 			<ul class="navbar-links">
 				{% if app.user %}
 					<li>
-<a href='app_robes' style="text-decoration: none; color: white; display:block;">
-
+						<a href='{{path('app_profil')}}' style="text-decoration: none; color: white; display:block;">
 							Bienvenue
 							{{ app.user.firstname }}
 						</a>
@@ -124,4 +123,7 @@
 			</div>
 		</div>
 	</nav>
+	{% for messages in app.flashes('error') %}
+		<h3>{{messages}}</h3>
+	{% endfor %}
 {% endblock %}

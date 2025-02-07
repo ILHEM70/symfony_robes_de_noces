@@ -2,23 +2,30 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\Commande;
 use App\Entity\Produits;
 use App\Form\PaymentType;
+use App\Entity\CommandeProduit;
+use App\Entity\Couleur;
+use App\Entity\Images;
+use App\Entity\Taille;
+use DateTimeInterface;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PaymentController extends AbstractController
 {
     #[Route('/payment', name: 'app_payment')]
-    public function index(Request $request, SessionInterface $sessionInterface): Response
+    public function index(Request $request, SessionInterface $sessionInterface, EntityManagerInterface $entityManager): Response
     {
         $panier = $sessionInterface->get('panier', []);
-        $total = 0;
+        // On porte la portée de total à global, nous pouvons donc calculer le total pour la vue et récupérer ce même total une fois le formulaire validé pour notre entité
+        global $total;
 
         foreach ($panier as $p) {
             $total += $p['produit']->getPrix() * $p['quantity'];
@@ -27,54 +34,35 @@ class PaymentController extends AbstractController
         $form = $this->createForm(PaymentType::class);
         $form->handleRequest($request);
 
-        return $this->render('payment/index.html.twig', [
-            'controller_name' => 'PaymentController',
-            'bodyClass' => null,
-            'total' => $total,
-            'items' => $panier,
-            'form' => $form->createView(),
-        ]);
-    }
-
-    #[Route("/payment/confirm", name: "payment_confirm", methods: ["POST"])]
-    public function confirmPayment(Request $request, SessionInterface $sessionInterface, EntityManagerInterface $entityManager): Response
-    {
-        $paymentMethod = $request->request->get('payment_method');
-        $panier = $sessionInterface->get('panier', []);
-
-        if ($paymentMethod) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $adress = $sessionInterface->get('adress', []);
-            $total = 0;
-
+            // dd($adress);
+            $date = new DateTime();
+            $format = $date->format('d-m-Y');
             // Instancier la commande
             $commande = new Commande();
-            $commande->setVille($adress['ville'])
-                ->setAdresse($adress['adress'])
-                ->setCodePostal($adress['code_postal'])
-                ->setDateCommande(new \DateTime()) // Date actuelle
-                ->setEtatCommande('En attente')
-                ->setReferenceCommande('CMD-' . date('Ymd-His') . '-' . strtoupper(uniqid()))
-                ->setUser($this->getUser())
-                ->setPays($adress['pays']);
+            $commande->setUser($this->getUser())->setDateCommande($date)->setReferenceCommande(uniqid('_') . $format)->setEtatCommande()->setAdresse($adress['adress'])->setCodePostal($adress['code_postal'])->setVille($adress['ville'])->setPays($adress['pays'])->setTotal($total);
 
+            // Persist l'objet commande 
+            $entityManager->persist($commande);
             foreach ($panier as $p) {
-                $produit = $p['produit'];
 
-                // Vérification du stock
-                if ($produit->getStock() < $p['quantity']) {
-                    $this->addFlash('error', "Stock insuffisant pour le produit : " . $produit->getNom());
-                    return $this->redirectToRoute('app_payment');
-                }
+                $produit = $entityManager->getRepository(Produits::class)->find($p['produit']->getId());
+                $couleur = $entityManager->getRepository(Couleur::class)->findOneBy(['couleur' => $p['couleur']]);
+                $taille = $entityManager->getRepository(Taille::class)->findOneBy(['taille' => $p['taille']]);
+                $image = $entityManager->getRepository(Images::class)->findOneBy(['image' => $p['image']]);
 
-                // Déduction du stock
-                $produit->setStock($produit->getStock() - $p['quantity']);
-
-                $total += $produit->getPrix() * $p['quantity'];
-                $commande->addProduit($produit);
+                // Instancier commandeProduit
+                $commandeProduit = new CommandeProduit;
+                $commandeProduit->setProduit($produit);
+                $commandeProduit->setCouleur($couleur);
+                $commandeProduit->setTaille($taille);
+                $commandeProduit->setImage($image);
+                $commandeProduit->setQuantite($p['quantity']);
+                $commandeProduit->setCommande($commande);
+                $entityManager->persist($commandeProduit);
             }
 
-            $commande->setTotal($total);
-            $entityManager->persist($commande);
             $entityManager->flush();
 
             // Vider le panier
@@ -85,14 +73,20 @@ class PaymentController extends AbstractController
             $this->addFlash('success', 'Votre paiement a été confirmé avec succès !');
 
             // Redirection vers la page de confirmation
-            return $this->redirectToRoute('payment_thank_you');
+            return $this->redirectToRoute('payment_confirmation');
         }
 
-        $this->addFlash('error', 'Erreur lors du paiement. Veuillez réessayer.');
-        return $this->redirectToRoute('app_payment');
+        return $this->render('payment/index.html.twig', [
+            'controller_name' => 'PaymentController',
+            'bodyClass' => null,
+            'total' => $total,
+            'items' => $panier,
+            'form' => $form->createView(),
+        ]);
     }
 
-    #[Route("/payment/thank-you", name: "payment_thank_you")]
+
+    #[Route("/payment/confirmation", name: "payment_confirmation")]
     public function thankYou(): Response
     {
         return $this->render('payment/confirmation.html.twig', [
