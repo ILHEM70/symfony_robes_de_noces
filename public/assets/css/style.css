@@ -239,7 +239,6 @@
   border: 1px solid #555;
 }
 
-/* Style pour le hamburger */
 .hamburger-menu {
   display: none;
   cursor: pointer;
@@ -297,23 +296,23 @@
 /* Quand le menu est ouvert */
 #menu_div.show {
   display: block;
-  right: 0; /* Affichage du menu */
+  right: 0; 
 }
 
-/* Media query pour écrans étroits */
+
 @media (max-width: 968px) {
   .hamburger-menu {
-    display: block; /* Affichage du hamburger */
+    display: block; 
   }
 
   .navbar-links {
-    display: none; /* Cache le menu desktop */
+    display: none; 
   }
 }
 
 @media (max-width: 568px) {
   #menu_div {
-    width: 50%; /* Le menu prend toute la largeur */
+    width: 50%; 
   }
 }
 
@@ -321,7 +320,7 @@
   margin: 50px auto;
 }
 
-/* Styles pour écrans larges (par défaut) */
+
 .cart-container {
   height: auto;
   max-width: 800px;
@@ -553,7 +552,7 @@
 .login h1 {
   font-size: 2rem;
   margin-bottom: 20px;
-  color: #2c3e50; /* Couleur gris-bleu foncé pour les titres */
+  color: #2c3e50;
   font-weight: bold;
 }
 
@@ -567,18 +566,16 @@
   margin-bottom: 8px;
 }
 
-/* Style des champs de saisie */
 .login input[type="email"],
 .login input[type="password"] {
   width: 100%;
   padding: 12px 15px;
   margin-bottom: 20px;
-  border: 1px solid #ccc; /* Bordure grise claire */
-  border-radius: 8px; /* Coins arrondis */
+  border-radius: 8px;
   font-size: 1.1rem;
-  color: #333; /* Texte gris foncé */
-  background-color: #fafafa; /* Fond légèrement gris */
-  transition: border-color 0.3s ease, box-shadow 0.2s ease; /* Transition douce */
+  color: #333;
+  background-color: #fafafa;
+  transition: border-color 0.3s ease, box-shadow 0.2s ease;
 }
 
 /* Effets au focus des champs de saisie */
@@ -591,20 +588,20 @@
 
 /* Bouton de soumission */
 .login button {
-  background-color: #272828; /* Couleur bleue */
-  color: #ffffff; /* Texte blanc */
+  background-color: #272828;
+  color: #ffffff;
   padding: 12px 20px;
-  border: none; /* Supprime les bordures */
-  border-radius: 8px; /* Coins arrondis */
+  border: none;
+  border-radius: 8px;
   font-size: 1.1rem;
   cursor: pointer;
   width: 100%;
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Transition douce pour les effets */
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 /* Effets au survol du bouton */
 .login button:hover {
-  background-color: #2f2f30; /* Bleu légèrement plus foncé */
+  background-color: #2f2f30;
   transform: translateY(-2px); /* Effet de surélévation */
 }
 
@@ -643,6 +640,21 @@
   text-decoration: underline; /* Soulignement au survol */
   color: #6c6e70; /* Bleu plus foncé au survol */
 }
+@media (max-width: 968px) {
+  .login {
+    width: 100%;
+  }
+  .login h1 {
+    font-size: 1.7rem;
+    margin-bottom: 16px;
+  }
+}
+@media (max-width: 768px) {
+  .login h1 {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+}
 
 /* Inscription */
 
@@ -656,10 +668,9 @@
   height: 800px;
 }
 .contenaire_registration:hover {
-  transform: scale(
-    1.05
-  ); /* Légère animation au survol pour ajouter du dynamisme */
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15); /* Ombre plus marquée au survol */
+  transform: scale(1.05);
+  /* Légère animation au survol pour ajouter du dynamisme */
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15); 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -786,7 +797,7 @@ button.btn:hover {
 }
 
 /* Media Query pour Robes*/
-@media screen and (max-width: 968px) {
+@media  (max-width: 968px) {
   .produit {
     display: flex;
   }
@@ -801,7 +812,7 @@ button.btn:hover {
   }
 }
 
-@media screen and (max-width: 568px) {
+@media (max-width: 568px) {
   .description {
     display: flex;
     flex-direction: column;
@@ -999,42 +1010,42 @@ button.btn-success:hover {
 /* Contactez-nous */
 
 .contact {
-  background-color: #f7f7f7; /* Fond doux et clair pour un aspect raffiné */
+  background-color: #f7f7f7; 
   background: rgba(
     255,
     255,
     255,
     0.9
-  ); /* Légèrement transparent pour un effet subtil */
+  ); 
   padding: 30px 40px;
-  border-radius: 12px; /* Bordures plus douces pour un effet élégant */
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Ombre douce et subtile */
+  border-radius: 12px; 
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); 
   max-width: 700px;
   width: 100%;
   text-align: center;
   margin: auto;
-  font-family: "Georgia", serif; /* Typographie élégante, idéale pour un site de mariage */
-  color: #333; /* Gris foncé pour un contraste doux et chic */
+  font-family: "Georgia", serif; 
+  color: #333; 
 }
 
 .contact h2 {
-  font-size: 36px; /* Taille du titre plus grande pour la mise en avant */
-  color: #6d4c41; /* Une teinte chaude et élégante, proche du beige ou du rose poudré */
+  font-size: 36px; 
+  color: #6d4c41; 
   margin-bottom: 20px;
   font-weight: bold;
 }
 
 .contact p {
   font-size: 18px;
-  color: #555; /* Gris plus clair pour le texte */
+  color: #555; 
   line-height: 1.6;
 }
 
 .contact button {
-  background-color: #423016; /* Une couleur dorée élégante pour les boutons */
+  background-color: #423016; 
   border: none;
   padding: 12px 30px;
-  border-radius: 30px; /* Boutons arrondis pour un effet doux et chic */
+  border-radius: 30px;
   font-size: 18px;
   font-family: "Georgia", serif;
   color: white;
@@ -1044,11 +1055,50 @@ button.btn-success:hover {
 }
 
 .contact button:hover {
-  background-color: #d4af7f; /* Légère variation de la couleur pour l'effet hover */
+  background-color: #d4af7f; 
+}
+@media (max-width: 768px) {
+  .contact {
+    padding: 20px; 
+    max-width: 90%; 
+  }
+
+  .contact h2 {
+    font-size: 28px;
+  }
+
+  .contact p {
+    font-size: 16px;
+  }
+
+  .contact button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
 }
 
+@media (max-width: 480px) {
+  .contact {
+    padding: 15px;
+  }
+
+  .contact h2 {
+    font-size: 24px;
+  }
+
+  .contact p {
+    font-size: 14px;
+  }
+
+  .contact button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+
 /*Page Qui somme-nous */
-/* Structure générale */
+
 .section_aboutus {
   display: flex;
   flex-direction: column;
@@ -1073,7 +1123,7 @@ button.btn-success:hover {
   font-family: "Arial", sans-serif;
   font-size: 45px;
   margin: 0 20px;
-  color: #333; /* Gris foncé pour un contraste doux */
+  color: #333; 
   text-align: center;
 }
 
@@ -1083,27 +1133,27 @@ button.btn-success:hover {
   height: 280px;
   border-radius: 15px;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-  background-color: #000; /* Fond noir pour la vidéo */
+  background-color: #000;
   overflow: hidden;
 }
 
 .video video {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Maintient le ratio de la vidéo */
+  object-fit: cover; 
 }
 
 /* Paragraphe */
 .paragraph {
   width: 500px;
   padding: 25px;
-  background-color: #ffffff; /* Fond blanc pour un contraste clair */
+  background-color: #ffffff; 
   border-radius: 15px;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
   font-family: "Arial", sans-serif;
   font-size: 16px;
-  color: #555; /* Gris clair pour le texte */
+  color: #555; 
   line-height: 1.6;
 }
 
@@ -1207,7 +1257,7 @@ button.btn-success:hover {
 #dialog-ok:hover {
   background: #2d2e2e;
 }
-
+/* CONTACTEZ NOUS */
 input[type="text"],
 input[type="email"],
 textarea {
@@ -1237,7 +1287,6 @@ textarea {
   text-align: center;
   transition: background-color 0.3s;
   text-decoration: none;
-  /* margin: 10px; */
 }
 
 .btn:hover {
@@ -1254,29 +1303,26 @@ textarea::placeholder {
   width: 600px;
   height: auto;
   margin: 100px auto;
-  border-radius: 15px; /* Bordures plus douces pour l'élégance */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Ombre douce et subtile */
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   padding: 30px;
-  background-color: #fff; /* Fond blanc pour un look propre et lumineux */
-  border: 1px solid #ddd; /* Légère bordure pour délimiter le profil */
-  font-family: "Georgia", serif; /* Typographie élégante et sophistiquée */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  font-family: "Georgia", serif;
 }
 
 .profil:hover {
-  transform: scale(
-    1.05
-  ); /* Légère animation au survol pour ajouter du dynamisme */
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15); /* Ombre plus marquée au survol */
+  transform: scale(1.05);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Profil Labels */
 .profil label {
   display: block;
   font-weight: bold;
   margin-bottom: 10px;
   font-size: 18px;
-  color: #6d4c41; /* Teinte chaude et élégante */
+  color: #6d4c41;
 }
 
 /*Profil Inputs */
@@ -1285,16 +1331,16 @@ textarea::placeholder {
   padding: 12px;
   font-size: 16px;
   border: 1px solid #ddd;
-  border-radius: 10px; /* Bordures arrondies pour un effet plus doux */
+  border-radius: 10px;
   box-sizing: border-box;
   margin-bottom: 20px;
-  background-color: #f9f9f9; /* Fond très clair pour les champs */
+  background-color: #f9f9f9;
   transition: border-color 0.3s ease, box-shadow 0.5s ease;
 }
 
 .profil input:focus {
-  border-color: #d4af7f; /* Doré pour le focus, rappelant un thème de mariage */
-  box-shadow: 0 0 10px rgba(212, 175, 127, 0.4); /* Ombre dorée pour l'effet focus */
+  border-color: #d4af7f;
+  box-shadow: 0 0 10px rgba(212, 175, 127, 0.4);
   outline: none;
 }
 
@@ -1304,10 +1350,10 @@ textarea::placeholder {
   width: 100%;
   padding: 14px;
   margin-top: 20px;
-  background-color: #2d2e2e; /* Doré pour un bouton élégant et raffiné */
+  background-color: #2d2e2e;
   color: white;
   border: none;
-  border-radius: 30px; /* Bouton rond pour une touche élégante */
+  border-radius: 30px;
   font-size: 18px;
   font-weight: bold;
   text-align: center;
@@ -1316,10 +1362,75 @@ textarea::placeholder {
 }
 
 .profil button:hover {
-  background-color: #b88b4a; /* Changement de couleur pour l'effet hover */
-  transform: translateY(-3px); /* Effet de levée pour un bouton interactif */
-  color: white; /* Garder le texte clair même au survol */
+  background-color: #b88b4a;
+  transform: translateY(-3px);
+  color: white;
 }
+
+@media (max-width: 968px) {
+  .profil {
+    width: 75%;
+    padding: 25px;
+  }
+
+  .profil label {
+    font-size: 17px;
+  }
+
+  .profil input {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .profil button {
+    font-size: 17px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .profil {
+    width: 85%;
+    padding: 20px;
+  }
+
+  .profil label {
+    font-size: 16px;
+  }
+
+  .profil input {
+    font-size: 14px;
+    padding: 9px;
+  }
+
+  .profil button {
+    font-size: 16px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 568px) {
+  .profil {
+    width: 95%;
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  .profil label {
+    font-size: 15px;
+  }
+
+  .profil input {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .profil button {
+    font-size: 15px;
+    padding: 9px;
+  }
+}
+
 /* page error Admin */
 
 .video_error {
@@ -1370,58 +1481,112 @@ textarea::placeholder {
   color: #ec0cd5;
 }
 
+@media screen and (max-width: 968px) {
+  .video_error {
+    padding: 130px;
+  }
+
+  .video_error video {
+    width: 100%;
+    height: 500px;
+  }
+
+  #error_page h1 {
+    font-size: 60px;
+  }
+
+  #error_page p {
+    font-size: 28px;
+  }
+}
+
+@media(max-width: 768px) {
+  .video_error {
+    padding: 100px;
+  }
+
+  .video_error video {
+    width: 100%;
+    height: 400px;
+  }
+
+  #error_page h1 {
+    font-size: 50px;
+  }
+
+  #error_page p {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 568px) {
+  .video_error {
+    padding: 40px;
+  }
+
+  .video_error video {
+    width: 100%;
+    height: 400px;
+  }
+
+  #error_page h1 {
+    font-size: 40px;
+  }
+
+  #error_page p {
+    font-size: 20px;
+  }
+}
+
+
 /* Page payment*/
 
 .paiment {
   width: 450px;
   min-height: 450px;
-  border-radius: 15px; /* Bordures plus arrondies pour un aspect moderne et professionnel */
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15); /* Ombre subtile mais professionnelle */
+  border-radius: 15px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
-  color: #333; /* Couleur sombre pour un texte facile à lire */
+  color: #333;
   margin: 40px auto;
-  background-color: #fff; /* Fond blanc pour un look propre et élégant */
+  background-color: #fff;
   padding: 30px;
-  font-family: "Arial", sans-serif; /* Police moderne et professionnelle */
+  font-family: "Arial", sans-serif;
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .paiment:hover {
-  background-color: #f9f9f9; /* Changement de fond au survol pour un effet subtil */
-  transform: scale(1.02); /* Animation douce au survol */
+  background-color: #f9f9f9;
+  transform: scale(1.02);
 }
 
-/* En-tête de la page */
 .title h2 {
   font-size: 2rem;
   margin-top: 20px;
   text-align: center;
-  color: #2d3436; /* Couleur plus sobre et professionnelle */
+  color: #2d3436;
   font-weight: bold;
 }
 
-/* Section de total */
 .total {
   margin-top: 30px;
   text-align: center;
   font-size: 1.4rem;
-  color: #555; /* Gris foncé pour un contraste doux */
+  color: #555;
 }
 
 .total strong {
   font-size: 1.8rem;
-  color: #e74c3c; /* Rouge vif pour attirer l'attention sur le total */
+  color: #e74c3c;
   font-weight: bold;
 }
 
-/* Détails de la commande */
 .detail h3 {
   font-size: 1.5rem;
   margin-top: 30px;
   margin-bottom: 15px;
-  color: #2c3e50; /* Teinte plus professionnelle et élégante */
-  font-weight: bold;
+  color: #2c3e50;
 }
 
 .detail ul {
@@ -1432,7 +1597,7 @@ textarea::placeholder {
 .detail li {
   font-size: 1.2rem;
   margin-bottom: 20px;
-  color: #7f8c8d; /* Gris clair pour un contraste doux mais lisible */
+  color: #7f8c8d;
   padding-left: 30px;
   position: relative;
 }
@@ -1441,7 +1606,7 @@ textarea::placeholder {
   content: "•";
   position: absolute;
   left: 0;
-  color: #222323; /* Petite icône colorée pour rendre les éléments plus lisibles */
+  color: #222323; 
   font-size: 1.4rem;
   top: 50%;
   transform: translateY(-50%);
@@ -1451,15 +1616,15 @@ textarea::placeholder {
   margin-bottom: 0;
 }
 
-/* Section de bouton de paiement */
+
 .payment-button {
   width: 100%;
   padding: 15px;
   margin-top: 30px;
-  background-color: #3498db; /* Bleu professionnel et moderne */
+  background-color: #353637; 
   color: #fff;
   border: none;
-  border-radius: 30px; /* Bouton arrondi pour une sensation moderne et fluide */
+  border-radius: 30px;
   font-size: 1.2rem;
   font-weight: bold;
   text-align: center;
@@ -1468,13 +1633,113 @@ textarea::placeholder {
 }
 
 .payment-button:hover {
-  background-color: #2980b9; /* Changement de couleur au survol */
-  transform: translateY(-2px); /* Effet de levée pour l'interaction */
+  background-color: #2f2f31;
+  transform: translateY(-2px); 
 }
+@media (max-width: 968px) {
+   .payement {
+    width: 90%;
+    padding: 25px;
+  }
+
+  .title h2 {
+    font-size: 1.8rem;
+  }
+
+  .total {
+    font-size: 1.3rem;
+  }
+
+  .total strong {
+    font-size: 1.6rem;
+  }
+
+  .detail h3 {
+    font-size: 1.4rem;
+  }
+
+  .detail li {
+    font-size: 1.1rem;
+  }
+
+  .payment-button {
+    font-size: 1.1rem;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .paiment {
+    width: 90%;
+    min-height: 400px;
+    padding: 20px;
+  }
+
+  .title h2 {
+    font-size: 1.6rem;
+  }
+
+  .total {
+    font-size: 1.2rem;
+  }
+
+  .total strong {
+    font-size: 1.5rem;
+  }
+
+  .detail h3 {
+    font-size: 1.3rem;
+  }
+
+  .detail li {
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+
+  .payment-button {
+    font-size: 1rem;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 568px) {
+  .paiment {
+    width: 90%;
+    padding: 15px;
+  }
+  
+
+  .title h2 {
+    font-size: 1.4rem;
+  }
+
+  .total {
+    font-size: 1.1rem;
+  }
+
+  .total strong {
+    font-size: 1.4rem;
+  }
+
+  .detail h3 {
+    font-size: 1.2rem;
+  }
+
+  .detail li {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+
+  .payment-button {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}
+
 
 /* Formulaire */
 form {
-  background-color: #f7f7f7; /* Fond doux et clair pour un aspect raffiné */
+  background-color: #f7f7f7; 
   background: rgba(
     255,
     255,
@@ -1530,6 +1795,70 @@ form button:hover {
   background-color: #3a3839;
   transform: scale(1.02);
 }
+
+@media (max-width: 968px) {
+  form {
+    max-width: 80%;
+    padding: 25px 30px;
+  }
+
+  form input,
+  form select {
+    font-size: 0.95rem;
+    padding: 9px;
+  }
+
+  form button {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  form {
+    max-width: 85%;
+    padding: 20px 20px;
+  }
+
+  form label {
+    font-size: 0.95rem;
+  }
+
+  form input,
+  form select {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  form button {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 568px) {
+  form {
+    max-width: 95%;
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  form label {
+    font-size: 0.9rem;
+  }
+
+  form input,
+  form select {
+    font-size: 0.85rem;
+    padding: 7px;
+  }
+
+  form button {
+    font-size: 0.95rem;
+    padding: 9px;
+  }
+}
+
 /* Confirmation de payement  */
 .confirm {
   background-color: #ddd;
@@ -1641,24 +1970,21 @@ form button:hover {
 .faq-container {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centers vertically */
-  align-items: center; /* Centers horizontally */
-  text-align: center; /* Centers text inside the elements */
+  justify-content: center; 
+  align-items: center; 
+  text-align: center; /
   margin: 0 auto;
-  width: 100%; /* Ensure it takes the full width available */
+  width: 100%; 
 }
 
-/* FAQ Category Container */
 .faq {
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  align-items: center; /* Center each FAQ item */
+  flex-direction: column; /
+  align-items: center; 
   justify-content: center;
-  width: 100%; /* Ensure it takes full width of its container */
-  margin-bottom: 3rem; /* Space between each FAQ category */
+  width: 100%; 
+  margin-bottom: 3rem; 
 }
-
-/* Title Styling (main FAQ title and subcategories) */
 .titre_faq h1 {
   text-align: center;
   font-size: 2rem;
@@ -1669,7 +1995,6 @@ form button:hover {
   justify-content: center;
 }
 
-/* Subcategory Titles (e.g. Commande et paiement, Livraison) */
 .sous_titre_faq h2 {
   font-size: 2rem;
   color: #6c757d;
@@ -1680,25 +2005,19 @@ form button:hover {
   font-family: "Georgia", serif;
   font-weight: normal;
 }
-
-/* FAQ List */
 .liste_faq {
   display: flex;
   flex-direction: column;
   gap: 1.8rem;
   max-width: 850px;
-  margin: 0 auto; /* Centers horizontally */
+  margin: 0 auto; 
   padding: 0 20px;
 }
-
-/* List Items for Each Question and Answer */
 .liste_faq ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
-/* Each FAQ item */
 .liste_faq li {
   padding: 1.5rem;
   border: 1px solid #ddd;
@@ -1706,24 +2025,21 @@ form button:hover {
   background-color: #fff;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
   transition: transform 0.3s ease, background-color 0.3s ease;
-  width: 100%; /* Ensures the list item takes full width */
-  max-width: 850px; /* Prevents stretching beyond container width */
+  width: 100%; 
+  max-width: 850px; 
 }
 
-/* Hover effect for FAQ items */
 .liste_faq li:hover {
   background-color: #f9f9f9;
   transform: translateY(-4px);
 }
 
-/* FAQ Question Styling */
 .liste_faq li strong {
   font-size: 1.4rem;
   color: #333;
   font-weight: bold;
 }
 
-/* FAQ Answer Styling */
 .liste_faq li p {
   font-size: 1.1rem;
   color: #757575;
@@ -1731,7 +2047,6 @@ form button:hover {
   line-height: 1.7;
 }
 
-/* Separator Between Categories */
 .separation_faq {
   margin-top: 5rem;
   border-top: 4px solid #f1c40f;
@@ -1872,99 +2187,98 @@ h1 {
 
 /* récapitulatif de la commande */
 .recapitulatif {
-    margin: 30px 0;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-   
+  margin: 30px 0;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 .recapitulatif h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
 }
 
 /* Le tableau récapitulatif */
 .recapitulatif table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
 .recapitulatif th,
 .recapitulatif td {
-    padding: 12px;
-    border: 1px solid #ddd;
-    text-align: left;
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
 }
 
 .recapitulatif th {
-    background-color: #f1f1f1;
-    font-weight: bold;
+  background-color: #f1f1f1;
+  font-weight: bold;
 }
 
 .recapitulatif tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+  background-color: #f9f9f9;
 }
 
 .recapitulatif tfoot tr {
-    font-weight: bold;
-    background-color: #f1f1f1;
+  font-weight: bold;
+  background-color: #f1f1f1;
 }
 
 /* Totaux */
 .recapitulatif tfoot td {
-    font-size: 18px;
-    text-align: right;
+  font-size: 18px;
+  text-align: right;
 }
 
 .recapitulatif td {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .recapitulatif td strong {
-    color: #2d2d2d;
+  color: #2d2d2d;
 }
 
 /* Formulaire de paiement */
-form {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-   width: 500px;
-    margin: 30px auto;
+/* form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  margin: 30px auto;
 }
 
 form h1 {
-    text-align: center;
-    font-size: 28px;
-    margin-bottom: 20px;
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
 }
 
 form input {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
 form button {
-    width: 100%;
-    padding: 12px;
-    background-color: #212221;
-    color: rgb(212, 209, 209);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 18px;
+  width: 100%;
+  padding: 12px;
+  background-color: #212221;
+  color: rgb(212, 209, 209);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
 }
 
 form button:hover {
-    background-color: #eae6e6;
-    color:#212221 ;
-}
+  background-color: #eae6e6;
+  color: #212221;
+} */
