@@ -1105,7 +1105,7 @@ button.btn-success:hover {
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: #f4f4f4; /* Couleur de fond douce et neutre */
+  background-color: #f4f4f4; 
   padding: 50px 0;
 }
 
@@ -1117,20 +1117,16 @@ button.btn-success:hover {
   gap: 30px;
   margin-top: 30px;
 }
-
-/* Titre */
 #aboutUs {
-  font-family: "Arial", sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   font-size: 45px;
   margin: 0 20px;
   color: #333; 
   text-align: center;
 }
-
-/* Vidéo */
 .video {
-  width: 500px;
-  height: 280px;
+  width: 600px;
+  height:300px;
   border-radius: 15px;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
   background-color: #000;
@@ -1143,23 +1139,17 @@ button.btn-success:hover {
   object-fit: cover; 
 }
 
-/* Paragraphe */
 .paragraph {
-  width: 500px;
+  width: 600px;
   padding: 25px;
-  background-color: #ffffff; 
+  background-color: #fafafa; 
   border-radius: 15px;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
-  font-family: "Arial", sans-serif;
-  font-size: 16px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 18px;
   color: #555; 
   line-height: 1.6;
-}
-
-/* Couleurs */
-.paragraph {
-  background-color: #fafafa; /* Fond légèrement gris pour un aspect doux */
 }
 
 .aboutUs .paragraph,
@@ -1173,9 +1163,54 @@ button.btn-success:hover {
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
 }
 
-.inscription-image {
-  background-color: #f5eeee;
+@media (max-width: 968px) {
+  .video,
+  .paragraph {
+    width: 400px; 
+  }
+
+  #aboutUs {
+    font-size: 38px; 
+  }
 }
+
+
+@media  (max-width: 768px) {
+  .aboutUs {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .video,
+  .paragraph {
+    width: 90%; 
+  }
+
+  #aboutUs {
+    font-size: 32px; 
+    margin: 0 10px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .video {
+    height: 200px;
+  }
+
+  .paragraph {
+    font-size: 14px;
+    padding: 15px;
+  }
+
+  #aboutUs {
+    font-size: 28px;
+  }
+}
+
+
+/* .inscription-image {
+  background-color: #f5eeee;
+} */
 
 /* Detail produit */
 .detailsProduit {
@@ -1745,16 +1780,16 @@ form {
     255,
     255,
     0.9
-  ); /* Légèrement transparent pour un effet subtil */
+  ); 
   padding: 30px 40px;
-  border-radius: 12px; /* Bordures plus douces pour un effet élégant */
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Ombre douce et subtile */
+  border-radius: 12px; 
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); 
   max-width: 700px;
   width: 100%;
   text-align: center;
   margin: auto;
-  font-family: "Georgia", serif; /* Typographie élégante, idéale pour un site de mariage */
-  color: #333; /* Gris foncé pour un contraste doux et chic */
+  font-family: "Georgia", serif; 
+  color: #333;
 }
 form:hover {
   background-color: rgba(64, 67, 68, 0.2);
@@ -1877,7 +1912,7 @@ form button:hover {
 }
 
 .confirmation h2 {
-  color: #27ae60; /* Vert pour un aspect réussi */
+  color: #27ae60; 
   margin-bottom: 15px;
   font-size: 1.8rem;
 }
@@ -1972,14 +2007,14 @@ form button:hover {
   flex-direction: column;
   justify-content: center; 
   align-items: center; 
-  text-align: center; /
+  text-align: center; 
   margin: 0 auto;
   width: 100%; 
 }
 
 .faq {
   display: flex;
-  flex-direction: column; /
+  flex-direction: column; 
   align-items: center; 
   justify-content: center;
   width: 100%; 
@@ -2241,6 +2276,35 @@ h1 {
 .recapitulatif td strong {
   color: #2d2d2d;
 }
+@media (max-width: 968px){
+  .recapitulatif {
+  margin: 20px 0;
+  padding: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  
+}
+.recapitulatif table {
+  width: 70%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+}
+@media (max-width: 568px){
+  .recapitulatif {
+  margin:15px 0;
+  padding: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  
+}
+.recapitulatif table {
+  width: 60%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+}
+
 
 /* Formulaire de paiement */
 /* form {
