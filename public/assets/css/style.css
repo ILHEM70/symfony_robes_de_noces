@@ -296,30 +296,28 @@
 /* Quand le menu est ouvert */
 #menu_div.show {
   display: block;
-  right: 0; 
+  right: 0;
 }
-
 
 @media (max-width: 968px) {
   .hamburger-menu {
-    display: block; 
+    display: block;
   }
 
   .navbar-links {
-    display: none; 
+    display: none;
   }
 }
 
 @media (max-width: 568px) {
   #menu_div {
-    width: 50%; 
+    width: 50%;
   }
 }
 
 .wrapper > div {
   margin: 50px auto;
 }
-
 
 .cart-container {
   height: auto;
@@ -670,7 +668,7 @@
 .contenaire_registration:hover {
   transform: scale(1.05);
   /* Légère animation au survol pour ajouter du dynamisme */
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15); 
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -797,7 +795,7 @@ button.btn:hover {
 }
 
 /* Media Query pour Robes*/
-@media  (max-width: 968px) {
+@media (max-width: 968px) {
   .produit {
     display: flex;
   }
@@ -1010,39 +1008,34 @@ button.btn-success:hover {
 /* Contactez-nous */
 
 .contact {
-  background-color: #f7f7f7; 
-  background: rgba(
-    255,
-    255,
-    255,
-    0.9
-  ); 
+  background-color: #f7f7f7;
+  background: rgba(255, 255, 255, 0.9);
   padding: 30px 40px;
-  border-radius: 12px; 
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); 
+  border-radius: 12px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
   max-width: 700px;
   width: 100%;
   text-align: center;
   margin: auto;
-  font-family: "Georgia", serif; 
-  color: #333; 
+  font-family: "Georgia", serif;
+  color: #333;
 }
 
 .contact h2 {
-  font-size: 36px; 
-  color: #6d4c41; 
+  font-size: 36px;
+  color: #6d4c41;
   margin-bottom: 20px;
   font-weight: bold;
 }
 
 .contact p {
   font-size: 18px;
-  color: #555; 
+  color: #555;
   line-height: 1.6;
 }
 
 .contact button {
-  background-color: #423016; 
+  background-color: #423016;
   border: none;
   padding: 12px 30px;
   border-radius: 30px;
@@ -1055,12 +1048,12 @@ button.btn-success:hover {
 }
 
 .contact button:hover {
-  background-color: #d4af7f; 
+  background-color: #d4af7f;
 }
 @media (max-width: 768px) {
   .contact {
-    padding: 20px; 
-    max-width: 90%; 
+    padding: 20px;
+    max-width: 90%;
   }
 
   .contact h2 {
@@ -1096,7 +1089,6 @@ button.btn-success:hover {
   }
 }
 
-
 /*Page Qui somme-nous */
 
 .section_aboutus {
@@ -1105,7 +1097,7 @@ button.btn-success:hover {
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: #f4f4f4; 
+  background-color: #f4f4f4;
   padding: 50px 0;
 }
 
@@ -1118,15 +1110,15 @@ button.btn-success:hover {
   margin-top: 30px;
 }
 #aboutUs {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   font-size: 45px;
   margin: 0 20px;
-  color: #333; 
+  color: #333;
   text-align: center;
 }
 .video {
   width: 600px;
-  height:300px;
+  height: 300px;
   border-radius: 15px;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
   background-color: #000;
@@ -1136,19 +1128,19 @@ button.btn-success:hover {
 .video video {
   width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: cover;
 }
 
 .paragraph {
   width: 600px;
   padding: 25px;
-  background-color: #fafafa; 
+  background-color: #fafafa;
   border-radius: 15px;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   font-size: 18px;
-  color: #555; 
+  color: #555;
   line-height: 1.6;
 }
 
@@ -1166,16 +1158,15 @@ button.btn-success:hover {
 @media (max-width: 968px) {
   .video,
   .paragraph {
-    width: 400px; 
+    width: 400px;
   }
 
   #aboutUs {
-    font-size: 38px; 
+    font-size: 38px;
   }
 }
 
-
-@media  (max-width: 768px) {
+@media (max-width: 768px) {
   .aboutUs {
     flex-direction: column;
     gap: 20px;
@@ -1183,16 +1174,16 @@ button.btn-success:hover {
 
   .video,
   .paragraph {
-    width: 90%; 
+    width: 90%;
   }
 
   #aboutUs {
-    font-size: 32px; 
+    font-size: 32px;
     margin: 0 10px;
   }
 }
 
-@media screen and (max-width: 568px) {
+@media (max-width: 568px) {
   .video {
     height: 200px;
   }
@@ -1206,7 +1197,6 @@ button.btn-success:hover {
     font-size: 28px;
   }
 }
-
 
 /* .inscription-image {
   background-color: #f5eeee;
@@ -1535,7 +1525,7 @@ textarea::placeholder {
   }
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
   .video_error {
     padding: 100px;
   }
@@ -1572,7 +1562,6 @@ textarea::placeholder {
     font-size: 20px;
   }
 }
-
 
 /* Page payment*/
 
@@ -1641,7 +1630,7 @@ textarea::placeholder {
   content: "•";
   position: absolute;
   left: 0;
-  color: #222323; 
+  color: #222323;
   font-size: 1.4rem;
   top: 50%;
   transform: translateY(-50%);
@@ -1651,12 +1640,11 @@ textarea::placeholder {
   margin-bottom: 0;
 }
 
-
 .payment-button {
   width: 100%;
   padding: 15px;
   margin-top: 30px;
-  background-color: #353637; 
+  background-color: #353637;
   color: #fff;
   border: none;
   border-radius: 30px;
@@ -1669,10 +1657,10 @@ textarea::placeholder {
 
 .payment-button:hover {
   background-color: #2f2f31;
-  transform: translateY(-2px); 
+  transform: translateY(-2px);
 }
 @media (max-width: 968px) {
-   .payement {
+  .payement {
     width: 90%;
     padding: 25px;
   }
@@ -1742,7 +1730,6 @@ textarea::placeholder {
     width: 90%;
     padding: 15px;
   }
-  
 
   .title h2 {
     font-size: 1.4rem;
@@ -1771,24 +1758,18 @@ textarea::placeholder {
   }
 }
 
-
 /* Formulaire */
 form {
-  background-color: #f7f7f7; 
-  background: rgba(
-    255,
-    255,
-    255,
-    0.9
-  ); 
+  background-color: #f7f7f7;
+  background: rgba(255, 255, 255, 0.9);
   padding: 30px 40px;
-  border-radius: 12px; 
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); 
+  border-radius: 12px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
   max-width: 700px;
   width: 100%;
   text-align: center;
   margin: auto;
-  font-family: "Georgia", serif; 
+  font-family: "Georgia", serif;
   color: #333;
 }
 form:hover {
@@ -1912,7 +1893,7 @@ form button:hover {
 }
 
 .confirmation h2 {
-  color: #27ae60; 
+  color: #27ae60;
   margin-bottom: 15px;
   font-size: 1.8rem;
 }
@@ -2005,20 +1986,20 @@ form button:hover {
 .faq-container {
   display: flex;
   flex-direction: column;
-  justify-content: center; 
-  align-items: center; 
-  text-align: center; 
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   margin: 0 auto;
-  width: 100%; 
+  width: 100%;
 }
 
 .faq {
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  width: 100%; 
-  margin-bottom: 3rem; 
+  width: 100%;
+  margin-bottom: 3rem;
 }
 .titre_faq h1 {
   text-align: center;
@@ -2045,7 +2026,7 @@ form button:hover {
   flex-direction: column;
   gap: 1.8rem;
   max-width: 850px;
-  margin: 0 auto; 
+  margin: 0 auto;
   padding: 0 20px;
 }
 .liste_faq ul {
@@ -2060,8 +2041,8 @@ form button:hover {
   background-color: #fff;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
   transition: transform 0.3s ease, background-color 0.3s ease;
-  width: 100%; 
-  max-width: 850px; 
+  width: 100%;
+  max-width: 850px;
 }
 
 .liste_faq li:hover {
@@ -2238,7 +2219,7 @@ h1 {
 /* Le tableau récapitulatif */
 .recapitulatif table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
   margin-bottom: 20px;
 }
 
@@ -2276,35 +2257,45 @@ h1 {
 .recapitulatif td strong {
   color: #2d2d2d;
 }
-@media (max-width: 968px){
+@media (max-width: 968px) {
   .recapitulatif {
-  margin: 20px 0;
-  padding: 15px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  
+    margin: 15px 0;
+    padding: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 90%;
+  }
+  .recapitulatif table {
+    width: 70%;
+    border-collapse: separate;
+    margin-bottom: 18px;
+  }
 }
-.recapitulatif table {
-  width: 70%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-}
-}
-@media (max-width: 568px){
+@media (max-width: 568px) {
   .recapitulatif {
-  margin:15px 0;
-  padding: 15px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  
+    margin: 15px 0;
+    padding: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 90%;
+  }
+  .recapitulatif table {
+    width: 60%;
+    border-collapse: separate;
+    margin-bottom: 12px;
+    font-size: 12px;
+  }
+  .recapitulatif tfoot tr {
+    font-size: 11px;
+    text-align: right;
+  }
+  .recapitulatif h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .recapitulatif tfoot td {
+    font-size: 11px;
+    text-align: right;
+  }
 }
-.recapitulatif table {
-  width: 60%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-}
-}
-
 
 /* Formulaire de paiement */
 /* form {
