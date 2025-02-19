@@ -1,33 +1,53 @@
 let titre;
 let extension;
 document.addEventListener("DOMContentLoaded", function () {
+  // On récupère les div qui contient la couleur dans la div qui a la class .couleur
   let divs = document.querySelectorAll(".couleurs>div");
+
+  // titre = .l'element html qui a l'id titre_robe .le contenu de l'element (le texte) .on supprime les espaces avant et après (trim()) .on change le texte en minuscule(toLowerCase()) .on remplace les espaces entre les mots par _ (replace).
+
+  /* Exemple : titre de la robe = Robe de mariée magnifique . Resultat = robe_de_mariée_magnifique */
   titre = document
     .querySelector("#titre_robe")
     .textContent.trim()
     .toLowerCase()
     .replace(/ /g, "_");
+
+  // On récupère l'element HTML qui a l'id image_robe
   let image = document.querySelector("#image_robe");
+
+  // foreach = pour chacunes des divs qu'on a récupérées (pour la couleur) (div) représente chaque div individuelle
   divs.forEach((div) => {
+    // nomCouleur = chaque div .le texte qu'elles contiennent .les espaces supprimés avant et après .tout en minuscule (traduction: on récupère le texte dans chacune des div et on le change en minuscule en supprimant les espaces)
     let nomCouleur = div.textContent.trim().toLowerCase();
-    // Fichier Json qui converti les noms de couleur fr => en
+
+    // Fichier Json qui converti les noms de couleur fr => en, requête Ajax sur ce fichier
     fetch("/assets/json/couleurs.json")
       .then((response) => response.json())
       .then((data) => {
+        // la requête renvoie un tableau de couleurs qui nous traduira notre couleur FR en EN
         div.querySelector("p").style.backgroundColor = data[nomCouleur];
       })
 
       .catch((error) => console.log(error));
 
+    // on ajoute un écouteur d'evenement de type clique sur chaque DIV
     div.addEventListener("click", function () {
+      // Pour chacune des divs on supprime la classe "active" pour être sûr qu'on ne se retrouve pas avec plusieurs div ayant la classe active
       divs.forEach((div) => {
         div.classList.remove("active");
       });
+      // toggle : se comporte comme un interrupteur, il active la classe 'active', puis si on reclique, il la supprime et ainsi de suite
       div.classList.toggle("active");
+      // imageName = variable titre + '_' + variable nomCouleur (concaténation)
       let imageName = titre + "_" + nomCouleur;
+      // On récupère l'attribut src de la balise image
       let source = image.getAttribute("src");
 
-      extension = source.split(".").pop().split("?")[0];
+      // extension = la valeur de l'attribut image (le chemin) .split (il créé un tableau qui sera séparé lorsqu'il rencontrera un point'.' exemple : image/image.jpg Resultat : ['image/image','jpg'])
+      // .pop('supprime le dernier element d'un tableau et renvoie sa valeur') Depart : 'image/quelquechose/sous-dossier/image.extension' Resultat : extension
+      extension = source.split(".").pop();
+      // On envoie le nouveau chemin dans l'attribut src de l'image (on lui change l'image si elle existe !)
       image.setAttribute(
         "src",
         "/assets/images/" + imageName + "." + extension
@@ -35,6 +55,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+// Function d'ajout au panier (fetch)
 function addToCart(id) {
   let button = document.querySelector("#bouton_panier");
   let url = button.getAttribute("data-url");

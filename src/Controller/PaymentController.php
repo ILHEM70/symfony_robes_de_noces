@@ -26,6 +26,7 @@ class PaymentController extends AbstractController
         $panier = $sessionInterface->get('panier', []);
         // On porte la portée de total à global, nous pouvons donc calculer le total pour la vue et récupérer ce même total une fois le formulaire validé pour notre entité
         global $total;
+        $total = 0;
 
         foreach ($panier as $p) {
             $total += $p['produit']->getPrix() * $p['quantity'];
@@ -60,6 +61,7 @@ class PaymentController extends AbstractController
                 $commandeProduit->setImage($image);
                 $commandeProduit->setQuantite($p['quantity']);
                 $commandeProduit->setCommande($commande);
+                
                 $entityManager->persist($commandeProduit);
             }
 

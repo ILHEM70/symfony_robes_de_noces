@@ -1,14 +1,20 @@
-{# templates/adress/new.html.twig #}
-
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Ajouter une Adresse</h1>
+	<div class="container">
+		<h1>Ajouter une Adresse</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        
-    {{ form_end(form) }}
+		<div class="form-container">
+			{{ form_start(form, {'attr': {'class': 'address-form'}}) }}
 
+			{{ form_row(form.adress, {'attr': {'class': 'form-control'}}) }}
+			{{ form_row(form.code_postal, {'attr': {'class': 'form-control'}}) }}
+			{{ form_row(form.ville, {'attr': {'class': 'form-control'}}) }}
+			{{ form_row(form.pays, {'attr': {'class': 'form-control'}}) }}
+
+			{{ form_end(form) }}
+		</div>
+	</div>
 {% endblock %}
+
 
