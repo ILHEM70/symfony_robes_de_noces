@@ -1,36 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AboutUsController!
+{% block title %}À propos de nous
 {% endblock %}
 
 {% block body %}
-	<section class="section_aboutus">
-		<h1>Qui sommes-nous ?</h1>
-		<div class="aboutUs">
+	<section class="section_aboutus" role="region" aria-labelledby="about-title">
+		<h1 id="about-title">Qui sommes-nous ?</h1>
 
-
+		<div
+			class="aboutUs">
+			<!-- Vidéo avec un titre et des sous-titres -->
 			<div class="video">
-				<video autoplay muted playsinline loop>
+				<h2 class="sr-only">Vidéo de présentation</h2>
+				<video autoplay muted playsinline loop aria-describedby="video-description">
+					<source src="{{ asset('assets/videos/mariage.mp4') }}" type="video/webm">
+					<track src="{{ asset('assets/videos/mariage.vtt') }}" kind="subtitles" srclang="fr" label="Français">
+						Votre navigateur ne supporte pas la vidéo.
+					</video>
+					<p id="video-description" class="sr-only">Vidéo illustrant l'univers de Robes De Noce, montrant de jeunes femmes habillées en blanc jetant des bouquets de fleurs..</p>
 
-					<source src="{{asset('assets/videos/mariage.mp4')}}" type="video/webm"/>
-				</video>
+				</div>
+
+			
+				<div class="paragraph">
+					<p>
+						<span>Bienvenue dans l’univers magique de
+							<strong style="color:red;">Robes De Noce</strong>
+						</span>, où chaque robe raconte une histoire d’amour unique.
+					</p>
+					<p>
+						Passionnés par l’art de la couture et inspirés par la beauté intemporelle du mariage, nous avons fondé notre atelier avec une mission simple :
+												                    offrir aux futures mariées des créations qui reflètent leur personnalité et subliment leur jour le plus précieux.
+					</p>
+					<p>
+						<span>Chez
+							<strong style="color:red;">Robes De Noce</strong>
+						</span>, chaque robe est bien plus qu’un vêtement : c’est une pièce d’art conçue avec amour et minutie.
+					</p>
+					<p>
+						Rejoignez-nous dans cette belle aventure et laissez-nous vous accompagner dans la création de la robe parfaite pour votre grand jour.
+						<strong>Chez Robes De Noce, nous ne créons pas simplement des robes ; nous réalisons vos rêves.</strong>
+					</p>
+				</div>
 			</div>
-			<div class="paragraph">
-				<p>
-					<span>
-						Bienvenue dans l’univers magique de<span style="color:red" ;>
-							Robes De Noce</span>, où chaque robe raconte une histoire d’amour unique. Passionnés par l’art de la couture et inspirés par la beauté intemporelle du mariage, nous avons fondé notre atelier avec une mission simple : offrir aux futures mariées des créations qui reflètent leur personnalité et subliment leur jour le plus précieux.<br><br>
-
-						Chez<span style="color:red" ;>
-							Robes De Noce</span>, chaque robe est bien plus qu’un vêtement : c’est une pièce d’art conçue avec amour et minutie. Nous travaillons avec des tissus d’exception, des dentelles raffinées et des détails personnalisés pour créer des modèles à la fois élégants et modernes. Que vous rêviez d’une robe bohème, d’une silhouette classique ou d’un design audacieux, notre équipe est là pour donner vie à vos envies.<br><br>
-
-
-						Notre philosophie repose sur l’écoute, le savoir-faire artisanal et une attention particulière aux moindres détails. Nous croyons que chaque femme mérite de se sentir unique et radieuse, et c’est pourquoi nous proposons des robes sur mesure, adaptées à vos goûts, votre style et votre morphologie.<br><br>
-
-
-						Rejoignez-nous dans cette belle aventure et laissez-nous vous accompagner dans la création de la robe parfaite pour votre grand jour. Chez Robes De Noce, nous ne créons pas simplement des robes ; nous réalisons vos rêves.</p>
-				</p>
-			</div>
-		</div>
-	</section>
-{% endblock %}
+		</section>
+	{% endblock %}

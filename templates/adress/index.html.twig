@@ -2,12 +2,13 @@
 
 {% block body %}
 	<div class="container">
-		<h1>Ajouter une Adresse</h1>
+		<h2>Contactez-nous</h2>
+
 
 		<div class="form-container">
 			{{ form_start(form, {'attr': {'class': 'address-form'}}) }}
 
-			{{ form_row(form.adress, {'attr': {'class': 'form-control'}}) }}
+			{{ form_row(form.adress, {'attr': {'aria-describedby': 'adress-help'}}) }}
 			{{ form_row(form.code_postal, {'attr': {'class': 'form-control'}}) }}
 			{{ form_row(form.ville, {'attr': {'class': 'form-control'}}) }}
 			{{ form_row(form.pays, {'attr': {'class': 'form-control'}}) }}
@@ -16,5 +17,3 @@
 		</div>
 	</div>
 {% endblock %}
-
-

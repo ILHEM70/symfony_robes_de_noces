@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // On récupère l'element HTML qui a l'id image_robe
   let image = document.querySelector("#image_robe");
+  // On récupère le lien de la balise <a> pour le zoom de l'image
+  let ancre = document.querySelector("#lien_img");
 
   // foreach = pour chacunes des divs qu'on a récupérées (pour la couleur) (div) représente chaque div individuelle
   divs.forEach((div) => {
@@ -50,6 +52,10 @@ document.addEventListener("DOMContentLoaded", function () {
       // On envoie le nouveau chemin dans l'attribut src de l'image (on lui change l'image si elle existe !)
       image.setAttribute(
         "src",
+        "/assets/images/" + imageName + "." + extension
+      );
+      ancre.setAttribute(
+        "href",
         "/assets/images/" + imageName + "." + extension
       );
     });

@@ -1,4 +1,3 @@
-{# templates/avis/ajouter.html.twig #}
 {% extends 'base.html.twig' %}
 
 {% block title %}Ajouter un avis
@@ -6,15 +5,54 @@
 
 {% block body %}
 	{% if app.user %}
-		<h1>Ajouter un avis</h1>
+		<section class="avis-section" aria-labelledby="avis-title">
+			<h1 id="avis-title">Ajouter un avis</h1>
 
-		{{ form_start(form) }}
-		{{ form_row(form.commentaire) }}
-		{{ form_row(form.submit) }}
+			<div id="form-description">
+				<p>Veuillez remplir le formulaire ci-dessous pour soumettre votre avis.</p>
+			</div>
 
-		{{ form_end(form) }}
+			{{ form_start(form, { 'attr': { 'aria-describedby': 'form-description' } }) }}
 
+			<div class="form-group">
+				{{ form_label(form.nom, 'Votre nom', { 'label_attr': { 'for': 'nom-field' } }) }}
+				<p id="nom-help" class="form-text">Entrez votre nom complet.</p>
+				{{ form_widget(form.nom, {
+                    'attr': {
+                        'id': 'nom-field',
+                        'aria-describedby': 'nom-help',
+                        'aria-required': 'true'
+                    }
+                }) }}
+				{{ form_errors(form.nom) }}
+			</div>
 
+			<div class="form-group">
+				{{ form_label(form.commentaire, 'Votre avis', { 'label_attr': { 'for': 'commentaire-field' } }) }}
+				<p id="commentaire-help" class="form-text">Décrivez votre expérience en quelques phrases.</p>
+				{{ form_widget(form.commentaire, {
+                    'attr': {
+                        'id': 'commentaire-field',
+                        'aria-describedby': 'commentaire-help',
+                        'aria-required': 'true',
+                        'rows': 5
+                    }
+                }) }}
+				{{ form_errors(form.commentaire) }}
+			</div>
+
+			<div class="form-group">
+				<p id="submit-help" class="form-text">Cliquez sur ce bouton pour envoyer votre avis.</p>
+				{{ form_widget(form.submit, {
+                    'attr': {
+                        'class': 'btn btn-primary',
+                        'aria-label': 'Soumettre votre avis',
+                        'aria-describedby': 'submit-help'
+                    }
+                }) }}
+			</div>
+
+			{{ form_end(form) }}
+		</section>
 	{% endif %}
-
 {% endblock %}

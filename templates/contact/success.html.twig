@@ -1,1 +1,16 @@
 {% extends 'base.html.twig' %}
+
+{% block title %}Message envoyé avec succès
+{% endblock %}
+
+{% block body %}
+	<div class="container_text-center">
+		<h1 class="mt-4">Merci pour votre message !</h1>
+		<p class="lead">Nous avons bien reçu votre demande et nous vous répondrons dès que possible.</p>
+
+		<a href="{{ path('app_home') }}" class="btn btn-primary mt-3">Retour à l'accueil</a>
+	</div>
+{% endblock %}
+
+
+
