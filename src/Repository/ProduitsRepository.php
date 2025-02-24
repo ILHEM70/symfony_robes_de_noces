@@ -2,6 +2,9 @@
 
 namespace App\Repository;
 
+use Pagerfanta\Doctrine\ORM\QueryAdapter;
+use Pagerfanta\Pagerfanta;
+
 use App\Entity\Produits;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -15,7 +18,7 @@ class ProduitsRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Produits::class);
     }
-   
+
 
     //    /**
     //     * @return Produits[] Returns an array of Produits objects
@@ -41,4 +44,12 @@ class ProduitsRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+    public function findAllPaginated(): Pagerfanta
+    {
+        $query = $this->createQueryBuilder('p') // 'p' est l'alias de l'entité Produit
+            ->orderBy('p.id', 'DESC') // trier par id
+            ->getQuery();
+
+        return new Pagerfanta(new QueryAdapter($query));
+    }
 }

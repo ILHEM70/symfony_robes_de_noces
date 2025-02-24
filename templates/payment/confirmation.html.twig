@@ -4,10 +4,21 @@
 {% endblock %}
 
 {% block body %}
-	<div class="confirm">
-		<div class="confirmation">
-			<h2>Votre paiement a été effectué avec succès !</h2>
-			<p>Merci pour votre commande 😊</p>
+<div class="confirm">
+	<div class="confirmation">
+		<div class="video-container">
+			<video autoplay muted playsinline loop aria-describedby="video-description">
+				<source src="{{ asset('assets/videos/4832723-hd_1080_1920_30fps.mp4') }}" type="video/webm">
+				Votre navigateur ne supporte pas la lecture de vidéos.
+			</video>
+			<div class="video-text">
+				<h2>Votre paiement a été effectué avec succès !</h2>
+				<p>Merci pour votre commande 😊</p>
+			</div>
 		</div>
 	</div>
+</div>
+
 {% endblock %}
+
+

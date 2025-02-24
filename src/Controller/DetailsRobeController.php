@@ -25,6 +25,8 @@ class DetailsRobeController extends AbstractController
         $tailles = array_map(fn($taille) => $taille->getTaille(), $robe->getTaille()->toArray());
         $couleurs = array_map(fn($couleur) => $couleur->getCouleur(), $robe->getCouleur()->toArray());
         $images = array_map(fn($image) => $image->getImage(), $robe->getImages()->toArray());
+      
+    
 
         // Vérification si l'utilisateur a acheté ce produit
         $achat = false;
