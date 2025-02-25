@@ -69,13 +69,14 @@ function addToCart(id) {
   let divs = document.querySelectorAll(".couleurs>div");
   let selectedColor = null;
   let taille = document.querySelector("#optionsTailles").value;
- 
 
   divs.forEach((div) => {
     if (div.classList.contains("active")) {
       selectedColor = div.id;
     }
   });
+ 
+
   console.log(titre + "_" + selectedColor);
   let image = titre + "_" + selectedColor + "." + extension;
 
@@ -100,7 +101,6 @@ function addToCart(id) {
       couleur: selectedColor,
       taille: taille,
       image: image,
-   
     }),
   })
     .then((result) => {

@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "photoswipe": "^5.4.4"
+    "photoswipe": "^5.4.4",
+    "swiper": "^11.2.4"
   }
 }

@@ -18,7 +18,7 @@ class RobesController extends AbstractController
         $robes = $produitsRepository->findAllPaginated();
 
         // Définition du nombre d'éléments par page
-        $robes->setMaxPerPage(12);
+        $robes->setMaxPerPage(9);
 
         // Récupération du numéro de page dans l'URL (?page=1, ?page=2, etc.)
         $robes->setCurrentPage($request->query->get('page', 1));
