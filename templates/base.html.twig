@@ -29,8 +29,7 @@
 
 		{% block importmap %}
 			{{ importmap('app') }}
-		{% endblock %}
-	</head>
+				</head>
 	<body class="{{ bodyClass|default('') }}">
 		{{ include('navbar/index.html.twig') }}
 
@@ -40,3 +39,5 @@
 			{{ include('footer/index.html.twig') }}
 		</body>
 	</html>
+		{% endblock %}
+
