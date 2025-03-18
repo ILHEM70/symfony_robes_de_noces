@@ -11,9 +11,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
+
 class CartController extends AbstractController
 {
-    #[Route("/cart", name: "app_cart")]
+    #[Route("/cart", name: "app_cart", methods: ['POST'])]
     public function add(SessionInterface $session, ProduitsRepository $produitsRepository, Request $request): JsonResponse
     {
 
@@ -76,7 +77,7 @@ class CartController extends AbstractController
     {
         // Récupérer le panier depuis la session
         $panier = $session->get('panier', []);
-        // dd($panier);
+        
         // Calculer le total
         $total = array_reduce($panier, function ($sum, $item) {
             $price = $item['produit']->getPrix() ?? 0;
