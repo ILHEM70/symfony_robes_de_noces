@@ -39,8 +39,8 @@ document.addEventListener("DOMContentLoaded", function () {
       divs.forEach((div) => {
         div.classList.remove("active");
       });
-      // toggle : se comporte comme un interrupteur, il active la classe 'active', puis si on reclique, il la supprime et ainsi de suite
-      div.classList.toggle("active");
+      // add:  crée la classe active
+      div.classList.add("active");
       // imageName = variable titre + '_' + variable nomCouleur (concaténation)
       let imageName = titre + "_" + nomCouleur;
       // On récupère l'attribut src de la balise image
@@ -68,7 +68,7 @@ function addToCart(id) {
   let url = button.getAttribute("data-url");
   let divs = document.querySelectorAll(".couleurs>div");
   let selectedColor = null;
-  let taille = document.querySelector("#optionsTailles").value;
+  let taille = document.querySelector("#optionsTailles").value
 
   divs.forEach((div) => {
     if (div.classList.contains("active")) {

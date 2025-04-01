@@ -28,6 +28,8 @@
 
 			<input
 			type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+			
+			
 
 			{#
 												            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
@@ -42,7 +44,9 @@
 			<button class="btn btn-lg btn-primary" type="submit">
 				Sign in
 			</button>
-		</form>
+			 <p><a href="{{ path('app_forgot_password_request') }}">Mot de passe oublié ?</a></p>
+
+
 	</div>
 
 {% endblock %}

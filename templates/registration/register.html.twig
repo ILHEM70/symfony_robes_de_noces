@@ -36,7 +36,7 @@
             }) }}
 			<div class="errors">{{ form_errors(registrationForm.plainPasswordConfirm) }}</div>
 
-			{{ form_row(registrationForm.agreeTerms) }}
+			<a href="{{path('app_cgv')}}"><b>Accepter les conditions générales</b><div>{{form_row(registrationForm.agreeTerms)}}</div></a>
 			<div class="errors">{{ form_errors(registrationForm.agreeTerms) }}</div>
 
 			<button type="submit" class="btn">S'inscrire</button>
