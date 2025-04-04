@@ -43,8 +43,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $firstname = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $country = null;
 
     #[ORM\Column]
     private bool $isVerified = false;
@@ -172,18 +170,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setFirstname(string $firstname): static
     {
         $this->firstname = $firstname;
-
-        return $this;
-    }
-
-    public function getCountry(): ?string
-    {
-        return $this->country;
-    }
-
-    public function setCountry(?string $contry): static
-    {
-        $this->country = $contry;
 
         return $this;
     }

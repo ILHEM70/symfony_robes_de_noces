@@ -47,12 +47,11 @@ class PaymentController extends AbstractController
             // Persist l'objet commande 
             $entityManager->persist($commande);
             foreach ($panier as $p) {
-
                 $produit = $entityManager->getRepository(Produits::class)->find($p['produit']->getId());
                 $couleur = $entityManager->getRepository(Couleur::class)->findOneBy(['couleur' => $p['couleur']]);
                 $taille = $entityManager->getRepository(Taille::class)->findOneBy(['taille' => $p['taille']]);
                 $image = $entityManager->getRepository(Images::class)->findOneBy(['image' => $p['image']]);
-
+                
                 // Instancier commandeProduit
                 $commandeProduit = new CommandeProduit;
                 $commandeProduit->setProduit($produit);

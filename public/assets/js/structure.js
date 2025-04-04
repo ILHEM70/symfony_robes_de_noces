@@ -29,6 +29,11 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((data) => {
         // la requête renvoie un tableau de couleurs qui nous traduira notre couleur FR en EN
         div.querySelector("p").style.backgroundColor = data[nomCouleur];
+        console.log(data[nomCouleur]);
+
+        if (data[nomCouleur] == "white" || data[nomCouleur] == "ivory") {
+          div.querySelector("p").style.color = "black";
+        }
       })
 
       .catch((error) => console.log(error));
@@ -64,67 +69,90 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Function d'ajout au panier (fetch)
 function addToCart(id) {
+  // Sélectionne le bouton "Panier" via son id (#bouton_panier)
   let button = document.querySelector("#bouton_panier");
-  let url = button.getAttribute("data-url");
-  let divs = document.querySelectorAll(".couleurs>div");
-  let selectedColor = null;
-  let taille = document.querySelector("#optionsTailles").value
 
+  // Récupère l'URL associée au bouton "Panier" à partir de l'attribut 'data-url' du bouton
+  let url = button.getAttribute("data-url");
+
+  // Sélectionne tous les éléments div à l'intérieur de l'élément avec la classe "couleurs"
+  let divs = document.querySelectorAll(".couleurs>div");
+
+  // Variable pour stocker la couleur sélectionnée initialisée à null
+  let selectedColor = null;
+
+  // Récupère la valeur sélectionnée pour la taille dans un élément avec l'id "optionsTailles"
+  let taille = document.querySelector("#optionsTailles").value;
+
+  // Parcours chaque div pour vérifier si une couleur a été sélectionnée (en fonction de la classe "active")
   divs.forEach((div) => {
     if (div.classList.contains("active")) {
+      // Si la div a la classe "active", la couleur sélectionnée correspond à l'id de cette div
       selectedColor = div.id;
     }
   });
- 
 
-  console.log(titre + "_" + selectedColor);
-  let image = titre + "_" + selectedColor + "." + extension;
-
+  // Vérifie si aucune couleur ni taille n'a été sélectionnée
   if (!selectedColor && taille == "null") {
+    // Affiche une alerte personnalisée demandant à l'utilisateur de sélectionner à la fois une couleur et une taille
     customAlert("Merci de choisir une Taille et une Couleur pour votre Robe !");
     return;
   } else if (!selectedColor) {
+    // Si seule la couleur n'est pas sélectionnée, on affiche une alerte pour choisir une couleur
     customAlert("Merci de choisir une couleur pour votre robe !");
     return;
   } else if (taille == "null") {
+    // Si seule la taille n'est pas sélectionnée, on affiche une alerte pour choisir une taille
     customAlert("Merci de choisir une taille pour votre robe !");
     return;
   }
 
+  // Récupère l'URL de l'image de la robe via l'élément avec l'id "image_robe"
+  let image = document.querySelector('#image_robe').getAttribute('src');
+
+  // Envoie les données au serveur via une requête POST utilisant Fetch
   fetch(url, {
-    method: "post",
+    method: "post", // Méthode POST pour envoyer les données
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json", // Indique que le corps de la requête est en JSON
     },
     body: JSON.stringify({
-      id: id,
-      couleur: selectedColor,
-      taille: taille,
-      image: image,
+      // Les données envoyées au serveur sous forme d'objet JSON
+      id: id,                 // L'identifiant unique du produit à ajouter au panier
+      couleur: selectedColor, // La couleur sélectionnée pour le produit (obtenue via l'interface utilisateur)
+      taille: taille,         // La taille sélectionnée pour le produit (récupérée à partir du menu déroulant de taille)
+      image: image,           // L'URL de l'image associée au produit, créée à partir du titre et de la couleur
     }),
+    
   })
     .then((result) => {
+      // Quand la réponse arrive, elle est convertie en JSON
       return result.json();
     })
     .then((result) => {
+      // Une fois la réponse reçue et traitée
       let paragraphe = document.querySelector("#success_add");
-      paragraphe.style.display = "block";
-      // On récupère le paragraphe (où est affiché le nombre d'articles)
+      paragraphe.style.display = "block"; // Affiche un paragraphe de succès
+
+      // Sélectionne l'élément où le nombre d'articles est affiché
       let nb = document.querySelector("#session_nb");
 
+      // Vérifie si une erreur a été renvoyée par le serveur
       if (result.error) {
-        paragraphe.textContent = result.error;
+        paragraphe.textContent = result.error; // Affiche le message d'erreur
       } else {
-        // On remplace le nombre actuel par le nouveau nombre envoyé par le serveur
+        // Si tout est ok, on met à jour le nombre d'articles dans le panier
         nb.textContent = result.nb;
-        paragraphe.textContent = result.message;
+        paragraphe.textContent = result.message; // Affiche un message de succès
         setTimeout(() => {
-          paragraphe.style.display = "none";
+          paragraphe.style.display = "none"; // Cache le message après 3 secondes
         }, 3000);
       }
     })
-    .catch((error) => console.log(error));
+    .catch((error) => console.log(error)); // En cas d'erreur, affiche l'erreur dans la console
 }
+
+
 function removeFromCart(event, id, couleur, taille) {
   event.preventDefault(); // Empêche le rechargement de la page
   let data = document.querySelector("#data"); // Si besoin, référence au bouton actuel

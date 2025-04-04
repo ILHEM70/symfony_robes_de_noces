@@ -24,7 +24,7 @@
 								{% if item.image is not empty %}
 									<a href="{{ path('app_details_robe', {'id': item.produit.id}) }}" aria-label="Détails du produit {{ item.produit.nomDuProduit }}">
 
-										<img src="{{ asset('assets/images/' ~ item.image) }}" id="image_robe" alt="{{ item.produit.nomDuProduit }}" aria-hidden="true">
+										<img src="{{ item.image}}" id="image_robe" alt="{{ item.produit.nomDuProduit }}" aria-hidden="true">
 									</a>
 								{% else %}
 									<a href="{{ path('app_details_robe') }}" aria-label="Détails du produit {{ item.produit.nomDuProduit }}">

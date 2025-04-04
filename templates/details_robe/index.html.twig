@@ -16,8 +16,8 @@
 
 		{% if images|length > 0 %}
 			<div id="gallery" class="image-container">
-				<a id="lien_img" href="{{ asset('assets/images/' ~ images[0]) }}" data-fancybox="gallery">
-					<img src="{{ asset('assets/images/' ~ images[0]) }}" id="image_robe" alt="Image description" style="cursor: pointer;">
+				<a id="lien_img" href="{{ asset(images[0]) }}" data-fancybox="gallery">
+					<img src="{{ asset(images[0]) }}" id="image_robe" alt="Image description" style="cursor: pointer;">
 				</a>
 			</div>
 

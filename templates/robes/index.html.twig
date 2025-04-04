@@ -9,9 +9,9 @@
 	<div class="produit">
 		<a href="{{path('app_details_robe', {id: robe.id})}}">
 			{% if robe.images|length > 0 %}
-				<img src="{{ asset('assets/images/' ~ robe.images|first.image) }}" alt="{{ robe.nomDuProduit }}">
+				<img src="{{ asset(robe.images|first.image) }}" alt="{{ robe.nomDuProduit }}">
 			{% else %}
-				<img src="{{asset('assets/images/indisponible.webp')}}">
+				<img src="{{asset('assets/images/default.webp')}}">
 			{% endif %}
 		</a>
 		<div class="p">
