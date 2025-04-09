@@ -21,14 +21,18 @@ class CartController extends AbstractController
         if (!$this->getUser()) {
             return new JsonResponse(['error' => 'Merci de vous connecter pour ajouter un produit au panier !']);
         }
-
-        // Récupère les données envoyées dans la requête au format JSON
+       
+        // Récupère le corps de la requête HTTP ,
+        // le décode depuis le format JSON en un tableau associatif PHP. Cela permet d'accéder
+        // facilement aux données envoyées par le client.
         $data = json_decode($request->getContent(), true);
+         // Si le produit n'est pas dans le panier on crée un tableau qui pourrai stocker le nouveau produit.
         // Extrait l'ID du produit, la couleur, la taille et l'image du produit à partir des données de la requête
         $id = $data['id'];
         $couleur = $data['couleur'];
         $taille = $data['taille'];
         $image = $data['image'];
+
 
         // Vérifie que l'ID du produit est présent, sinon renvoie un message d'erreur
         if (!$id) {
@@ -45,7 +49,7 @@ class CartController extends AbstractController
 
         // Récupère le panier de la session, ou initialise un tableau vide si le panier n'existe pas encore
         $panier = $session->get('panier', []);
-
+        // récupère ma session 
         // Initialise une variable pour savoir si le produit est déjà dans le panier
         $found = false;
 
@@ -53,6 +57,7 @@ class CartController extends AbstractController
         foreach ($panier as &$item) {
             if ($item['produit']->getId() === $id && $item['couleur'] === $couleur && $item['taille'] === $taille) {
                 // Si le produit est trouvé, on augmente la quantité de 1
+
                 $item['quantity'] += 1;
                 $found = true;
                 break; // Sort de la boucle une fois le produit trouvé

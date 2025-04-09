@@ -1,66 +1,104 @@
 {% extends 'base.html.twig' %}
+	
+	
+	{% block title %}Hello DetailsRobeController!
+	{% endblock %}
+	
+	
+	{% block body %}
+	
+	
+		<div id="custom-dialog" class="hidden">
+			{# Boîte de dialogue personnalisée, cachée par défaut (classe "hidden") #}
 
-{% block title %}Hello DetailsRobeController!
-{% endblock %}
-
-{% block body %}
-
-	<div id="custom-dialog" class="hidden">
-		<div class="dialog-content">
-			<p id="dialog-message">Message ici</p>
-			<button id="dialog-ok">OK</button>
+			<div class="dialog-content">
+				{# Conteneur du contenu de la boîte de dialogue #}
+				<p id="dialog-message">Message ici</p>
+				{# Message qui s'affichera dans la boîte de dialogue #}
+				<button id="dialog-ok">OK</button>
+				{# Bouton OK pour fermer la boîte de dialogue #}
+			</div>
 		</div>
-	</div>
-
-	<div class="detailsProduit">
-
-		{% if images|length > 0 %}
-			<div id="gallery" class="image-container">
-				<a id="lien_img" href="{{ asset(images[0]) }}" data-fancybox="gallery">
-					<img src="{{ asset(images[0]) }}" id="image_robe" alt="Image description" style="cursor: pointer;">
-				</a>
-			</div>
-
-		{% endif %}
-
-
-		<div class="p">
-			<h2 id="titre_robe">{{ robe.nomDuProduit }}</h2>
-			<p>{{ robe.description }}</p>
-			<p class="prix">Prix :
-				{{ robe.prix }}€</p>
-			<select name="optionsTailles" id="optionsTailles">
-				<option value="null">Choisissez votre taille</option>
-				{% for item in tailles %}
-					<option value="{{ item }}">
-						{{item}}
-					</option>
-				{% endfor %}
-			</select>
-			<div class="couleurs">
-				{% for couleur in couleurs %}
-					<div id="{{couleur | lower}}" class="{{couleur | lower}} ">
-						<p>{{couleur}}</p>
-					</div>
-				{% endfor %}
-			</div>
-
-			<button class="btn btn-success" id="bouton_panier" onclick="addToCart({{robe.id}})" data-url="{{ path('app_cart') }}">Ajouter au panier</button>
-			<p id="success_add"></p>
-			<div class="avis_div">
-				{% if app.user%}
-					<!-- Ajouter un bouton pour permettre d'ajouter un avis -->
-					{% if achat == true %}
-						<a href="{{ path('ajouter_avis', {'idProduit': robe.id }) }}" class="btn btn-primary mt-3">Ajouter un avis</a>
+	
+		<div class="detailsProduit">
+			{# Conteneur principal de la fiche produit #}
+	
+			{% if images|length > 0 %}
+				{# Vérifie s'il y a au moins une image dans la liste "images" #}
+				<div id="gallery" class="image-container">
+					{# Conteneur de la galerie d'image #}
+					<a id="lien_img" href="{{ asset(images[0]) }}" data-fancybox="gallery">
+						{# Lien vers la première image avec Fancybox pour permettre un agrandissement #}
+						<img src="{{ asset(images[0]) }}" id="image_robe" alt="Image description" style="cursor: pointer;">
+						{# Affiche la première image, cliquable avec un curseur en forme de main #}
+					</a>
+				</div>
+			{% endif %}
+			{# Fin de la condition "s'il y a une image" #}
+	
+			<div class="p">
+				{# Conteneur des informations sur le produit #}
+				<h2 id="titre_robe">{{ robe.nomDuProduit }}</h2>
+				{# Titre affichant le nom de la robe #}
+				<p>{{ robe.description }}</p>
+				{# Paragraphe contenant la description de la robe #}
+				<p class="prix">Prix :
+					{{ robe.prix }}€</p>
+				{# Paragraphe affichant le prix de la robe #}
+	
+				<select name="optionsTailles" id="optionsTailles">
+					{# Menu déroulant pour sélectionner la taille #}
+					<option value="null">Choisissez votre taille</option>
+					{# Première option par défaut incitant à choisir une taille #}
+					{% for item in tailles %}
+						{# Boucle sur la liste des tailles disponibles #}
+						<option value="{{ item }}">
+							{{item}}
+						</option>
+						{# Ajoute une option par taille #}
+					{% endfor %}
+				</select>
+	
+				<div class="couleurs">
+					{# Conteneur pour l'affichage des couleurs disponibles #}
+					{% for couleur in couleurs %}
+						{# Boucle sur la liste des couleurs #}
+						<div id="{{couleur | lower}}" class="{{couleur | lower}} ">
+							{# Crée un div avec un id et une classe basés sur le nom de la couleur (en minuscule) #}
+							<p>{{couleur}}</p>
+							{# Affiche le nom de la couleur #}
+						</div>
+					{% endfor %}
+				</div>
+	
+				<button class="btn btn-success" id="bouton_panier" onclick="addToCart({{robe.id}})" data-url="{{ path('app_cart') }}">
+					Ajouter au panier
+				</button>
+				{# Bouton pour ajouter la robe au panier. Appelle la fonction JavaScript "addToCart" avec l'ID du produit #}
+	
+				<p id="success_add"></p>
+				{# Paragraphe vide utilisé pour afficher un message de succès après l'ajout au panier #}
+	
+				<div class="avis_div">
+					{# Conteneur pour les avis utilisateurs #}
+					{% if app.user%}
+						{# Vérifie si l'utilisateur est connecté #}
+						{% if achat == true %}
+							{# Vérifie si l'utilisateur a acheté le produit #}
+							<a href="{{ path('ajouter_avis', {'idProduit': robe.id }) }}" class="btn btn-primary mt-3">Ajouter un avis</a>
+							{# Lien permettant d'ajouter un avis si l'achat est confirmé #}
+						{% endif %}
+						<a href="{{ path('app_avis', {'idProduit': robe.id }) }}" class="btn btn-primary mt-3">Voir les avis</a>
+						{# Lien pour voir les avis (visible même sans achat) #}
+					{% else %}
+						<a href="{{ path('app_avis', {'idProduit': robe.id }) }}" class="btn btn-primary mt-3">Voir les avis</a>
+						{# Si l'utilisateur n'est pas connecté, il peut seulement voir les avis #}
 					{% endif %}
-					<a href="{{ path('app_avis', {'idProduit': robe.id }) }}" class="btn btn-primary mt-3">Voir les avis</a>
-				{% else %}
-					<a href="{{ path('app_avis', {'idProduit': robe.id }) }}" class="btn btn-primary mt-3">Voir les avis</a>
-				{% endif %}
+				</div>
 			</div>
+	
 		</div>
-
-
-	</div>
-
-{% endblock %}
+	
+	{% endblock %}
+	{# Fin du bloc "body" #}
+	
