@@ -110,14 +110,38 @@ class CartController extends AbstractController
         ]);
     }
 
-    #[Route("/panier/supp", name: "cart_remove")]
-    public function removeItem(Request $request, SessionInterface $session)
+    #[Route("/panier/supp", name: "cart_remove", methods: ["POST"])]
+    public function removeItem(Request $request, SessionInterface $session): JsonResponse
     {
-        // Récupère les données de la requête JSON envoyées par le client
-        $data = json_decode($request->getContent(), true);
 
-        // Récupère le panier depuis la session
+        $data = json_decode($request->getContent(), true);
         $panier = $session->get('panier', []);
-        // Initialise la variable pour recalculer le total du panier après modification
+        if (!isset($data['id'])) {
+            return new JsonResponse(['error' => 'ID du produit manquant.'], 400);
+        }
+        $productId = $data['id'];
+        foreach($panier as $key => &$item){
+            if ($item['produit']->getId() === $productId && $item['couleur'] === $data['couleur'] && $item['taille'] === $data['taille']) {
+                unset($panier[$key]);
+            }
+        }
+        // Calcule le nombre d'articles dans le panier
+        $count = count($panier);
+
+        // Met à jour la session avec le nombre d'articles et le panier modifié
+        $session->set('nb', $count);
+        $session->set('panier',$panier);
+
+        $total = array_reduce($panier, function ($sum, $item) {
+            $price = $item['produit']->getPrix() ?? 0;
+            $quantity = $item['quantity'] ?? 0;
+            return $sum + $price * $quantity;
+        }, 0);
+    
+        return new JsonResponse([
+            'success' => true,
+            'total' => $total,
+            'nb' => $count
+        ]);
     }
 }

@@ -10,7 +10,6 @@ use App\Entity\CommandeProduit;
 use App\Entity\Couleur;
 use App\Entity\Images;
 use App\Entity\Taille;
-use DateTimeInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,7 +36,7 @@ class PaymentController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $adress = $sessionInterface->get('adress', []);
-            // dd($adress);
+            
             $date = new DateTime();
             $format = $date->format('d-m-Y');
             // Instancier la commande

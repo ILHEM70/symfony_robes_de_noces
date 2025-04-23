@@ -108,7 +108,7 @@ function addToCart(id) {
   }
 
   // Récupère l'URL de l'image de la robe via l'élément avec l'id "image_robe"
-  let image = document.querySelector('#image_robe').getAttribute('src');
+  let image = document.querySelector("#image_robe").getAttribute("src");
 
   // Envoie les données au serveur via une requête POST utilisant Fetch
   fetch(url, {
@@ -118,12 +118,11 @@ function addToCart(id) {
     },
     body: JSON.stringify({
       // Les données envoyées au serveur sous forme d'objet JSON
-      id: id,                 // L'identifiant unique du produit à ajouter au panier
+      id: id, // L'identifiant unique du produit à ajouter au panier
       couleur: selectedColor, // La couleur sélectionnée pour le produit (obtenue via l'interface utilisateur)
-      taille: taille,         // La taille sélectionnée pour le produit (récupérée à partir du menu déroulant de taille)
-      image: image,           // L'URL de l'image associée au produit, créée à partir du titre et de la couleur
+      taille: taille, // La taille sélectionnée pour le produit (récupérée à partir du menu déroulant de taille)
+      image: image, // L'URL de l'image associée au produit, créée à partir du titre et de la couleur
     }),
-    
   })
     .then((result) => {
       // Quand la réponse arrive, elle est convertie en JSON
@@ -135,14 +134,16 @@ function addToCart(id) {
       paragraphe.style.display = "block"; // Affiche un paragraphe de succès
 
       // Sélectionne l'élément où le nombre d'articles est affiché
-      let nb = document.querySelector("#session_nb");
+      let nb = document.querySelectorAll(".session_nb");
 
       // Vérifie si une erreur a été renvoyée par le serveur
       if (result.error) {
         paragraphe.textContent = result.error; // Affiche le message d'erreur
       } else {
         // Si tout est ok, on met à jour le nombre d'articles dans le panier
-        nb.textContent = result.nb;
+        nb.forEach((n) => {
+          n.textContent = result.nb;
+        });
         paragraphe.textContent = result.message; // Affiche un message de succès
         setTimeout(() => {
           paragraphe.style.display = "none"; // Cache le message après 3 secondes
@@ -151,7 +152,6 @@ function addToCart(id) {
     })
     .catch((error) => console.log(error)); // En cas d'erreur, affiche l'erreur dans la console
 }
-
 
 function removeFromCart(event, id, couleur, taille) {
   event.preventDefault(); // Empêche le rechargement de la page
@@ -177,13 +177,16 @@ function removeFromCart(event, id, couleur, taille) {
       return response.json();
     })
     .then((result) => {
-      let nb = document.querySelector("#session_nb");
+      let nb = document.querySelectorAll(".session_nb");
 
-      nb.textContent = result.nb;
+      nb.forEach((n) => {
+        n.textContent = result.nb;
 
-      if (nb.textContent == 0) {
-        nb.textContent = "";
-      }
+        if (n.textContent == 0) {
+          n.textContent = "";
+        }
+      });
+
       // Affiche le message de confirmation
       let paragraphe = document.querySelector("#success_remove");
       if (paragraphe) {

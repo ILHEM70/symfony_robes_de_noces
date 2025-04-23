@@ -779,17 +779,22 @@ button.btn:hover {
 
 /* Media Query pour Robes*/
 @media (max-width: 968px) {
+
   .produit {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .produit img {
     margin-bottom: 20px;
     width: 80%;
+    margin: auto 40px;
   }
 
   .p {
-    width: 180px;
+   min-width: 180px;
+   margin: auto;
   }
 }
 
@@ -820,6 +825,7 @@ button.btn:hover {
 }
 
 /* detail produit */
+
 .detailsProduit {
   display: flex;
   flex-wrap: wrap;

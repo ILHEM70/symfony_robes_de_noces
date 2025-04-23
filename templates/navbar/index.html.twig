@@ -36,7 +36,7 @@
 						<a href="{{ path('app_panier') }}" id="a_panier">
 							<img src="{{ asset('assets/images/buy_17155544.png') }}" alt="">
 						</a>
-						<p id="session_nb">{{ app.session.get('nb') == 0 ? '' : app.session.get('nb') }}</p>
+						<p class="session_nb">{{ app.session.get('nb') == 0 ? '' : app.session.get('nb') }}</p>
 					</li>
 
 
@@ -90,9 +90,9 @@
 
 								<li id="logo_panier">
 									<a href="{{ path('app_panier') }}" id="a_panier">
-										<img src="{{ asset('assets/images/buy_17155544.png') }}" alt="">
+										<img src="{{ asset('assets/images/buy_17155544.png') }}" alt="achats">
 									</a>
-									<p id="session_nb">{{ app.session.get('nb') == 0 ? '' : app.session.get('nb') }}</p>
+									<p class="session_nb">{{ app.session.get('nb') == 0 ? '' : app.session.get('nb') }}</p>
 								</li>
 
 
